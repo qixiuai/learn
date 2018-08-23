@@ -1,6 +1,10 @@
 # learn
 learning material
 
+### 8.20
+- PSG data preprocess
+- PSG validation / balanced AUC
+
 ### 8.8
 - validation code
   

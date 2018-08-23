@@ -1,0 +1,12 @@
+MEX {
+	global:
+		mexFunction;
+		mexfilerequiredapiversion;
+		emlrtMexFcnProperties;
+		kalman02;
+		kalman02_initialize;
+		kalman02_terminate;
+		kalman02_atexit;
+	local:
+		*;
+};
