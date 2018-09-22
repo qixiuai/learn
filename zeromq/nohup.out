@@ -1,0 +1,28 @@
+Traceback (most recent call last):
+  File "server.py", line 10, in <module>
+    message = socket.recv()
+  File "zmq/backend/cython/socket.pyx", line 790, in zmq.backend.cython.socket.Socket.recv
+  File "zmq/backend/cython/socket.pyx", line 826, in zmq.backend.cython.socket.Socket.recv
+  File "zmq/backend/cython/socket.pyx", line 188, in zmq.backend.cython.socket._recv_copy
+  File "zmq/backend/cython/checkrc.pxd", line 12, in zmq.backend.cython.checkrc._check_rc
+KeyboardInterrupt
+[I 10:33:03.277 NotebookApp] JupyterLab beta preview extension loaded from /home/guo/anaconda3/lib/python3.6/site-packages/jupyterlab
+[I 10:33:03.277 NotebookApp] JupyterLab application directory is /home/guo/anaconda3/share/jupyter/lab
+[I 10:33:03.282 NotebookApp] Serving notebooks from local directory: /home/guo/Github/learn/zeromq
+[I 10:33:03.282 NotebookApp] 0 active kernels
+[I 10:33:03.282 NotebookApp] The Jupyter Notebook is running at:
+[I 10:33:03.282 NotebookApp] http://localhost:8888/?token=8404c65f927f92a7b87b5b43cdad7f771aa158e4bd2acf7e
+[I 10:33:03.282 NotebookApp] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).
+[C 10:33:03.283 NotebookApp] 
+    
+    Copy/paste this URL into your browser when you connect for the first time,
+    to login with a token:
+        http://localhost:8888/?token=8404c65f927f92a7b87b5b43cdad7f771aa158e4bd2acf7e&token=8404c65f927f92a7b87b5b43cdad7f771aa158e4bd2acf7e
+Using PPAPI flash.
+ --ppapi-flash-path=/usr/lib/adobe-flashplugin/libpepflashplayer.so --ppapi-flash-version=
+[I 10:33:03.652 NotebookApp] Accepting one-time-token-authenticated connection from 127.0.0.1
+Created new window in existing browser session.
+[I 10:33:10.350 NotebookApp] Creating new notebook in 
+[I 10:33:11.137 NotebookApp] Kernel started: 05f15012-776b-471f-b1ef-cf732f1a2c07
+[I 10:33:12.004 NotebookApp] Adapting to protocol v5.1 for kernel 05f15012-776b-471f-b1ef-cf732f1a2c07
+[I 10:35:11.122 NotebookApp] Saving file at /learn_zmq.ipynb
