@@ -1,0 +1,6 @@
+-*- mode: compilation; default-directory: "~/Github/learn/cc/" -*-
+Compilation started at Tue Oct 16 09:56:00
+
+clang++ remainder.cc 
+
+Compilation finished at Tue Oct 16 09:56:01
