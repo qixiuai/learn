@@ -1,0 +1,11 @@
+/home/guo/Github/learn/csharp/myApp/bin/Debug/netcoreapp2.1/myApp.deps.json
+/home/guo/Github/learn/csharp/myApp/bin/Debug/netcoreapp2.1/myApp.runtimeconfig.json
+/home/guo/Github/learn/csharp/myApp/bin/Debug/netcoreapp2.1/myApp.runtimeconfig.dev.json
+/home/guo/Github/learn/csharp/myApp/bin/Debug/netcoreapp2.1/myApp.dll
+/home/guo/Github/learn/csharp/myApp/bin/Debug/netcoreapp2.1/myApp.pdb
+/home/guo/Github/learn/csharp/myApp/obj/Debug/netcoreapp2.1/myApp.csprojAssemblyReference.cache
+/home/guo/Github/learn/csharp/myApp/obj/Debug/netcoreapp2.1/myApp.csproj.CoreCompileInputs.cache
+/home/guo/Github/learn/csharp/myApp/obj/Debug/netcoreapp2.1/myApp.AssemblyInfoInputs.cache
+/home/guo/Github/learn/csharp/myApp/obj/Debug/netcoreapp2.1/myApp.AssemblyInfo.cs
+/home/guo/Github/learn/csharp/myApp/obj/Debug/netcoreapp2.1/myApp.dll
+/home/guo/Github/learn/csharp/myApp/obj/Debug/netcoreapp2.1/myApp.pdb
