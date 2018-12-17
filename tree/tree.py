@@ -3,12 +3,17 @@ class Node(object):
 
     def __init_(self, id, parent_id, children_ids):
         self._id = id
+        self._name = name
         self._parent_id = parent_id
         self._children_ids = children_ids
         
     @property
     def id(self):
         return self._id;
+
+    @property
+    def name(self):
+        return self._name
     
     @property
     def parent(self):
