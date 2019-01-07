@@ -1,0 +1,268 @@
+<html>
+IntroductionToRobotics-Lecture05
+</p><p><b>Instructor (Oussama Khatib)</b>:Okay.  Let’s get started.  So today, we’re going to the zoo and this video segment, which comes from 93; this is from [inaudible] University.  It’s quite interesting.  
+
+Video </p><p><b>Instructor (Oussama Khatib)</b>:The moving style of Gibbons, shown in this video, is called brachiation.  The brachiation robot is a dynamically mobile robot modeled on the Gibbon.  It moves from branch to branch swinging its body like them.  The brachiation robot, which we have developed, has two arms and no body.  The total length is one meter and the total weight is 4.8 kilograms.  The arms and grippers are actuated with DC motors through harmonic drive gears.  This is the movement without actuation.  At first, the robot doesn’t know how to move at all.  Now the robot is going to learn how to loco mote to the next bar.  
+
+Motion planning of such a robot is a difficult problem because of its non-holonomy.  A robot is able to generate desirable motions by itself using our new heuristic method.  The algorithm is based on trial and error of animals and human beings to obtain better motions.  After the motion learning process, the robot can loco mote from branch to branch, forward and backward.  The posture of the robot is measured by gyroscopes built into the arms and the joint angles are measured by encoders.  The robot is calibrating its gripper position and closes it when it approaches the target bar.  This motion is so called the underhand motion.  The robot can perform another motion called the overhand motion.  
+
+This motion is naturally more difficult than the underhand motion because the robot has to stop the turning of the arm against the gravity force and the movement is liable to become unstable.  However, our robot also succeeded in performing continuous overhand locomotion.  It needs more torque than the underhand motion, but this is more efficient motion with respect to time and energy consumption.  When the robot fails to catch the target bar it can recover by swinging with arms to obtain energy by a method based on parametric excitation.  By continuously performing two motions, namely the motion to control the swing amplitude and the motion to approach the target, the robot can catch the target bar from any initial state.  
+
+</p><p><b>Instructor (Oussama Khatib)</b>:Indeed.  Well, this project continued and probably you will see some more about it.  All right.  Let’s get back to this.  So today I’m going to cover a few examples.  I know this might be a boring topic, but we really need to understand how we can do kinematics because this is the only way you can generate the forward kinematics and what you’re going to see is that once we have the DH parameters, essentially, we will have the forward kinematics which means we know the position and orientation and a little later, in fact on Wednesday, we will see how this can help us finding the jacobian and later on we will see how can we find the dynamics.  
+
+So these are very important parameters.  Once you define these parameters, you define your robot kinematics.  You need to add the masses and a few additional things, inertia’s and then we have all the models.  Okay.  So you remember last time I discussed the attachment frames and we emphasized the fact that we have those axis’s of the joints that are going to play an important role because those axis’s will provide us with, first of all, the information about the distance between axis’s, which is the common normal’s so we identify these.  You have one here, one here, one here and when they are intersecting, basically, that distance is zero and that point is very important.  Then we continue with finding all the origins, which are defined – do you remember how do we define the origins?  Anyone?  Hey, how do we define the origins for the first – 
+
+</p><p><b>Student:</b>[Inaudible]
+
+</p><p><b>Instructor (Oussama Khatib)</b>:So we take the intersection of the common normal with the previous axis and that gives us this origin, this origin, etcetera.  We said the joint access will be aligned with the Z axis so we are selecting our z axis along those axis’s so we have Z1, Z2, Z3, Z4, Z5.  Okay.  And we said once we have those Z axis’s we have the origin, now; we take X to be along the common normal or perpendicular to the plain containing the successive Z axis’s.  Okay.  And that is, in this case, we’re going to have those axis’s and we also defined the different parameters – the four DH parameters, two distances and two angles.  A is called what?
+
+</p><p><b>Student:</b>[Inaudible]
+
+</p><p><b>Instructor (Oussama Khatib)</b>:The length of the links, and this is the distance between the Z1 axis so AI is the distance between ZI and the ZI + 1 measured along the XI axis.  Okay.  Alpha I is the angle between these two Z axis’s, the same axis’s, ZI and I + 1 measure about XI in the right-hand direction.  And the two other parameters, one of them is valuable.  Either the D which measured distance between X axis’s, so it’s measuring the distance from the previous X to the current XI along the ZI axis and this could be a pragmatic displacement or a constant offset, and the last one is the – this is the most common thing that we’re going to see, it’s the joint angle because most of those joints are the [inaudible] joints and we’re going to measure this angle about the ZI axis between XI minus 1, the previous X and the next X. 
+
+So I’m going to take an example, we’re going to work out this example, and this is a typical example of the things that you have in your homework, in midterms and finals.  These are simple examples that we try to design so it’s simple enough so you can solve them and also interestingly enough with the difficulties of assignment and everything in them.  So you see this red frame.  We are giving you a frame; we are calling it X5 Z5.  This is a frame attached to the [inaudible].  This is our task and the goal is to find the transformation from the base to that frame.  So we need to find the DH parameters up to this frame.  And this frame is given to you here.  It can be not given and we can ask you to assign it, but we’re giving you the [inaudible] frame.
+
+So also I should notice this is the typical way we describe the schematic kinematics of a robot and I’m sure if all of you are familiar with it, but what you see here is that you have an axis, this is the joint axis – this representation describes our volute joint, the output of which defines the next axis.  So this is coming out of the output of joint one and the sliding joint here that slides like this is a prismatic joint so it’s represented this way and the output is coming to define the link that leads to the next joint.  So if I can get my cursor back.  So this is the output and here you have the volute joint.  And the output is defining – what is this joint?  The volute joint and the output of the volute joint is connected to the endofacts.  Yeah.
+
+</p><p><b>Student:</b>[Inaudible]
+
+</p><p><b>Instructor (Oussama Khatib)</b>:So this prismatic joint actually is sliding along this axis.  You see these two points, these are the sliders.  So it moves to the left and to the right.  
+
+</p><p><b>Student:</b>Valute joint that is out of plane, is that different [inaudible]
+
+</p><p><b>Instructor (Oussama Khatib)</b>:So we have only here one joint that has an axis coming out of the plane and this one is the volute joint.  You’re asking me if we have the case of prismatic joint that is coming out of the plane?  Well, that might happen and you will see the difficulty, but there is a way of representing that.  But when we do it, we usually use a sort of 3D presentation to show you how it’s coming out of the plane.  So one important thing to remember is this is not a mechanism describing one configuration.  You should try to imagine how this mechanism is moving.  So you have to, somehow, capture the fact that if we rotate above the first axis the endofacts will move out of the plane.  
+
+You see that?  It rotates above the first axis if it slides.  So just move each axis and see the endofacts motion.  Can you see that?  It slides.  Now, if you rotate about the third joint, what is going to happen?  And when we move about the last joint, we go out of the plane above that axis.  You see that?  So you need to literally imagine that motion because if we go to analyze the workspace of the robot you need to fill that workspace and you need to find a way to imagine the three dimensional motion of this mechanism and find the volume that is span by the motion of the endofacts.  Now, what we need to do is do the frame assignment and we are going to start by assigning origins and Z axis’s and in this case, we have a lot of things that are already there.  So you see the first joint axis, the second one, what particularity about those axis’s do we have?
+
+</p><p><b>Student:</b>Intersecting.
+
+</p><p><b>Instructor (Oussama Khatib)</b>:Joint one and joint are intersecting.  So the intersection point is going to be an important point in this case.  Joint three and joint two, are they intersecting?  So they are sort of what?  The axis’s are –
+
+</p><p><b>Student:</b>[Inaudible]
+
+</p><p><b>Instructor (Oussama Khatib)</b>:Exactly.  I mean, they are sort of parallel.  Basically, they are in two parallel planes and the next one, the last joint, is intersecting with the joint number three.  So we call this mechanism the volute prismatic volute to the volute and that’s RPRR.  Okay.  Any questions here before we start?  Good.  All right.  Let’s start and I’m going to start by putting the Z axis and the origins so the Z one is a long axis, joint one, Z2 along Z2, Z3 is coming out of the plane, Z4 is along that rotation and there is basically no question that all of these are directly assigned, very simple, and we are introducing a little bit of a distance and this will clearly defined when we put the origins so origin one is there, but could you explain why we are selecting origin at that point – at the intersection of axis 1 and axis 2?  Yes?
+
+</p><p><b>Student:</b>Does it minimize the number of variables that you’ve got, well, if they’re all zero?
+
+</p><p><b>Instructor (Oussama Khatib)</b>:I was not asking about origin zero.  If it was for origin zero, you’re right, but for origin one, this is enclosed because you have the intersection of Z2 and Z1 at that point, this point becomes the origin of frame one.  So O1 is imposed, but we put O0, the origin of frame zero at that location because we want to minimize the number of parameters.  If we put O0 lower or higher, we will have a distance that we need to account for in the parameters here.  So for origin 3, I mean, the next origin O2, O2 comes to be here if we – and how did we assign it at this location?  It is the common normal intersecting with axis Z2, we get O2.  What about O3?  
+
+</p><p><b>Student:</b>[Inaudible]
+
+</p><p><b>Instructor (Oussama Khatib)</b>:Um hm.  Where it’s going to be?  
+
+</p><p><b>Student:</b>At the second level [inaudible]
+
+</p><p><b>Instructor (Oussama Khatib)</b>:So O3 will be somewhere here?
+
+</p><p><b>Student:</b>No.
+
+</p><p><b>Instructor (Oussama Khatib)</b>:Here?
+
+</p><p><b>Student:</b>[Inaudible]
+
+</p><p><b>Instructor (Oussama Khatib)</b>:Okay.  All right.  Okay.  So far so good.  Now, O4 – so how do we define O4?  It’s along the common normal between – uh huh?
+
+</p><p><b>Student:</b>[Inaudible]
+
+</p><p><b>Instructor (Oussama Khatib)</b>:What did you say?
+
+</p><p><b>Student:</b>O4 and [inaudible]
+
+</p><p><b>Instructor (Oussama Khatib)</b>:So let me define [inaudible] we say it is the intersection of three with four, right?  For four it is four and five.  So because we define five, we have the common normal between the two.  How many common normal’s do you have?  Infinite.  So we have a choice.  We can put O4 in different position.  We’re going to select O4 there and that will contribute to, as we will see, to minimizing the number of parameters.  Okay.  Now, let’s introduce those parameters.  So you are given this problem, but there are not enough so what is A0?  A0 is the distance between which axis’s?
+
+</p><p><b>Student:</b>[Inaudible]
+
+</p><p><b>Instructor (Oussama Khatib)</b>:01 and they are coincident so it’s 0.  Okay.  Now, what about A1?  So again, if it’s distance between the Z axis’s, 1 and 2, 0.  What about two and three, that will give us A2?
+
+</p><p><b>Student:</b>[Inaudible]
+
+</p><p><b>Instructor (Oussama Khatib)</b>:So there is some distance.  So there are distances that are not reaching on the figure and we are going to introduce them.  So you introduce any time those distances so now we are going to need a parameter that describes the distance from 02 to 03 and that distance we just put an L here, you’ll call L whatever, L2.  We are going to need that distance, which is actually depending on the location of 05 and we are going to need this distance to 05 to access between the X axis’s. 
+
+</p><p><b>Student:</b>[Inaudible]
+
+</p><p><b>Instructor (Oussama Khatib)</b>:I’m sorry?
+
+</p><p><b>Student:</b>[Inaudible] 
+
+</p><p><b>Instructor (Oussama Khatib)</b>:You see X2, it’s up and X3 is up.  Okay.  All right.  So let’s do something more –
+
+</p><p><b>Student:</b>Sir, can you go back?
+
+</p><p><b>Instructor (Oussama Khatib)</b>:Yes.
+
+</p><p><b>Student:</b>I was wondering about D4.
+
+</p><p><b>Instructor (Oussama Khatib)</b>:D4?
+
+</p><p><b>Student:</b>As you labeled origin four –
+
+</p><p><b>Instructor (Oussama Khatib)</b>:Okay.  D4 is the distance between X3 and X4.  Where is X3 and X4?
+
+</p><p><b>Student:</b>[Inaudible]
+
+</p><p><b>Instructor (Oussama Khatib)</b>:Zero.
+
+</p><p><b>Student:</b>Zero.
+
+</p><p><b>Instructor (Oussama Khatib)</b>:So it’s zero.
+
+</p><p><b>Student:</b>[Inaudible] you have D4.
+
+</p><p><b>Instructor (Oussama Khatib)</b>:How come this is not correct?  Let’s fix it.  Thank you.  Yes?  There was a question?  Yeah.
+
+</p><p><b>Student:</b>I had another question.  In the reader, you said that a convention would be to pick your intersecting axis’s X so that the alpha was always positive, or did I misread that?
+
+</p><p><b>Instructor (Oussama Khatib)</b>:I mean, you cannot maintain that.  I mean, there are so many different frames that you cannot keep your picks for the first one and then it becomes negative in the next one so I don’t think that this is possible.  You can never maintain the sign of the outcome.
+
+</p><p><b>Student:</b>You said always from XI minus 1 would always be – so you propagate from –
+
+</p><p><b>Instructor (Oussama Khatib)</b>:Yeah.  As long as you have a choice and you can select a positive, then you do it and that is fine, but if you put it negative that’s fine as well.  I mean, it’s overall if you start with a minus – the way you assign your axis’s in or out, will change the sign.  But any selection you make in or out will result in the same answer because the angles will account for that.  There was a question here?  Okay.  All right.  Well, I’m going to take a more realistic example and this is a real robot.  We will see this robot here later.  This is the Stanford [inaudible] Rick Simon designed and built this robot.  This is a six [inaudible] freedom robot. 
+
+It’s among the few robots in the world that has a prismatic joint, so the third joint on this robot is translating so when you pull here, you are moving along this axis, the axis of translation so this is a prismatic joint.  It has this wrist that has a [inaudible] three intersecting axis’s – actually, as you walk in and out you can see a yellow arm in the museum exposition on the first floor and you can see this arm over there.  All right.  So first, how can we do this?  Well, we need a schematic.  We need to see these joints and axis’s.  So here is a schematic that we’re going to use.  It is sort of 3D so in this case, the first joint – so always we are using the same concept.  
+
+You have a rotation.  The output is going to the next joint, a rotation.  So let me explain.  The first rotation of the arm, this rotation above this axis, here and then this is connected to the second one so I’m showing you this way.  So this here is in the plane containing this axis and this is diagonal to it, so when we rotate above this axis this whole structure rotates.  Okay.  And when we rotate above this axis the following structure will rotate above this axis.  So you have the last joint, joint five, joint four and joint three is prismatic, joint one and two are [inaudible] and joint one rotates the whole structure, joint rotates the structure following above this axis, so you have these two first intersecting axis’s.
+
+So do you see this mechanism now?  Now, the last three joints are going to affect orientation so when we think about this this is when we move the structure and the intersecting point is here.  So this point is the intersection.  This structure rotates above this axis.  It rotates above this axis; this is joint five, so joint four is like this.  Joint five is along this axis and joint six is along here.  So if you put your hand here and rotate this, you’ll rotate above the Z axis.  If you pull it out, it will rotate above this axis and if you extend it completely and rotate your joint six, this joint six and joint four will become aligned.  That is this joint and this joint become aligned if you rotate this up and make this joint and this joint parallel. 
+
+And this is a special configuration about configuration; we call it kinematic singularity because when we move this joint up and the two are aligned, we cannot rotate anymore above this axis.  We are locked.  It’s called risk lock.  So when joint five is equal to zero.  Okay.  So we’re going to do the forward kinematics and place the axis, you are agree, Z1, Z2 is going to be along the second joint, Z3.  I wondered why I put it there.  Z4, Z5 and Z6.  Okay.  Any question about the Z axis?  Now we have all of our Z axis’s.  These are the axis’s of the joint along the axis we place these axis’s.  And obviously we place Z0 to be aligned with Z1 in that configuration and that places the origin Z1, Z0 at the same origin.  Z2, why is the origin there?  
+
+</p><p><b>Student:</b>[Inaudible]
+
+</p><p><b>Instructor (Oussama Khatib)</b>:With Z3.  Okay.  Four, five, oh, already.  Okay.  Common normals perpendicular two, one, two, X1 – you see it?  One, two, Z1, Z2, X1.  Two and three, X2.  Now, three, four, five and six so X2 is the common normal in the plane; two and three – now, three and four we – yes?
+
+</p><p><b>Student:</b>Why is X3 downward?
+
+</p><p><b>Instructor (Oussama Khatib)</b>:We can put it upward.  We can put it upward.
+
+</p><p><b>Student:</b>It doesn’t matter?
+
+</p><p><b>Instructor (Oussama Khatib)</b>:It doesn’t matter.  So if you put it upward or downward, all that changes is the alpha angle and theta angle and the following angles and everything will be accounted for, so there is no problem.  So X3 will be along Z6, X4 and X5 is perpendicular to five and six so it will be selected.  This way you can select it in the other direction.  And six is selected along the same direction of five so are saying this is the position theta six equal to zero.  Okay.  Obviously, X0 is going to be selected here.  If we select it in the opposite direction it will introduce as a theta that is different from zero.  Here the theta one is equal to zero.
+
+So we introduce distances.  Now we need a distance between the X1 and X2 axis’s.  This is D2.  We need a distance between the origin of Z2 and Z3 and what else do we need?  I think that’s it.  We just need these two parameters.  Okay.  And here we have our definitions to assign and find the values.  So this time, I’m going to introduce this one by one.  Yes?
+
+</p><p><b>Student:</b>[Inaudible] you don’t have any information about the distance between – for example, this joint and the manipulator so –
+
+</p><p><b>Instructor (Oussama Khatib)</b>:This joint and –
+
+</p><p><b>Student:</b>The manipulator, like, the end of the –
+
+</p><p><b>Instructor (Oussama Khatib)</b>:Oh, we didn’t introduce the last frame here.  Yeah.  So there is no frame Z7.  We did not introduce it and this frame, Z7 could be introduced later in any way without any problem.  The point 04, 03, I mean, that intersection point is part of the last link.  So it is just the first point on that link and anything you select later would be fine because you are not introducing any variable.  It’s a constant transformation.  This is what I said last time.  Because the endofacts is here we can think about this point that we might think about the end of the tool held by the endofacts so that frame is always changing. 
+
+So most of the time what we do is we compute the transformation to this point and then we do an additional transformation for the task.  Okay.  So we’re going to do the first one and we need alpha zero, A0, D1 and theta one.  So we can start and just refill it.  So what is alpha zero?
+
+</p><p><b>Student:</b>[Inaudible]
+
+</p><p><b>Instructor (Oussama Khatib)</b>:Why?
+
+</p><p><b>Student:</b>[Inaudible]
+
+</p><p><b>Instructor (Oussama Khatib)</b>:Alpha zero is the angle between –
+
+</p><p><b>Student:</b>[Inaudible]
+
+</p><p><b>Instructor (Oussama Khatib)</b>:– Z axis’s – which ones?
+
+</p><p><b>Student:</b>Zero and one.
+
+</p><p><b>Instructor (Oussama Khatib)</b>:Zero to one and they are constant.  And what about A0?
+
+</p><p><b>Student:</b>[Inaudible]
+
+</p><p><b>Instructor (Oussama Khatib)</b>:Because they’re intersecting and what about D1?  D1 is what?
+
+</p><p><b>Student:</b>[Inaudible]
+
+</p><p><b>Instructor (Oussama Khatib)</b>:Distance between X axis’s zero.  Anything yet?  Theta one.  So what is theta one?
+
+</p><p><b>Student:</b>[Inaudible]
+
+</p><p><b>Instructor (Oussama Khatib)</b>:Huh?
+
+</p><p><b>Student:</b>[Inaudible]
+
+</p><p><b>Instructor (Oussama Khatib)</b>:Okay.  Good.  Theta one and if it’s equal to in this computation?
+
+</p><p><b>Student:</b>Zero.
+
+</p><p><b>Instructor (Oussama Khatib)</b>:Zero because –
+
+</p><p><b>Student:</b>[Inaudible]
+
+</p><p><b>Instructor (Oussama Khatib)</b>:– X0 and X1 are positive.
+
+</p><p><b>Student:</b>Positive.
+
+</p><p><b>Instructor (Oussama Khatib)</b>:So as we rotate we are going to rotate X1 away from X0 and that will give us the value.  Okay.  Number two.  Let’s start from the other side.  What is theta two?  It’s variable.  It’s theta two.  What about D2?  D2 measures the distance between –
+
+</p><p><b>Student:</b>[Inaudible]
+
+</p><p><b>Instructor (Oussama Khatib)</b>:Between what?
+
+</p><p><b>Student:</b>[Inaudible]
+
+</p><p><b>Instructor (Oussama Khatib)</b>:Between what X’s?
+
+</p><p><b>Student:</b>X1 and X2.
+
+</p><p><b>Instructor (Oussama Khatib)</b>:X1 and X2.  X1 and X2.  You see D2, so it’s D2 and what about – I shouldn’t put D2, I should put L2 next time and make it D2 equal L2.  I never liked the use of D2.  Later on, I call it row two so we are really not confused with D the constant, but anyway, we call it D2.  I’m not going to confuse you with that.  D2, it could be a variable.  Here’s it’s a constant.  What about A2?  I mean, A1.  
+
+</p><p><b>Student:</b>[Inaudible]
+
+</p><p><b>Instructor (Oussama Khatib)</b>:Why?  A measures the distance between – A1 will measure one to two.  One and two are intersecting.  Okay.  So the variable was alpha.  Why is it minus 90?  What is this alpha one?  Alpha one is measuring the angle between one and two, Z1 and Z2, you go from Z1 to Z2 about X1, so – right?  
+
+</p><p><b>Student:</b>How come X2 is facing down, but from the transformations it looks like it should be facing the same way X1 is facing?
+
+</p><p><b>Instructor (Oussama Khatib)</b>:Okay.  Let’s see.  You said X2?
+
+</p><p><b>Student:</b>Um hm.
+
+</p><p><b>Instructor (Oussama Khatib)</b>:Okay.  So X2 is facing down because it is perpendicular to the plane containing Z2 and Z3, right?  So it could be up or down.  
+
+</p><p><b>Student:</b>So we need to say theta 2, I guess, plus 90?
+
+</p><p><b>Instructor (Oussama Khatib)</b>:Well, if you put it up the transformation between X1 and X2 will change and then from two to three will change.  But right now with this selection, I mean, once you have the selection, you are accounting for it.  So now X2 and X3 are parallel.  The angle between them is zero so theta three will be –
+
+</p><p><b>Student:</b>Zero.
+
+</p><p><b>Instructor (Oussama Khatib)</b>:– zero.  What about D3?  D3 is the distance between the X axis’s.  Right?  X axis’s.  X3 to X4 and what is this distance between X3 to X4 along the Z3?  This is the displacement.  As you move and translate the prismatic joint, you are going to slide D3.  D3 will increase so it’s the variable.  So it is D3, the variable.  So alpha three is measuring Z3 and Z4 and this is 90 degrees above X4.  Okay.  Now, once you reach this location, three, actually you have the transformation to frame three, which is at the intersection point of this and basically you have your position of the endofacts, I mean, the position at the intersection at the risk point and this position is not going to change anymore because all the other frames are going to have the same origin.
+
+So this distance between the origin here and here is going to remain the same later.  What’s going to change with the next joints is the orientation of this frame.  How this joint move will affect the orientation of the endofacts.  So Z4 will have only one variable, theta four and Z5 will have an alpha four that is equal to minus 90 degrees.  Okay.  Yeah.
+
+</p><p><b>Student:</b>What is it for I equals to two, you have an E2 there, shouldn’t it be L because it’s fixed?
+
+</p><p><b>Instructor (Oussama Khatib)</b>:I didn’t hear.  
+
+</p><p><b>Student:</b>Why is it for I equals two you have E2 under the I?
+
+</p><p><b>Instructor (Oussama Khatib)</b>:Oh, D2 is not a variable.  I talked about it earlier.  If you want, I can change it online, so call it L2, please.  I’m sorry.  Every year I have to change it and forget to do it.  Maybe I can do it.  Can I do it?  Can I do it this?  Wow, I can do it.  All right.  All right.  Is that better?  That’s better.  All right.  Now we have the table.  Well, you’re going to do a few of these and there will be always one more column, configuration shown and you have to remember that you’re looking at this configuration and you start to move it a little bit and look what is the value of the variable.  Okay.  I have to change the next one.  All right.  Later.  Okay.  I’m sorry?
+
+</p><p><b>Student:</b>[Inaudible]
+
+</p><p><b>Instructor (Oussama Khatib)</b>:Oh, yeah.  Thank you.  Okay.  So now every row that you have here for one, two, three, four, five, six is going to give you a transformation.  You’re going to use this information and you’re going to have a transformation.  So if we go here we’re going to find the transformation from – this is not one, this is I, my God, what is happening to this one.  Someone find the mistake.  So this is going from I to I minus one.  This is the transformation that you are going to compute as a function of your alpha A, D and theta.  So you have these four parameters and you’re going to use them to compute these transformations.  Okay. 
+
+And as long as you are doing the assignment following this convention, you can apply this formula.  So we’re going to start.  Here are your tables and we do the first transformation.  You have five minutes.  I’m kidding.  So let’s do the first transformation.  The first transformation is very simple.  The only thing on the first row that is variable is theta one and you can find theta one [inaudible] and then you have a one here.  So this is what you obtained.  The transformation from frame one to frame zero is simply a rotation about the Z axis.  And the origin is zero.  All right.  Now, the next transformation is going to be from frame two to one.  Not to zero.  You have to be careful.  So it will involve only one variable.  
+
+And that transformation involve cosign two and sign two.  And because the origin is different, you see D2 appearing, which is now should L2.  Oh my God.  All right.  What about theta one?  So the transformation theta two involves only this variable, D3.  There are no variables in the rotation.  There are 90 degrees which gives you a cosign and sign of zero and then basically you get the constant.  The only transformation involved there is D3, the only variable.  Okay.  There are many ways of doing this multiplication, but I’m going to just emphasize the fact that we are going to do it in a specific way because later, the way we will do it, we will find intermediate computation that will help us find the jacobian.
+
+So the jacobian, we will actually see that the jacobian relies on this vector that is the Z vector of the rotation in frame zero.  So we need the Z vector in frame zero.  In order to find the Z vector in frame zero we will start doing this multiplication by taking one to zero, two to one by one by zero.  That gives us two to zero.  And now, I have the vector Z two in frame zero.  This is Z two in frame zero.  And this is Z three in frame zero.  You see it?  This vector.  So this vector is going to play a very important role later so we do the multiplication always this way.  We take one to zero, two to zero, three to zero by just multiplying one metrics by the previous one.  So we start from the left and do the multiplication.  You catch on?  Good.  When I reach three zero look what we have here. 
+
+This represents the rotation of frame three within respect to frame zero.  This is X three in frame zero, Y3 in frame zero, Z3 in frame zero and this is what – the origin of frame three in frame zero.  Okay.  Now, notice this is going to remain the same as we continue because we selected the same origin so the origin will not change.  Now, these three columns are the rotation metrics from frame six to frame zero.  Now, in this transformation, I have everything about this last frame.  We have X axis component in frame zero, the Y axis component in frame zero and the Z axis component – I’m not showing you these two because there is no room, and the origin of frame six with respect to the origin of frame zero.
+
+So you have everything.  So now you can form a set of parameters to describe your position and orientation.  You can say I will select X, Y, Z to represent my ineffective position and then for the orientation what are you going to select?  Pick something.  So what options do we have?  Do you remember?  We had this in the first lecture I think, or the second lecture.  We have three angles.  Question?
+
+</p><p><b>Student:</b>[Inaudible]
+
+</p><p><b>Instructor (Oussama Khatib)</b>:Angles or direction cosigns.  What are the direction cosigns?  These, just pick these.  You have one, two, three, four, five, six, seven, eight, nine numbers that will give you your direction cosigns sort of presenting essentially all the parameters in the rotation metrics involved with the orientation.  So this is what you’re going to do.  You’re going put the position, XP, the coordinate of the position.  I will use [inaudible] to coordinate X, Y, and Z and that will be these three.  And now I’m going to use the three columns, R1, R2, R3 to represent this.  So this is big.  This is big and this is big.  So what I’m showing you is the smallest part. 
+
+All right.  So go ahead and find me the three angles associated with this.  All right.  How do you do that?  Well, we go and say this rotation metrics is identified for three rotations and we compute the inverse of the cosign alpha – you remember beta and then we make sure it’s not zero, not singularity and then we extract alpha and gamma.  So you measure theta one from your [inaudible], you get the value of that and you now have a cosign theta one and sign theta two.  So the orientation part is quite interesting and that’s going to be all the way interesting as we go to the jacobian. 
+
+In fact, this part, the Z vector is very, very important because as we will see later, the jacobian is going to be formed by just the Z vector; Z1 in frame zero, Z2 in frame zero, and Z4 to the end, that gives you a half of a jacobian metrics and the other half of the jacobian metric turns out to be just to be simple differentiation of these three X, Y, and Z coordinates.  So once we understood the forward kinematics in term of the position and orientation and then once we understood how when we move the different joints, when we produce [inaudible] of the joints we affect the endofacts velocity with linear and angular velocities then we are going to be able to create this transformation between joint velocities, [inaudible] velocities that uses the knowledge of the axis of rotation of different joints. 
+
+This vector is important because about this vector that we have the velocity of the joint.  The Z axis, you remember we selected the rotation above the Z axis.  So the theta one is measured above the Z axis and that is going to play a very important role.  Okay.  Any questions?  All right.  Well, I’ll see you on Wednesday and we will start working with the jacobian.  
+</p><p>
+[End of Audio]</p><p>
+
+Duration:  66 minutes</p><p>
+
+
+</html>

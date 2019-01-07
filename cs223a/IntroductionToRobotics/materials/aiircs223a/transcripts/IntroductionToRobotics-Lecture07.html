@@ -1,0 +1,270 @@
+<html>
+IntroductionToRobotics-Lecture07
+</p><p><b>Instructor (Oussama Khatib)</b>:Okay.  Let’s get started.  So for this segment – come on.  Interesting.  This is really an interesting development.  In ’99, a robot playing volleyball, and this was developed by a company, Toshiba, which is remarkable, so.
+
+Video Speaker:</p><p>Robots in games and competition.  Each ball volley playing robot.  Japan.
+
+</p><p><b>Instructor (Oussama Khatib)</b>:I love the people.
+
+Video Speaker:</p><p>Future robots are going to work in your houses and hospitals with humans.  Toshiba has developed a beach ball volley playing robot as demonstration of such a human friendly robot technology.  We consider that it is essential to interact with robots using everyday words such as, let’s play volleyball.  For the everyday word commands to work, the robot needs to measure the target’s relative position with respect to the robot position to know the mechanics and procedures of the tasks, and to have a good database for the environment and the target.
+
+</p><p>With an integrated sensor feedback technology, we have demonstrated a robot, which can play beach ball volley with an opponent, pick up a ball from the floor and shake hands with a human by only one respective every day word command.  The robot uses two head mounted CCD cameras to measure the target ball position in every one sixtieth seconds.  The cameras always track the ball.
+
+</p><p>The operator commands the robot to pick up the red ball.  Then the robot starts to search for the red ball on the floor.  After finding the ball, it moves above the red ball.  Then it checks the arrangement of all the balls to make a plan to pick up the ball.  When the robot finds that arrangement is too difficult to pick up the red ball, it pushes the green ball aside and checks the ball arrangement again.
+
+</p><p>Then it picks up the red ball.  We use vision servo control at the rate of one sixtieth seconds to achieve this picking up motion.  This is the robot view.  After pushing aside the green ball, the robot checks the arrangement again and approaches the red ball by using the visual servo control.
+
+</p><p>Also to show the human friendliness of the robot, it can shake hands with a human.  It has a tactile sensor in its right hand to start handshaking.  It also has a six degree of freedom force torque sensor at its wrist directly respond to the young lady.  See you.
+
+</p><p><b>Instructor (Oussama Khatib)</b>:Okay, so I’m not sure who was shaking the hands – the human shaking the hands of the robot, or the robot shaking the hands of the human.  I wonder if you know why this whole environment is white.
+
+</p><p><b>Student:</b>It’s the color of the ball?
+
+</p><p><b>Instructor (Oussama Khatib)</b>:Yeah.  I mean the vision is working – picking the color, and using color you can go fast.  So what is the challenge here?
+
+</p><p><b>Student:</b>If you were to have any color environment you wouldn’t possibly mistake a blue [inaudible] or a blue ball.
+
+</p><p><b>Instructor (Oussama Khatib)</b>:No, I meant what is the challenging problem in this demonstration?  What was the most difficult part in this demonstration?
+
+</p><p><b>Student:</b>Depth perception?
+
+</p><p><b>Instructor (Oussama Khatib)</b>:Perception, depth, and –
+
+</p><p><b>Student:</b>Tracking the ball.
+
+</p><p><b>Instructor (Oussama Khatib)</b>:Tracking the ball.  Tracking the ball is really important because you have to predict where you’re going to hit.  By the way, students from this class last year worked on a project an experimental robotics to duplicate this with [inaudible].  And it was just a lot of fun.  So you have the camera, and you’re tracking the ball.  You need to predict where the ball is going to be, and then you place – because your arm is not going to be positioned correctly with the right orientation unless you do that prediction.
+
+</p><p>And this is how humans work.  Humans do a lot of predictions.  I mean the feedback is really slow, but the prediction is amazing, and that’s how you can do this.  There are also other aspects of the problem.  They were talking about the grass being – which is a very simplistic problem in here because they are using ready to hand – gripper for large objects to that they grasping part is – but it was remarkable in 1990 managed to do it.  So that was quite interesting.
+
+</p><p>’97, ’98 [inaudible], and that was another big achievement in robotics, getting a robot to walk upstairs, downstairs.  We will get to talk about this later, but it was the time when suddenly, just before the turn of the century, we started to see all results coming from the maturing of technologies that were bringing vision, good mechatronic integration to make robots much faster to do tasks like walking stably and performing dynamic skills like hitting the ball back.
+
+</p><p>Okay.  The Jacovian again.  Well today we’re going to be able to look at a mechanism like this one, and see the Jacovian.  I promised you that we will take a look at the robot, and you will see the Jacovian.  We’re going to do it.  And, like, in a few minutes you will see, like, all the columns coming in place and everything.  So this is the explicit form of the Jacovian.  Last week we saw a messy, complicated way of looking at the Jacovian, or extracting the Jacovian by propagating velocities from the base to the End-Effector.
+
+</p><p>Computing the total linear and angular velocities as a function of the joint velocities recursively.  And then by doing this computation, you have the expression of the Jacovian somewhere in that it – in that final answer of your linear velocity and angular velocity.  So if you separate the join velocities, you will find what are the element of your Jacovian matrix.  If you don’t have any idea about exactly what is the structure of the Jacovian matrix, what would make it really singular, how the mechanism joint axis affect angular velocity and linear velocity, et cetera.
+
+</p><p>So now what we’re going to do is we’re going to go to each of the joint axes, prismatic or revolute, and analyze its impact on both the linear velocities and angular velocities.  And by doing this analysis we are going to be able to immediately see how these joint axes are going to match with the Jacovian, in which columns, and in which way.  And then, basically, we can do the reverse.  We look at the joint axis and we will see the Jacovian.  So this is what we’re going to do.
+
+</p><p>All right.  So let’s start with a joint.  Pick a joint.  I don’t know.  This one?  I just picked this one.  So during the vector omega I, representing the angular velocity generated by Q dot I.  So the direction of Q dot I is along this vector, and its magnitude is proportional to theta dot, okay?  So this is basically theta dot Z I, which we are calling omega I.  Well to be – to span all the degrees of freedom, we need another join that is prismatic, and I think we have one over there – prismatic joint, so let’s take – oh.  We’ll come later.  So we just are writing what is omega I.
+
+</p><p>And here is the prismatic joint.  This prismatic joint is along joint axis J – along Z J, and the velocity I’m measuring is this capital V J, which is proportional to what?  It is proportional to D dot J.  D is the valuable prismatic variable along the axis Z J.  So the prismatic velocity for joint I we could – V I is Z I Q dot I in the case of prismatic, Q dot is the dot.  And in the case of revolute, it is theta dot.
+
+</p><p>You remember the epsilon I.  Okay?  Now the question that we should answer is the following.  If we go to the End-Effector – so let’s go to the End-Effector and say I’m interested in computing the impact of the linear velocity – on the linear velocity of that revolute joint, and that prismatic joint.  So I’m going to put prismatic joint, and revolute joint, and we are forming this table.
+
+</p><p>So on this table, the question is, what is the contribution of a prismatic joint moving at velocity V J on the linear velocity at the End-Effector.  You see the End-Effector point is right here.  So at this point, what – if I have – everything is still.  If I just have Z J, what would be the End-Effector linear velocity?  So we need to answer that question.  Then we will place it here.
+
+</p><p>I’m sure everyone now is looking at the notes.  Don’t look at the notes.  [Inaudible] and then we’re going to find the impact on angular velocity.  So think about it.  This joint is translating with this velocity.  What would be the linear velocity do to V J?  Anyone?
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Oussama Khatib)</b>:[Inaudible].  What is the impact on the angular velocities?  None.  So the V J is transformed directly to the End-Effector, and we will find that the prismatic joint will have a contribution on the linear velocity identical to the prismatic join velocity along the same direction of that velocity.  On the angular velocity, a linear velocity will not change the angular motion of the End-Effector, so there will be no effect.
+
+</p><p>And I’m not going to hit return because I’m afraid that we will see revolute.  So let’s think about revolute.  I don’t remember the order.  So now it’s a little bit more complicated, but remember the apple.  That is, we are going to look at the affect of this omega I at the End-Effector.  What is the linear velocity do uniquely to omega I?  So you remember that one?  So what information we need?  We need to locate the End-Effector point distance from the axis.
+
+</p><p>So we really need to find – to introduce a vector that connects joint I to the End-Effector.  We will call it E I N connecting the origin of frame I to the origin of frame N.  So let’s make sure the – perfect.  So now on the revolute, we do this connection, and now we need to compute the linear velocities due to omega I.  So that is going to be – so you’re rotating and you have the vector.  How do we compute that in your velocity?
+
+</p><p><b>Student:</b>Cross product.
+
+</p><p><b>Instructor (Oussama Khatib)</b>:Cross product.  But that’s not enough.  You have two possibilities, right?
+
+</p><p><b>Student:</b>Omega plus P.
+
+</p><p><b>Instructor (Oussama Khatib)</b>:Omega plus P?  Everyone agrees?  It is omega plus P.  So omega I plus E I N gives you the contribution of revolute joint I on the End-Effector linear velocity, okay?  What about angular velocity?  We said the angular velocity is not affected by the prismatic.  Is it affected by the revolute?  What is the contribution?
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Oussama Khatib)</b>:Omega I itself.  So if we have a revolute joint, the total angular velocity is going to be the sum of all the omega Is, and everyone is going to contribute with the same angular velocity.  Now the total angular velocity – you walk through, you take your epsilon I, and following the type, prismatic or revolute, you can compute the total angular velocity.  So if we had a prismatic – a robot with prismatic joints on it, what would be the total linear velocity?
+
+We call it V.  The total linear velocity is going to be equal to the sum from I equals 1 to N of with epsilon.  I need something.  [Inaudible] going to use something like Q dot.  Epsilon.  So epsilon I was equal to one four prismatic, and equal to zero for revolute.  So some I from 1 – 2 N of epsilon I --
+
+</p><p><b>Student:</b></p><p>[Inaudible].
+
+</p><p><b>Instructor (Oussama Khatib)</b>:So all prismatic just – come on.  All right, if you just have prismatic joints you’re [inaudible] only about V one to V N, right?  We just add them together.  But can you add it with epsilon?  Is it epsilon I or epsilon I bar?  Epsilon I times V I.  All right.  If we had revolute joints on it, the linear velocity would be?  Okay, someone else I think from this side – someone was trying to answer.  Anyone?  You were trying to answer?
+
+</p><p>[Inaudible].  Okay.  I have only revolute joints.  And I have those joints starting from one to N.  What is the total velocity due to those revolute joints – would be?  Would be the sum of all of this from one to N, but I’m just looking for the epsilon.  Some from I equals 1 to N of – very good.  Epsilon I bar multiplied by this.  Now if we have mixed joints then the linear velocity will be epsilon I V I, or epsilon I bar omega I.  Now you understand this?  Yes.
+
+</p><p><b>Student:</b>[Inaudible] zero and it’s revolute in one point of [inaudible].
+
+</p><p><b>Instructor (Oussama Khatib)</b>:Right.  So this epsilon is equal to one for prismatic joints, and equal to zero for revolute joints, and epsilon bar is the compliment of epsilon, which means that this would be equal to one.  If the joint is prismatic this would be zero, or this would be zero and that would be one.  Either one or the other.  Okay?  Now what about the total angular velocity – is going to be – if I have prismatic joints, if we have prismatic joints you use epsilon I multiplied by – by zero he said.  He’s, like, sitting like this – zero, yes.  Epsilon I by zero.
+
+</p><p>So only revolute joints will contribute, and that means omega is equal to the sum from I one to N of epsilon I bars – all these omega [inaudible].  So omega is just this expression.  Okay?  All right.  So here is omega and V.  So here – so over there you have V, the total linear velocity, and omega, the total angular velocities.  Now I don’t know if you see the Jacovian yet, but we’re not far.  We’re very close.  How do we go – so now we have an expression for V, an expression for omega, and the question is how can we extract the Jacovian.
+
+</p><p>So what is the Jacovian doing?  The Jacovian matrix is defined as the matrix that connect Q dots to V and omega.  So you have two parts in this matrix, J V, and J omega.  J V is the matrix that connect V to Q dots, right?  And J omega connects omega to Q dots.  The question is how do we go from here to finding J V and J omega?  Could you help?  What do we need to do?  So right now I’m expressing V as a function of V I and omega I.  Omega is a function of omega.  What do we need to do?  Yes.
+
+</p><p><b>Student:</b>Omega I [inaudible]?
+
+</p><p><b>Instructor (Oussama Khatib)</b>:Okay, so --
+
+</p><p><b>Student:</b>Or, I’m sorry, P as Q dot, and V I is with –
+
+</p><p><b>Instructor (Oussama Khatib)</b>:Z I Q dot as well.  And if we do that, then we will have an expression in here, and that expression here that is linear on Q dots, and this is a sum from Q dot one to Q dot N basically, you are just moving through the columns of the Jacovian matrix.  So we substitute in those expressions, V I with Z I Q dot omega I, with a Z I Q dot.  And if we do this, what’s going to happen?  I’m going here to substitute this with Z I Q dot I, and there with Z I [inaudible].  Let’s do it?  Come on?  Magic.
+
+Now what do we have here?  We have Q dot Is the same that depending on the type of the joint, if the joint is prismatic, I’m using Z I, and if the joint is revolute I’m using Z I cross P I N.  And here, if the joint is revolute, I have someplace here.  Let’s start with the simplest form.  So the simplest is this one, and my question is what is the first column of the Jacovian matrix J omega?  So this will be the J omega.  This is a sum, right?
+
+So J omega – the first column of J omega of a robot whose first joint is revolute.  Okay.  I hear Z one.  I hear zero.  Ah, Z one.  Z one?  Z one?  Everyone?  So the first column of a robot that it’s first joint is revolute will be Z one for J omega.  What would be the first column of J V for that robot?  Same robot.  You have to go up here.  I need volunteer to --
+
+</p><p><b>Student:</b></p><p>B one cross B one N?
+
+</p><p><b>Instructor (Oussama Khatib)</b>:Excellent.  So if the first joint is revolute would be one, one N.  That vector connecting joint one to joint N.  My robot is completely prismatic.  Could you tell me what is J V?  So the first column would be?  Z one.  Second column, Z two.  Isn’t that beautiful?  Z three, Z four, that’s your Jacovian.  What about J omega for a robot that is completely revolute?  Z one – could it be any simpler?  I think now you will start to see the Jacovian.
+
+</p><p>So if we take this expression and really expand, this is what is happening.  V is now a linear combination of the joint velocities going from the first to the N, and now if you take the coefficient of those Q dots, you can write your J V.  And J V is saying that if the joint is prismatic, the column is just a Z, the Z-axis.  And if a joint is revolute, it’s the cross product between that Z-axis with the vector connecting the joint to the End-Effector, okay?
+
+</p><p>And if we expand the second expression, we are just looking at revolute joints.  So our prismatic robot will have zero columns, and a revolute robot will have all its columns.  So between all these as just Z-axis, so it is – you’re just writing zero or Z, okay?  All right, well basically, this is it now.  You combine the two, J V and J omega, and you get your Jacovian.  So this recursive computation we were doing as we propagated and we computed the velocities and went with each frame and made sure that the frame – the expression is done in the same frame, and transform it back to the zero frame.
+
+</p><p>All of this now is written here explicitly, so you have this explicit form that is actually not expressed in any frame here.  We said that Jacovian – this Jacovian, J omega, is function of Z one, Z two, Z N.  We didn’t say in which frame.  If you decide now about the frame, we have to decide where we express these vectors, right?  So when we express vectors, we have to express the Jacovian in a given frame, zero, all the vectors have to be in frame zero of the columns.
+
+</p><p>Over there, you are doing cross product computation when the cross product computation should be done in the same frame.  It could be frame 72.  But then you have to transform it to the same frame where you’re expressing your matrix.  So you can do it in frame two, for instance, and then take it back to frame zero.  So this is a very general form expressing the Jacovian in a vector form, and then the question is where you’re going to need your Jacovian computation, and you do that computation by expressing all the vectors in that frame.
+
+</p><p>So this Jacovian which is J V and J omega, can be also simplified further if you already computed your forward kinematics because J V, if you remember, J V is related to the linear velocities, so if I’m using spherical coordinates, I cannot just differentiate spherical coordinates and get linear velocity, but if I’m using Cartesian coordinates, then basically I can directly differentiate that vector and obtain J V.
+
+</p><p>So if you have X Y and Z computed already, where can we find X Y and Z in the forward kinematics?  Where can we find it?  In which column?  In the fourth column, and you get X Y and Z of the point that is expressed in some frame.  And you can take the differentiation of that and your Jacovian matrix if this vector was expressed in frame zero.  The position X P, now X P is X Y and Z of the End-Effector point.  Then you are taking the differentiation with respect to Q one, Q two, to Q N.  And that is also your Jacovian associated with linear motion.
+
+</p><p>And this Jacovian should be – it doesn’t take after the one computed from Z one cross P one and – P two and to velocity.  All right.  So, again, there is no commitment here to whatever X P is expressed.  So to go to our frame, what is important is to make sure that everything in relation to all these vectors discarding the Jacovian is expressed in the same frame.  So this is a vector representation of the Jacovian, and if we go from the homogenous transformation – if we computed the homogenous transformation, then we should be able to do this computation immediately.
+
+</p><p>So once you have your homogenous transformation, you should be able to extract your Z one, Z two, Z N, and X P, and just to do the simple differentiation, and find your Jacovian matrix.  Now most of the time we express the Jacovian in frame zero.  So in frame zero this would be simply expressing all these vectors in frame zero.
+
+</p><p>Well it could be frame N.  It could be maybe – sometimes you need it in frame N for some task, and you want to transform it to frame zero.  So we need to understand also the relationship between the Jacovian in different frames.  But let’s first look at this vector.  And for these vectors, the information about Z I in frame zero – so let’s say I’m interested in Z seven in frame zero.  So where can I find this information precisely?  So Z I is the Z vector of frame I.  So Z I in frame I is equal to what?
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Oussama Khatib)</b>:Zero, zero, what?  So any Z in [inaudible] is going to be zero, zero, what?  How can we find zero, zero, one and transform it to frame seven?  What are you going to use?
+
+</p><p><b>Student:</b>[Inaudible]?
+
+</p><p><b>Instructor (Oussama Khatib)</b>:I’m sorry?
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Oussama Khatib)</b>:I can not hear you very well.  You have to speak louder.
+
+</p><p><b>Student:</b>Transformation between [inaudible].
+
+</p><p><b>Instructor (Oussama Khatib)</b>:So we take the transformation from frame I to frame zero.  Which transformation you want?  Basically the rotation.  You rotate – you take the rotation matrix the three by three [inaudible] in the homogenous transformation.  So you take the rotation from frame I to frame zero, and you can compute your Z I in frame zero.  So Z I in frame I is always constant, right?
+
+</p><p>So we call it Z.  I mean this is the Z vector zero, zero, one.  And as you said, we take it from frame I to frame zero, which means that essentially we need to multiply zero, zero, one by the rotation matrix from frame I to frame zero.  What does it mean – think now about the three by three rotation matrix.  And you are multiplying the rotation matrix by zero, zero, one.  What are you doing there?  What is the result if you multiply the three by three matrix by zero, zero, one?  You are picking the last column.
+
+</p><p>So basically those information is found in the rotation matrix – in the third column of the rotation matrix.  One to zero, two to zero, N to zero, for the revolute joints, okay?  So now we have this form, and we are going to try to apply it to our relatively complicated robot, the Stanford Scheinman Arm, and on Wednesday, I will bring it in the lab so you can see it and you can look at some of the properties related to the singularities in those axis, and you can see the prismatic joint.
+
+</p><p>But let’s rely on the picture so you still have to imagine the robot.  And what I want you to do is to see now the Jacovian.  Can you see it?  No?  All right.  Maybe if I give you a drawing of it, it will be better.  But before that let’s go and summarize what we have seen.  We said to compute to V and omega, we compute this Jacovian from its two components, J V, the blocks J V, and the block J omega.  V is J V connecting Q dot to V, and omega – J omega connecting Q dot to omega.  And the first column – I mean the first block, J V, is either Z I of that joint, or the cross product of the Z I with the vector I N, okay?
+
+</p><p>The omega and the J omega is simply the Z I vectors corresponding to revolute joints.  All right.  So you see this?  Because now I’m going to ask you to give me the Jacovian for this robot, and this is the schematic of the robot, and you can see here the Jacovian is empty, you need to fill it.  And I hope you’re not looking at your notes or you don’t have the answer.
+
+</p><p>So all right.  Let’s see if anyone sees what should go here.  Now you have to match it with the joint of the robot and their types, okay?  Do you understand those types here?  Joint one is revolute or prismatic?  Revolute.  Second and third?  And then the rest is revolute.  Okay.  Here we go.  Here.  Z one, okay, here.  Z two?  Who said Z three?  I heard Z three.  You said zero?  Okay, zero.
+
+</p><p>Zero, four, five, and six.  Okay.  What about this one?  First one.  It’s a revolute joint.  The first one is zero?  Revolute joint.  It is Z one cross P one – or a zero because they are coincident, but B one, two.  And in this case, N is that green frame.  It is on frame three.  So really two to three.  What about this one?  So one, two, three.  Two to three.  Yes?
+
+</p><p><b>Student:</b>[Inaudible] six.
+
+</p><p><b>Instructor (Oussama Khatib)</b>:It could be seven if we [inaudible] any point.  Often for the End-Effector we attach the frame – additional frame.  But for this computation we said we will do the computation at the wrist frame, which is the frame, in this case, turned out to be the frame number three.  It then take – the origin of three is identical to four, five, and six.  So this one would be Z two cross to three, and here Z three.  Zero – so you have Z one, Z two, zero – there should be a Z three.  It pushes up.  It goes up.  The Z three goes up and you get zero.
+
+</p><p>So when you have a prismatic joint you’re getting a zero, otherwise you have the revolute joint.  So let’s check – Z three – so the next column is going to be zero because we are imagining the distance from three to four.  It’s the same point.  Yes?
+
+</p><p><b>Student:</b>All these Zs, what do they represent?  Are they the Z axis for each frame?
+
+</p><p><b>Instructor (Oussama Khatib)</b>:Okay.  This is really important if we don’t know the Z axis.  Why computer is – just one second.  Let’s go back to the beginning.  So the Z axis is the joint axis itself along which we are having this rotation.  And this is the – when we go to the frame themselves, like when we go here, this is Z zero, and if you remember, there was Z one attached to frame one, and Z two we are seeing here.  Z six.  So these are the Z axis along the joint axis, and those are the Zs that we are talking about.
+
+</p><p>And we are imagining the rotation above the Z axis, and we are measuring the prismatic motion or the linear motion along the prismatic joint Z I.  So when we were computing prismatic joints three, the motion along this direction is coming from along that joint.  Okay.  Everyone sees this?  This is important if you don’t see the Z axis.  Yes?  You have a question?
+
+</p><p><b>Student:</b>It’s always zero, zero, one, right?
+
+</p><p><b>Instructor (Oussama Khatib)</b>:In its own frame.  But in the frame zero it’s whatever it is.  So Z three in frame three is zero, zero, one, and this is what we call the Z.  And what we saw is that we – when we go and express this in frame zero, we need to transform this vector to frame zero as well as all the vectors should be expressed in frame zero.  Okay.  Now why do we have zero here?  So this should be Z, what?  Z four?  Across P – four to three, I mean, basically we’re going to that same point, which is zero.
+
+</p><p>So here’s zero and here’s zero.  Here we said we have Z one, Z two, zero, Z four, five, and six, okay?  All right.  Can you really feel what is happening on this Jacovian compared to your mechanism?  Do you understand it?  Although we are in the same frame, the origin of the same point, rotations are going to add.  So there is columns for omega.  For the linear velocity, there is no affect of joint Q dot four, five, and six on the linear velocity.
+
+</p><p>But angular velocity is there.  The rotations are described directly by the Z axis of the joints, and when you multiply by the Q dot to compute V and omega, you are multiplying here by Q dot one, Q dot two, Q dot three, four, five, and six, okay?  Yes.
+
+</p><p><b>Student:</b>You could have also said Z one [inaudible] one six.
+
+</p><p><b>Instructor (Oussama Khatib)</b>:Yeah, I mean, if we called this the End-Effector in frame six, yeah.  It will be six.  And if it was another frame, seven, at the End-Effector it could be seven.  I just read it here knowing the fact that three is the same point as all the following origins.  Okay.  Now we’re going to do this computation.  Now we’re going to find this matrix.  And so maybe that’s what it was doing.  Just like – thank you.  How can I turn it off?  I think my computer is, like, suffering trying to update something.  All right.
+
+</p><p>And it must do it every time I have a lecture.  I think the camera just, like, looks and finds me and look at the black and white, and just, oh, he’s here, so let’s do it now.  All right.  So it’s quite simple, but please pay attention now.  I’m going to show you how we can start from the beginning right after you did your frame assignment, and compute both forward kinematics and your Jacovian in one shot.
+
+</p><p>So let’s walk through it.  So we know how to do this, right?  You did the homework and you know how to do it, and this D two, a constant, right?  Over there?  So I’m going to use D two, D three, and we are going to use those variables, and where are you going to express our transformation as a function of theta one, theta two, D three, four, five, and six, which are the cues.
+
+</p><p>So what we are going to do from here, we are going to compute the homogenous transformations.  Every row corresponds to homogenous transformation that is computed from these expressions going from frame I minus one to frame I.  This is I, and now I’m going to write it down so when we computed all of these, we do this multiplication and we find the forward transformation from frame N to frame zero.  Okay.  Now the way you do this computation, the steps you’re going to take are very important in order to obtain your Jacovian in a given frame at the same time as you are doing your forward kinematics.
+
+</p><p>So this is the transformation from frame one to zero, two to one, three to two.  These are coming directly from the formula.  You’re not doing any multiplication.  You’re getting one to zero from the row – first row, second row, third row.  Fourth, fifth, and sixth, okay?  So I’m just applying the formula to all the [inaudible].  And if we had another frame attached to the End-Effector, it will be seven to six.  And that one will be constant.
+
+</p><p>It will not be depending on any joint.  So here is what you’re going to do.  If we are going to express our Jacovian – and this is what we do most of the time in frame zero because we would like to find our velocities in frame zero.  So what are we going to need?  We need – we are going to need all the vectors in frame zero.  So, in particular, we need the Z I vectors in frame zero, which means we need the rotation – the third column of the rotation matrix vector that takes us from frame I to frame zero.
+
+</p><p>So for instance, Z – Z one in frame zero is where?  Z one in frame zero.  It’s right here.  It is zero, zero, one.  So when I do this computation, I will compute two to zero by multiplying two to one by one to zero I get two to zero.  And that gives me Z two in frame zero.  What is Z two in frame zero from here?  Minus sign one cosine one and zero, the third column.  And this is Z three in frame zero.
+
+</p><p>So these are very important in computing the Jacovian, but also are going to be needed.  So when I’m doing the multiplication, I always form from I to zero.  I will not compute three to one and then multiply by three to zero.  I will be wasting too much time.  I will just go one zero, two zero, three zero, four zero, five zero, okay?
+
+</p><p>And this way you are getting directly all the vectors in frame zero.  So you can do this for all of them, and this is the last one.  This is what?  Z six in frame zero.  Okay.  So where is you Jacovian?  Basically, you already have it.  It is already here in the homogenous transformation.  The J omega, J omega six column – fifth column, fourth column, third, second, first column.  Actually the third is zero, but this Z is needed on the top of J P so it will go up.  Yes?  Okay, we’re getting to the P practice.  Okay?  So the J omegas are already there.  All the columns.  And if the robot is prismatic, the same thing would have the Jacovian J V.  Yes?
+
+</p><p><b>Student:</b>You’re saying to save time, not multiply T one zero, and two to one in the [inaudible]?  So could we just figure out the columns of T one zero, and two, two zero as directly – from just inspection?  Just take the third column?
+
+</p><p><b>Instructor (Oussama Khatib)</b>:Yeah, but actually you are going to need – you are going to need the final transformation to compute the orientation of the robot.  So you need this column and this column for the description of the orientation for the forward kinematics.  So you need to do the multiplication, but what I’m saying is, do multiply starting from – you start from – you have one zero, but then you have two, two, one, then three to two.  Do not walk by multiplying from this side, three to two by two to one, then multiply it by one to zero.
+
+</p><p>You multiply two to zero – I mean you obtain two to zero from two one multiplied by one zero, and now you use this matrix multiplied by the next one, you go from three to zero, and this way you have this intermittent computation that are going to be needed in addition to your result.  You still need the final matrix because this is your homogenous transformation.  Okay.  Any questions about – I mean this is just to make sure that you have these intermittent vectors expressed in frame zero.  Yes?
+
+</p><p><b>Student:</b>[Inaudible].  I guess, I mean, with when you were doing the formulas to compute, is it from I minus one to I, or like – you have one on the slide.
+
+</p><p><b>Instructor (Oussama Khatib)</b>:Yeah, I see it.  It is a mistake.  And I wonder if I should change it now or later, but every year I have this – it was a mistake from long time ago.  So let’s see if we can change it now.  So – yeah, needed to go here.  I think I can change it.  All right.  Okay.  Now it’s correct.  Thank you.  All right.  So now what I was saying is as you compute your homogenous transformation, make sure that you have those intermediate vectors that you will need for the Jacovian.
+
+</p><p>Now, okay, are you still with me?  Your attention?  Okay.  Look at the last column.  Look at the last column in this transformation and compare it to the previous one – the previous one.  It is identical, right?  Do you know why?  [Inaudible].  So actually this is the same as we have here.  When we reach frame three, in fact, we reach the End-Effector point.  Okay.  So the question is how are we going to compute now – as we go through this, how are we going to compute J V?
+
+</p><p>Well if we go and compute J V, we have two ways of doing this, either by computing the vector P from one to N and express it in frame zero, or the frame where the Z is expressed, or, as I said, what this represents?  X, Y, and Z, the Cartesian coordinates.  So you have only the Cartesian coordinates in your homogenous transformation.  So actually you don’t need to compute the piece.  You just differentiate this and express your J V as a function of the partial derivative of X, Y, and Z with the respect to Q one.
+
+</p><p>You get the first column Q two, second column, et cetera.  So just to check if you are following what I’m saying, could you give me – we are on the first vector of the Jacovian J V, and I would like to find the third element of the first column.  Third element of the first column of the Jacovian J V.  So what are you differentiating?  Okay.  It gets you zero.
+
+</p><p>And the first element will be differentiating the first one and second one.  Okay.  What is the fifth column of J V?  It’s differentiated?  Z one as to [inaudible] and C two.  Okay.  Can you check whether your answer is correct independently?  Yes?  Go ahead.
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Oussama Khatib)</b>:It is – because this is a prismatic joint, joint three, it could be identical to the Z three, which is here.  So when you differentiate with respect to Z three,  you obtain this column.  Do you see that?  Because both computations are – should give you the same answer.  So the third column – we know the third column is simply Z three.  But if you still differentiate you get Z three, okay?  Now you trust it?  All right.  So basically this computation of the Jacovian is already near homogenous transformation.
+
+</p><p>I mean you are computing at the same time you are computing your forward kinematic X, Y, and Z.  And all that  you need to do is to extract your Z vectors in the appropriate frames, and fill your Jacovian, and for the J V part you are going to use this differentiation and you have your Jacovian.  So the Jacovian matrix for the Stanford Scheinman Arm, once you computed your homogeneous transformation from frame six to frame zero, you have your forward kinematics, and here you have X, Y, and Z, and here you have the rotation, so you have direction cosines, you have all the description.
+
+</p><p>Here you have your direction cosigns, X, Y, and Z.  Direction cosigns first column, second column, third column, and now you can take the intermediate steps where you computed the Z Is to fill your Jacovian Matrix.  And the Jacovian matrix is here.  Yes?
+
+</p><p><b>Student:</b>[Inaudible]?
+
+</p><p><b>Instructor (Oussama Khatib)</b>:The first two columns we differentiated – we differentiated this expression with respect to Q one.  This is X.  This is the first element, one, one.  In the first column, second element is differentiation of this with respect to one, and this with respect to one.  So what we are doing, we are taking X, Y, and Z and differentiating with respect to Q and that will give you the first column.  This column corresponds to the contribution of joint one.  So you differentiate with respect to Q one.
+
+</p><p>This column is the contribution of joint two.  You differentiate with respect to Q two.  The third column is with respect to Q three, or because this a prismatic joint, this could be obtained directly from Z three in frame zero.  Yes?
+
+</p><p><b>Student:</b>This X P in the fourth column, T zero six.
+
+</p><p><b>Instructor (Oussama Khatib)</b>:Right.  This is the first column of T zero six in here.  So if you read this and you manage to read this you will obtain the same thing.  X P is copied from X, Y, and Z in the homogeneous transformation if we are selecting Cartesian coordinates, okay?
+
+</p><p><b>Student:</b>[Inaudible] Q one.  There’s no, like, [inaudible] in the first expression, so --
+
+</p><p><b>Instructor (Oussama Khatib)</b>:Yeah, fortunately, otherwise it would be a problem because we have C one.  So what is C one?  Maybe the confusion is that you don’t see the dependency on Q one.  What is C one?  And S one?  What does it mean?  Could you explain what the C one and S one?  Anyone can help me finding what is C one?
+
+</p><p><b>Student:</b>It’s the cosine of Q one and cosine –
+
+</p><p><b>Instructor (Oussama Khatib)</b>:It is cosine Q one for joint one, which is revolute, which means cosine theta one.  The variable theta one.  So Q one is in the cosine one.  And C one means cosine the angle Q one.  So when we differentiate C one with respect to Q one, what do we get?  If we just differentiate this first element of the fourth column, you differentiate with respect to Q one.  Are you there with me?  Are you there with me?  Could you differentiate the first element with respect to Q one now?
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Oussama Khatib)</b>:So you differentiate with respect to Q one, and you have cosine one, that would be?
+
+</p><p><b>Student:</b>Minus sign –
+
+</p><p><b>Instructor (Oussama Khatib)</b>:One.
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Oussama Khatib)</b>:And?
+
+</p><p><b>Student:</b>And [inaudible] cosine one V two.
+
+</p><p><b>Instructor (Oussama Khatib)</b>:Very good.  Okay.  Do you understand now?  Everyone understand what this – probably this is maybe not clear.  S one, when we say S one, C one as to C two, we are referring to the variable Q two, okay?  All right.  So this is the matrix.  All right.  So you see, after all the Jacovian is not that complicated.  The Jacovian is simply these columns associated with your Z axis for the lower part related to rotational motion for revolute joints.  For prismatic joints it is the same axis, and for the other joints – I mean for the linear motion, all that you are doing is a simple differentiation of your X, Y, and Z.
+
+</p><p>And that gives you the answer for the Jacovian matrix.  Now what is interesting about the Jacovian matrix is the fact that you cannot just go and use the matrix without really making sure that you are in the right configurations to perform a task because for many of the interesting configurations for some robots with wrists that has problems like the singularity, you are to going to not be able to move about some axis.  You are locally going to lose that ability of rotational motion for – about some of the axis depending on that configuration.
+
+</p><p>So there is this notion of kinematics singular in that you can directly examine from this matrix, and those singularities correspond to a singularity into the matrix itself.  So if we take two degree of freedom robot, if we can have the [inaudible] my arm, please?  So if you take a two degree of freedom robot and you are moving now in space, in this plane I can move anywhere, right?  Instantaneously I can produce any displacement.
+
+</p><p>But if I move and stretch, and stretch to the end of the space, do you notice anything now?  I can not move along this axis, so the axis could be like this, or like this, but I can not move instantaneously along this axis.  There is no displacement.  Delta theta one, delta theta two, that produces a compliment in this direction.  And this is a singularity.  What happened in this configuration is the fact that now the two columns of your Jacovian matrix became dependent.
+
+</p><p>So when those columns become dependant, you are going to lose rank.  The matrix is not for rank.  This matrix is six by six.  And we like it when it is full rank.  That if two columns become dependant, immediately you rose rank and you lose the freedom to move.  So on Wednesday I will bring the Stanford Scheinman Arm here, and we will be able to examine another type of singularity related to the wrist point, and the fact that joint four and joint six, when they are aligned, you lose the ability to rotate about this axis, and that makes it really hard to perform motions in those locations.
+
+</p><p>Not only in those locations, but also around those locations.  The problem of singularity is that when you come close to the singularity, the matrix becomes ill conditioned.  Numerically it’s ill conditioned.  If you want to compute the inverse, it is going to give you large numbers, and that is if you want to do a small displacement in delta X, you will need large displacement in delta Q to produce those motions.  So we will examine this and we will talk about the kinematic similarities on Wednesday.  See you then.
+</p><p>
+[End of audio]
+</p><p>
+Duration: 69 minutes
+</p><p>
+
+</html>

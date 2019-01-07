@@ -1,0 +1,282 @@
+<html>
+IntroductionToRobotics-Lecture12
+</p><p><b>Instructor (Oussama Khatib)</b>:All right.  So today, we’re going to the Alps.
+
+[Video Playing]</p><p>An innovative Space Rover with extended climbing abilities.  Switzerland.  
+
+</p><p>Autonomous mobile robots have become a key technology for unmanned planetary missions.  To cope with the rough terrain encountered on most of the planets of interest, new locomotion concepts for rovers and micro-rovers have to be developed and investigated.  In this video sequence, we present an innovative off-road rover able to passively overcome unstructured obstacles of up to two times its wheel diameter.  Using a rhombus configuration, this rover has one wheel mounted on a fork in the front, one wheel in the rear, and two bogies on each side.
+
+</p><p>Here, we can the trajectory of the front wheel mounted on the fork.  An instantaneous center of rotation, situated under the wheel axis, is helpful to get on obstacles.  To ensure good adaptability of the bogey, it’s necessary to set the pivot as low as possible, whilst simultaneously maintaining maximum ground clearance.  This architecture provides a non-hyper static configuration, allowing the bogey to adapt passively to the terrain profile.  
+
+</p><p>Motion in structured environments.  For climbing stairs, it’s necessary to have a good correlation between bogey size and step dimensions.  We can see that the rover is able to climb regular stairs effortlessly.  
+
+</p><p>Motion in an unstructured environment.  Also made some outdoor tests on rocky terrain.  As can be seen, a rover demonstrates excellent stability on rough terrain.  It advances, despite a lateral or frontal inclination of 40 degrees and is able to overcome obstacles like rocks even with a single bogey.  
+
+</p><p>In the next step, the robot will be equipped with adequate sensors for fully autonomous operation.
+
+</p><p><b>Instructor (Oussama Khatib)</b>:So it’s quite interesting because when we think about wheeled robots, we think about mobile platforms, working in indoor environments and it’s really difficult to imagine these machines going around and being able to, like, go over obstacles.  So we usually try to use – what do we use in uneven terrain?  I mean, what would be the solution, the other solution, alternative solution?
+
+</p><p><b>Student:</b>[Inaudible]
+
+</p><p><b>Instructor (Oussama Khatib)</b>:Um hm.
+
+</p><p><b>Student:</b>[Inaudible] legged?
+
+</p><p><b>Instructor (Oussama Khatib)</b>:Legged.  So we all would think legged locomotion would be the solution.  And, in fact, legged locomotion is very, I mean, adapted to those problems because now you can move each leg and go over obstacles.  But in here, we can see a way that you, you – in fact, putting that compliance inside the structure and moving the structure as you are adapting to the environment.  So this is really a quite nice solution.  But there was also designs that combine legged locomotion together with wheeled locomotion.
+
+</p><p>So you have a hybrid solution, where you are using the wheels and pushing with the legs.  So there are several ways of even going further, beyond just modifying the chassis itself, going to adding some propulsion by the legs.  So in fact, this project was pursued further, and I’m not sure if we will have more videos on this one.
+
+</p><p>Okay.  So let’s go back to dynamics and I think, today, we will finish that portion of the lecture.  I think I emphasize dynamics, I also emphasize the fact that dynamics is very, very closely related to control and we really need to understand those equations of motion in order to be able to control, well, the robot.  So let’s go back a little bit to what we saw on Monday about the Lagrange equations.  We saw that we can describe the dynamic behavior of the robot that is its motion.  It is as a function of the torques applied to the robot through this Lagrangian equation that involves the kinetic energy and the potential energy.  
+
+So k is the kinetic energy and u is the potential energy.  And we saw that because our potential energy is only function of the configuration, we can separate this equation and find the structure related to the inertial forces and the forces applied to the robot, that is the gravity and the torques.  Which means that we can write the equation, put the inertial forces on one side and then analyze the dynamics, that is the inertial forces dynamics, and then see the effect of those forces applied to the system.  
+
+That is, the external torques through the motors at each joint, we have a motor and the motor is applying a torque at the joint or a force at the prismatic joint and also the effect of the gravity that are coming.  So if we analyze this equation, we saw that we can write it in this form, in the form of a mass, metrics multiplied by the acceleration at all the joints, plus some additional forces that are a function of the velocity, and function of the fact that the mass matrix is configuration-dependent.  And those forces could be obtained if we express our kinetic energy in its quadratic form expression, that is one-half q-dot transpose m function of the configuration q-dot.  This is a scalar and if we do the derivation of the scalar, we find, in fact, that we have this equation.  That is, this part will bring those elements, the mass matrix, the acceleration and this part, which represent the centrifugal Coriolis forces.
+
+And we can see from this expression that when q-dot is equal to zero, this will disappear or, if the mass matrix was constant, this will also disappear.  So we saw the proof of this, I think, that you remember.  So in this form, the equation now can be written in term of the mass matrix, the derivative of the mass matrix and the velocities, and the gravity forces equal to the applied torques.  Because the mass matrix is this quadratic form, now we can – if we are able to extract the kinetic energy from our analysis of the different motions of the links, we should be able to find the mass matrix directly from the kinetic energy.  
+
+Then we put it there and because these solely function of the mass matrix and the velocities, we should be able to obtain v and that will give us the full equation, simply by computing the kinetic energy.  Okay?  So that’s what we’re going to do.  We’re going to do this analysis and find how we can find the mass matrix.  And once we’ve found the mass matrix, we will find v.  And then, g is a piece of cake. 
+
+Okay.  So how are we going to proceed?  So here is an example of an arm and we are looking at one of the joints, one of the links, link i.  So this is a rigid body and this rigid body has a mass distribution, has some inertia and has some mass.  So what we’re going to do; we’re going to look at this kinetic energy associated with that specific link.  And the idea is if we are able to describe and find this kinetic energy, we will be able then to go over all the different links and do the sum and find the total kinetic energy.  And because we have this relation, we can put the two together and we can, then, identify the total kinetic energy from the individual kinetic energies.
+
+
+So for link i, the total kinetic energy is going to be the sum of the different kinetic energies.  So link i will be here and when we walk through all the links, we are going to find different kinetic energies that we can sum and find the total kinetic energy.  But then, we will say the kinetic energy of the system should be expressed as a quadratic form on the jaws velocities and the question is how can we then do this identification and extract m?
+
+So you see the algorithm?  Just knowing this part and then identifying m from that sum.  All right.  So I’m sure half of you remember the kinetic energy and the other half does not remember.  So how we define the kinetic energy?  Those of you who remember?  So you have a rigid body at rest and we move it to some velocity v.  What is the kinetic energy?  
+
+Yes?
+
+</p><p><b>Student:</b>Do you want identity square?
+
+</p><p><b>Instructor (Oussama Khatib)</b>:Yeah, but what does that represent?
+
+</p><p><b>Student:</b>Is it woven into too much of a rest to [inaudible]?
+
+</p><p><b>Instructor (Oussama Khatib)</b>:Yeah, I think I understood what you mean, but could you repeat it clearly?  So if you want, then.
+
+</p><p><b>Student:</b>So it’s a work needed to move to [inaudible] from resting zero to –
+
+[Crosstalk]
+
+</p><p><b>Instructor (Oussama Khatib)</b>:From rest to its current state.  Yes?  Yes, the definition.  So it’s the work done by the external forces to bring the system to its state from rest.  And that means we are going to take a look at this point mass and its final velocity v and that work will come to be one half m v square.  Now this is for a point mass.  But we are working with links and links are rigid objects, right?  And they have rotational motion and – which means each of the particle is moving at different velocity, etc.  And there is a quantity that allows us to evaluate that inertial forces generated by those particles, and this is the inertia.  So the inertia of the rigid object is going to intervene now if we look at rotational motion.  
+
+</p><p>So the kinetic energy associated with a rigid body whose inertia is i c c here represent the inertia computed with respect of the center of mass as we have everything is represented at the center of mass.  We’ll take this rigid object from rest, zero kinetic energy, when we reach omega, there will be some kinetic energy and this kinetic energy is going to be?
+
+</p><p>You.
+
+</p><p><b>Student:</b>Could I ask you a question [inaudible] transposed [inaudible]
+
+</p><p><b>Instructor (Oussama Khatib)</b>:[Inaudible]
+
+</p><p><b>Student:</b>Based on being transposed in the [inaudible].
+
+</p><p><b>Instructor (Oussama Khatib)</b>:Inertia?  Oh, I get it.  So if this was just one degree of freedom, this would be basically a scalar i, representing inertia about that axis omega square.  But we are looking here at the spatial motion so i is a matrix and the omega is a vector, so we need to write it in this form.  Okay?  So if we take this rigid body and put to it, together v and omega, that it is undergoing both angular motion or rotational motion plus linear motion, then the two will combine and the total kinetic energy will be the sum of these two kinetic energies.
+
+</p><p>Okay?  We’re clear about – this is very important.  Once you’ve understood the kinetic energy, you have all the dynamics.  The rest is just math, basically.  So you understand this, for one rigid body?  Good.  Then we’re going to be ready.  We just write this.  All right.  Now pay attention.  From here, we’re going to find the dynamic equations of a multi-body articulated system, directly by summing these k k is.  If you understand this, you will see immediately that m is going to emerge this mass matrix for all the structure.
+
+</p><p>So the kinetic energy of one link is the sum, combining the kinetic energy associated with linear motion and the kinetic energy associated with angular motion.  And let’s do the sum.  So the total kinetic energy is the sum and I’m going to write it.  
+
+</p><p>Just to remind you:  We have selected for this structure – we selected a set of [inaudible] q and that means that we have a set of generalized velocities q-dots.  So these are the minimal number of parameters, or configuration parameters, needed to represent this configuration.  Once q is defined, the configuration is locked, right?  So now, we can say because we know these generalized coordinates and generalized velocities, we can say the kinetic energy is also this expression of half q-dot transpose and q-dot.  Where m is this positive, definite, symmetric positive definite matrix that appears in this quadratic form.  
+
+So we have these two different ways.  The first one is here.  We are saying we can compute individually the kinetic energies without worrying about the joints, the connections, the constraints, right?  We are just going and looking at every link and we are evaluating its kinetic energy and saying the total kinetic energy is going to be the sum, without even thinking about what type of joints we have.  Now we are saying if we write the expression as a function of the generalized velocities, we have this expression.  And the two are equal; it’s the same kinetic energy.
+
+Are you still following here?  Good.  And this is the key.  Now we are going to identify this expression with the sum obtained by the individual links.  And somehow, we are going to, like, work a little bit here to come up with this mass matrix.  Okay.  So now, help me.  What is needed in here in order to extract m and find its expression?
+
+</p><p><b>Student:</b>Jacobean?
+
+</p><p><b>Instructor (Oussama Khatib)</b>:So I heard Jacobean.  Well, that’s correct. 
+
+[Crosstalk]
+
+</p><p><b>Student:</b>It means, to translate the velocities to joint space.
+
+</p><p><b>Instructor (Oussama Khatib)</b>:So in the left-hand side, we have half and here we have half, right?  In the left-hand side, we have q-dot transpose q-dot around the m.  In here, we have v c i, the linear velocity at the center of mass of each of the links and the angle of velocity at each of those links.  So what you are saying is we need somehow to express these v c is and omega is as a function of q-dot.  And if we do that, then we can say – we can put it into an expression similar to this and extract them.
+
+</p><p>Is that a good way?  You all agree?  Should we do it?  Why not?  You have it in your hands, but let’s do it.  Okay.  So to do this, we are going to use the Jacobean and what we need to do is, somehow, to come up with a Jacobean – this is not the same Jacobean we talked about before.  That is, if we look at what we developed before, we developed a Jacobean at this point, you remember?  At the last link, we had a Jacobean that allowed us to compute the linear and angular velocities at this point.  And these were called what, those Jacobeans?  We had two Jacobeans?  
+
+Anyone remembers?  Before the mid-term?  J v, which is the Jacobean associated with linear motion and j omega.  So easy, it’s j omega.  J omega, the Jacobean associated with angular motion, right?  Okay.  So but this was defined here at the end of factor, and this was the velocity – corresponding to the velocity generated by all the qs, all the q-dots, right?  But now, I’m talking about the linear and angular velocities at this point.  So it’s not going to be this v c i is dependent on which velocities?  Q-dot 1, q-dot 2 2, q-dot i minus 1 or i, we’re not sure – well, you see, we are at the v c i, which is center of mass of the link.  So q-dot i is just before.  So it is dependent on up to q-dot i.  
+
+Okay.  All right.  So I will define it later, but essentially, we need to come up with a Jacobean that will capture all these qs because I need a q-dot at the end.  I don’t want just to go from q-dot 1 to q-dot i, I need to be able to write this matrix so that I can multiply it by q-dot.  So we will define j v i in a bit, but we need a matrix like this.  You agree?
+
+What about omega?  Well omega is going to be in the same form.  We will have another matrix; we call it j omega i.  This is different from j v and j omega.  When we say j v and j omega, we mean the Jacobean associated with the end of factor.  When we put the i, it is really related to the velocity of that specific one, okay?  All right.  Now let’s go and plot this in this equation.
+
+So now you substitute v c i with j v i q-dot and the transpose of dot, so the q – what is the transpose, v c i transpose would be?  Q.
+
+</p><p><b>Student:</b>[Inaudible]
+
+</p><p><b>Instructor (Oussama Khatib)</b>:Q-dot transpose j v c i transpose.  So when you do those, you’re going to have the transpose of q-dot here, the j v i and the j v i coming from the v c i and the same thing for the omega.  All right.  We’re almost there.  You’re going to see the mass matrix emerging.
+
+Someone can help with the next step?  We’re almost there.  Actually some of you already see what is m, but let’s – what do we need to do?
+
+</p><p><b>Student:</b>Vector of the q 5?
+
+</p><p><b>Instructor (Oussama Khatib)</b>:So we notice this i; we have an i here; we have these i s but this, these q s are independent of the sum.  So we can take them outside, right?  And that’s it.  Do you see the Jacobean in the mass matrix?  Do you see the mass matrix m?  It is quite amazing.  Your mass matrix is simply those Jacobean, transposed Jacobeans scaled by your mass property.  That’s it.
+
+</p><p>So all what this mass matrix is, is just to take the Jacobean associated with those specific points of the center of mass and see their impact on the velocity because they are capturing the effect of the velocity and you are scaling them by m i or i c i.  So if your robot was one degree of freedom, so i will be one.  Basically, this would be m 1 and j v 1, transpose j v 1 and that will be the inertia of that first link.
+
+</p><p>Now if you have multiple links, what you can see is, you can see the Jacobean matrix of all of these links are going to contribute so you can think about this as the sum of m m 1 m 2 m 3 m m.  And you can see the impact of each of the links on the total mass matrix.  So we will take an example a little later, but you can see how each of those links is going to affect the mass matrix.  
+
+And as we propagate and move from one link to the next, we are capturing the inertial properties coming from the lower joints and moving down to the end.  So that is your mass matrix and now, the rest is really computation, just getting this v vector from the partial derivatives of the mass matrix.  That’s it.
+
+</p><p>By the way, I still haven’t defined what is j v i.  It is – I said this is the Jacobean associated with that center of mass and I think we need to define it more carefully.  So in order to be able to capture j v i at the center of mass, we – and express it as a function of all the qs.  What we’re going to do is, we’re going to take this vector, locating the center of mass and taking its partial derivatives up to the point q i.  This is column i, and every column after that will zero.  So by definition, this matrix is the Jacobean matrix computed with this vector, p c i, and – up to this point, and then we are adding those zero columns.  Okay?
+</p><p>So what about j omega i?  What would be j omega i?  Without looking at your notes.  J omega used to be what? 
+
+</p><p><b>Student:</b>Epsilon [inaudible]
+
+</p><p><b>Instructor (Oussama Khatib)</b>:Epsilon i bar?
+
+</p><p><b>Student:</b>Z [inaudible]
+
+</p><p><b>Instructor (Oussama Khatib)</b>:Z 1 epsilon 2 bar z 2?  So we will do the same thing up to z i and we add zeros, columns.  Okay?  So now, you know this definition of j v i, j omega i, and now you can compute this?  Okay.  You already have the d h parameters for the Stanford [inaudible] on.  Let’s compute the mass matrix.  You have ten minutes.
+
+</p><p><b>Student:</b>[Inaudible]
+
+</p><p><b>Instructor (Oussama Khatib)</b>:No?  Well, it will take more than ten minutes, I’m sure.  So I will take an example of 2 degrees of freedom.  In fact, before even going to the example, let’s do something, something of just the analysis of this mass matrix we talked about.
+
+</p><p>So I’m not sure if you would really see what is in here but when you think about this mass matrix, as I said it is sort of like symmetric, positive definite.  And it has a lot of properties and you can connect those properties to the structure of the robot.  So first of all, let’s see what m 1 1 represents.  M 1 1.  So I have a robot, I’m going to use my arm to illustrate it.  You can help.  So this is the first joint, rotation about this axis.  And this is the second joint.  Okay?  So it’s in the plane.  So could you tell me what m 1 1 represents?
+
+</p><p>So let’s take this manipulator and lock it.  It is one link, the whole thing, we lock it, right?  And I’m going to rotate about this axis.  So I apply a torque; there is an acceleration.  Basically, inertia from acceleration equal the torque, right?  In that case.  Just one degree of freedom, like a pendulum, the inertia of the pendulum.  So that inertia of the pendulum is captured where, in this matrix?  Can you see it?  No?  Not yet?  It is m 1 1.  
+
+M 1 1 is representing this inertia.  Now this inertia is a function of what?  Of the configuration.  So if I change like this, I’m going to change the value of m 1 1.  I move like this, it is lighter, heavier, okay?  Okay, m 2 2, the same question.  It represents what?  Oh, come on; we did m 1 1, so m 2 2?
+
+</p><p><b>Student:</b>[Inaudible] m 2 2 is locked?
+
+</p><p><b>Instructor (Oussama Khatib)</b>:So if we lock all the joints after m 2 2 – I mean after joint 2, m 2 2 would represent what?
+
+</p><p><b>Student:</b>Inertia [inaudible]?
+
+</p><p><b>Instructor (Oussama Khatib)</b>:So it is really the inertia perceived at joint 2.  So all these diagonal element are representing the inertia perceived – the effective inertia perceived at each of the joints.  Okay?  Let’s go to m n n.  Hey, wake up.  Come on.  M n n is this last link, okay?  So this is representing the inertia perceived about this axis, right?  It’s function of what?  So this is link n and it is not really my hand, it is just a constant link, so a rigid body.  It cannot move.  So m n n is representing that perceived inertia and its function of which variables?
+
+</p><p><b>Student:</b>[Inaudible]
+
+</p><p><b>Instructor (Oussama Khatib)</b>:I’m sorry?
+
+</p><p><b>Student:</b>Is it the last joint coordinates?
+
+</p><p><b>Instructor (Oussama Khatib)</b>:It is the last joint coordinates.  Okay, everyone agrees with him?  Okay, those who agree with him, please show your hands.  One, two, you are in the minority.  Democrats, you take over.  So it’s not correct.  Actually, in this case, it’s really the law of physics that are going to play and the law of physics says that if a moving one link about some axis, so it is the case of this link, everything is locked and the inertia is – could you tell me?  If it’s function of anything?  Except the weight and the inertia of mass distribution on the link?  So it’s constant.
+
+</p><p>So m n n should be constant.  It’s not function of the q n.  But thank you for just making the point to make sure that we emphasize this.  M n n is not function of the lost link, lost joint, it is constant.  Now the question to you:  The previous joint, the previous joint here – well, let’s take this one.  So you can see, that previous joint, the inertia is going to depend on the joint there.  So m n is constant.  The previous joint will depend on the next one, right?  
+And as we move, we see m 2 2 is function of what?  M 2 2 is going to be function of all the joints that are following.  So the robot, if we think about m 1 1, is m 1 1 function of joint 1?  No, m 1 1 will not be dependent on the configuration of joint 1.  Wherever m – q1 is, the inertia depends only on how we are displaying the structure.  So the following joints.  Everyone sees this?  Good.
+
+</p><p><b>Student:</b>So you’re saying it’s just constant.
+
+</p><p><b>Instructor (Oussama Khatib)</b>:No m 1 1 is function of what?  I’m not saying – it’s independent of the first joint.
+
+</p><p><b>Student:</b>[Inaudible]
+
+</p><p><b>Instructor (Oussama Khatib)</b>:Because as I move this around – if I fix all the other joints, and I move about this, I’m not changing the inertia about this axis.  But it’s function of all the following joints.  So m 1 1 is function of what?  Q 2 to q m.  M 2 2 is function of q 3 to q n.  And the last one is constant.  Okay.  There are a lot of interesting properties about this matrix.  What is the relationship between n 1 2 and m 2 1?
+
+</p><p><b>Student:</b>The same [inaudible]
+
+</p><p><b>Instructor (Oussama Khatib)</b>:Identical, symmetric.  If, you have a robot, one degree of freedom robot, m n n.  And you model the mass matrix of that robot.  And then you hook it to another structure.  Well, when you find the total mass properties of that structure, the m n n is exactly the same that you computed for that robot.  So if I take – if I take this structure, a robot weld joint 2 to joint n.  With its mass properties, I’d find the mass matrix of that robot.
+
+</p><p>And now, I attach this robot to an additional joint.  Look at what happens.  In the new mass matrix, you will find the same block, the same matrix is completely inserted here and what you are adding now, you are adding the mass matrix, the mass properties perceived by this joint.  But immediately, you are creating coupling.  You are creating these couplings between the first joint and each of the joints of the structure you are adding.
+
+</p><p>So n 1 2, n 1 2 is representing the coupling between the acceleration of joint 2 on joint 1.  M 2 1 is the opposite, joint 1 on joint 2.  So think about this:  If you multiply this matrix by q double dot, q double dot 1, it will be n 1 1 q double dot 1 plus n 1 2 q double dot 2.  All of this is going equal to torque 1.  So the first equation is the dynamics of the first joint and that dynamics of the first joint, if you try to imagine what that equation will be, it will be n 1 1 q double dot 1, plus all these coupling accelerations equal torque 1.
+
+</p><p>So when you have just lock joints, you have n 1 1 q double dot 1 more accelerations here.  But as soon as you relax the lock and leave it away, as you stop moving, this is going to produce coupling forces.  Do you see that?  Okay.  What does it mean that m is positive definite?
+
+</p><p><b>Student:</b>It means that, no matter what q-dot is, the answer has to be greater than zero unless q-dot is identically zero.
+
+</p><p><b>Instructor (Oussama Khatib)</b>:Very good.  So that is – physically, you cannot talk about an object  with zero mass, right?  So the object has to have a mass.  And a mass is always positive, right?  If you have a particle of, with some mass, it is always positive.  Now when we go to articulated body systems, it’s the same property, but it is in a matrix form.  And this m has to be positive all the time, whatever.  So if we think about the kinetic energy, it’s one-half q-dot transpose m q-dot.  Well the kinetic energy is always positive.  Right?  Or zero, if we are at rest.  If we are at rest, the q-dots are zero.
+
+</p><p>So the quantity k one-half q-dot transpose m q-dot is going to be positive and zero only if q-dot equal to zero.  Okay.  Okay, to discuss this v vector, I’m going to simply the problem and we’re going to analyze it with 2 degrees of freedom.  I think that will make it a little easier but not completely easy.  Because what we need to do is now a little bit of computation using Lagrange equations, going to those vectors we computed, m-dot q-dot minus this big vector.  All of these computations, you do them once forever and then you know the structure and then that’s it.
+
+</p><p>But I want you to understand where those equations are coming from, so we’re going to analyze it on this.  Okay?  So this is a two degree of freedom manipulator and now, I’m writing these equations for 2 degrees of freedom.  So you can see here – what is the first equation?  Could someone read the first equation for me?  You have two equations here, right?  This is one vector equation that you could write in two equations.  So could someone read the first equation?  Yeah?
+
+</p><p><b>Student:</b>M 1 1 q double dot 1.  Is that 1 2 q double dot 2 plus v 1 plus g 1 is torque 1.  .
+
+</p><p><b>Instructor (Oussama Khatib)</b>:So the first equation equals torque 1, the represent the dynamics of the first link.  The second equation represent the dynamics of the second link.  If we lock the first – the second link m 1 1 q double dot 1 plus v 1 plus g 1 equal torque 1.  If the second one is moving, there is coupling coming from q double dot 2 on the first one and the opposite is on joint two.  So what I’m going to do is to compute the v.  Okay?  We’re going to compute the v 1 and v 2 and we are going to do this by going to – by going to the equation of v.  
+
+</p><p>This is a scary equation, but don’t worry.  It’s all there.  If you remember when we did the computation of the kinetic, the derivative of kinetic energy, we came up with v equals m-dot q-dot minus this vector.  Remember that?  Right?  Everyone remembers?  So basically, v is simply m-dot q-dot minus one-half.  The first element is q-dot transpose m q 1 and m q 2.  What does it mean, m q 1?  Well, m q 1 means that this is the matrix, the mass matrix, all the element of that matrix are taken as derivative with respect to q 1, and the second one with respect to q 2.
+
+</p><p>So I’m rewriting this equation here in more explicit way; I’m saying it is m-dot.  So what is m-dot?  It is the derivative of the element of the matrix, right?  You agree with this?  And what is m q 1?  M q 1 is the partial derivative of m 1 1 with respect to q 1, m 1 2 with respect to q 1, basically the matrix with respect to q 1.  So I’m writing m 1 1.  So it is partial derivative of 1 1 with respect to 1.  Okay?  And here, with respect to 2.  
+
+</p><p>Okay.  Do you see this notation?  Basically, the notation is saying the element 1 1 is taking here, partial derivative with respect to 2 or to 1, depending on the variable, the last element.  Okay?  So we just rewrote v.  Now for m, the time derivative of m 1 1, we will write it in this way.  We write the time derivative of m 1 1 is the partial derivative with respect to 1, q-dot 1 and the partial derivative with respect to 2, q-dot 2.  You agree?  These are the only variables that are involved in the q.  So I’m just expressing, expanding a little bit this equation,  all right?
+
+</p><p>Okay.  So this is just rewriting the equation and now we are going to – this is little bit more about what is 1 1 1.  It is partial derivative of m 1 1 with respect to q 1, partial derivative of 2 2 with respect to q 2, etc.  So let’s rewrite this and if we go further and develop this computation and rewrite it, so this is how it comes.  If we write the v vector, we can develop it as the sum of these two terms.  So, I mean from the top there, you can see that the vector is involving velocities, a product of velocities, q-dot 1 multiplied by q-dot, the vector q-dot.  So it will result into product of velocity q-dot 1 square, q-dot 2 square and q-dot 1 q-dot 2.  Right?  And we are grouping all of these in this form.  
+
+</p><p>So this is the answer.  I’m just doing it for saving time.  You don’t have to do it.  So this is the answer.  What is v is as a function of those partial derivatives and the velocities.  Okay?  Do you accept that?  I mean, you can do it but, basically, you can – in fact, you might be surprised why I’m writing plus m 1 2 1 minus m 1 2 1.  Writing there 1 1 plus 1 1 minus 1 1 , it is really interesting form.  But what it turned out, is that, under this form, there is some pattern that is taking place.  And if we look at this expression, this expression has a pattern that is repeated all the way.  And when we go to n degrees of freedom, we find this pattern over again.  
+
+</p><p>So it’s sort of m i j k with permutation.  First element plus minus and there is a permutation involving those three elements.  So this expression is going to help us find – finding those matrices that are going to scale the velocities, the product of velocities.  That is, if we think about 2 degrees of freedom, we have square of the first velocity, square of the second velocity, and product of the two.  But if you go to, like 6 degrees of freedom, you have the square of all the velocities and many product of velocity.  Q-dot 1 q-dot 2, q-dot 1 q-dot 3, to q 6 and you have all of these.
+
+</p><p>So we can always put them in terms of matrix multiplied by the velocities, square of the velocities and matrix multiplied by the product of velocities, and always involving those elements.  Anyone knows what this represents?  Well, Sir Christoffel discovered this pattern and we call them the Christoffel symbols, the BIJKs, that we can form from combining the permutation of the partial derivatives of m i j.  So you start with a an element m i j and you take its partial derivative and then you form these symbols.  
+
+A BIJK is one-half the element m i i j taken with respect to k and then i k taken with respect to j minus j k, taken with this vector i.  Well, so this is the first element and using these symbols, we can simplify the writing of what we saw here, these two matrices, and write them in this form.  So you have a matrix multiplied by the square of the velocities and another matrix multiplied, a column matrix in this case, multiplied by the product of velocities.  
+
+</p><p>When we go further, this will generalize and this matrix is function of q; we call it c.  This is the centrifugal force matrix because this matrix is multiplied by the square of the velocities and b is the coriolis matrix.  And this matrix is multiplied by the product of velocity, and this generalized in this way.  It’s for n degrees of freedom.  So the centrifugal force matrix is this matrix, but when multiplied by the square of the velocities, gives you the centrifugal forces.  And the coriolis force matrix, when multiplied by the product of velocities, gives you the vector b q-dot q-dot we, symbolically we put it this way.  This will give you the sum – the coriolis forces.  
+
+</p><p>So the c matrix, centrifugal force matrix, has to be of dimension what?  How many square velocities we have?  We have q-dot.  How many q-dots we have?  n.  So how many, how many squares?  We have n square velocity, so this matrix will be an n by n matrix.  Okay?  This matrix v, how many q-dot, q-dot, how many product of velocities we have?  Besides the square?  Well it turned out we have n minus 1 times n divided by [inaudible] of, basically, a column.  So for 6 degrees of freedom, this is what?  5 times 6 divided by 2, which is?  15.  So if you go from 1 2 to 1 6, and then 2 3 to the end, you have a long vector of product of velocities.
+
+</p><p>How many rows we have here?  The dimension of v is always going to be six, or n.  So we will always have n rows.  So you have more columns.  How many columns?  This is the 15 columns for 6 degrees of freedom.  So this is a wide matrix multiplied by this long vector to produce your centrifuge – your coriolis forces.  The coriolis forces are b multiplied by q-dot q-dot.  And c also has n rows, but it is square matrix.  Okay?
+
+</p><p>So we can compute v simply by finding the bs and these bs are simply function of the partial derivatives of the element of m.  Once we computed m, we just do this differentiation and do the computation.  Very simple.  Well very simple if you’re not doing it by hand.  But if you’re doing it by hand, for n degrees of freedom, it’s complicated.  But let’s take an example in two minutes and you’ll see it’s not that difficult for few degrees of freedom and you get the sense of it.  Okay?  You get the idea here?
+
+</p><p>I mean, the main idea is to remember m gives you v and v is obtained by two matrices, c and b and these matrices are involving element but are the partial derivative of m.  And that’s why if n is constant, everything here is zero.  So if the mass matrix was constant, there is no centrifugal coriolis forces.  Okay, one more thing left is the gravity.  I had mentioned the gravity and we need to deal with the gravity.  
+
+</p><p>So how do we compute the gravity?  So you have each of the links somewhere and you have the center of mass, right?  And as you move up and down, you have different potential energy, right?  Higher, better, so your height is very important.  And you can compute the height, so – and then compute the potential energy of your specific link.  And then you add them together.  So the potential energy for, to compute h i, you have a vector – we already found this vector locating the center of mass; we have the height; we have the gravity pointing south.  So we take the minus gravity vector; we multiply it by the p c i.  With that product, we compute h and that gives you m i.  
+
+</p><p>Now, what is the gravity forces?  Well, it is just the gradient of that.  You just take the partial derivative with respect to q and you find it.  And what is the partial derivative gives you, usually?  It gives you the columns of the Jacobean matrix.  So essentially, your gravity is simply this minus multiplied by the j v is, times this vector m 1 m 2 to m m.  
+
+Actually, a very simple way to think about it is, let’s look at it this way:  You have this manipulator; you have all these links; and you have the center of masses.  If you are standing by this, it’s almost like you are, at each of the link, you have a force pulling you down.  And you are trying to compute the torque responding to that force.  So what is the force pulling down?  This is the mass of that particular joint multiplied by the gravity, right?  Everywhere.  Like this, right?  You have weights.  
+
+</p><p>So what is the torque responding to these?  So let’s start with the last one.  F, what is the torque?  Torque equal j transpose f.  So j transpose, in this case, v n f, which is m n g.  Right?  Just add them all together.  And how – and now you have your gravity.  Okay?  So now, we know the gravity; we know how to compute v.  Let’s take an example.  
+
+</p><p>Okay, this is – do you see this robot?  It’s a little bit – I’m not sure.  Can you see it?  So this is a 2 degree of freedom robot and the first joint is?
+
+</p><p><b>Student:</b>[Inaudible]
+
+</p><p><b>Instructor (Oussama Khatib)</b>:[Inaudible] lift.  What happened to your voice?  Come on.  The second joint is?
+
+</p><p><b>Student:</b>[Inaudible] prismatic joint.
+
+</p><p><b>Instructor (Oussama Khatib)</b>:Oh, yeah, lots better.  All right, so we have [inaudible] prismatic joints.  To simplify – to really – so what we are doing is, we are selecting – we are selecting this point and representing the end of factor, at this point, so this d 2 is measured from here to here, okay?  I mean, we are not putting it in here, we are putting it at the center of mass.  And we are looking at a first link that has a mass of m 1, a second link of m 2, and inertia tensor of i c 1 at the center of mass and i c 2.  
+
+We are locating the vector p c 1 by this distance from the origin.  And the origin, located here at the axis so x 1 y 1 and you have z 1.  So could we find the dynamic equations of this robot?  How to proceed?  How are we going to do it?  What is the mass matrix?  Yes?
+
+</p><p><b>Student:</b>The first one would be the first – well, starting from the n 1, let’s say the mass of the second link times the distance from the [inaudible].
+
+</p><p><b>Instructor (Oussama Khatib)</b>:So I mean, we found the mass matrix is the sum from i equal to 1 to n, of m i j v i transpose j v i plus omega.  So we can just take that expression and just write it.  Okay?  Write it out.  You can start from the n, from – but basically, you need to compute this, okay?  Do you agree with this?  I mean, this is what we established so let’s just try the equation.  So what do we need to do in this equation, now?  
+
+</p><p>What is missing?  We need to compute these j v is and j omega is, right?  How do we compute j v i?  We need p c i, the vector locating the center of mass.  Do you see that vector?  Well, it is there.  You have to be careful how you write it, so p c 1 is – do you agree?  L 1 cosine 1 and L 1 sine 1, you agree?  If anyone doesn’t agree, please make sure.  Sometimes, there are mistakes, so.  There is no minuses?  No, everyone agrees.  Okay.
+
+</p><p>Okay, now once you have the p vector, you do the partial derivatives and you compute your Jacobean.  All right?  The first Jacobean, j v 1, we compute up to 1.  So the first column and add a zero column.  The second one, we compute up to column 2, well basically all of that.  And now, we want to make – find expression m 1 j v 1 transpose j v 1.  So you get these two expressions.  
+
+</p><p>So the first element there is this 2 by 2 matrix.  And the second element is that.  So the mass matrix is equal to the sum of those four elements.  The first element is this – we have 3 zeros and just this.  So mass 1, the contribution of mass 1 to the total mass matrix appears here.  What is this?  
+
+</p><p><b>Student:</b>[Inaudible]
+
+</p><p><b>Instructor (Oussama Khatib)</b>:If everything was zero, this is telling you that the center of mass of mass 1, multiplied by its distance to the axis, gives you some inertia.  And this is the contribution of center of mass 1 to the mass matrix.  Right?  You understand that.  And that makes sense.  Mass to contribution is to joint 1 and its contribution is appearing by the distance square of that center of mass to the axis.  Make sense?  But mass 2 has another contribution on the second joint, okay?  So you see how this is added.  
+
+You start with one element, mass 1, and you see its contribution.  Mass 1 will never appear anymore.  Mass 2 is going to appear here and here.  And in different robots, it will appear also in here, in the coupling.  But as it happened because of the Jacobean, it’s not going to appear anymore.  
+
+The inertia.  With z 1 and z 2, we are going to have the Jacobeans.  Here are the two Jacobeans, and when we do the multiplication, we see the contribution of the inertia of link 1 appears only on joint 1.  The contribution of the inertia on joint 2 appears only on joint 2because joint 2 is prismatic.  
+
+So the total mass matrix is here.  So the mass matrix, as it happened for this robot, is decoupled.  There is no – of diagonal charts.  You can see that m 2 is appearing here; m 2 is constant as we said.  M 2 is representing the inertial properties viewed along axis 2.  That is what?  If you lock joint 1, you are moving a mass, you see?  And that’s all what you see?  Right?  Okay.  Let’s lock joint 2 and look at joint 1.  When you repeat about joint 1, you’re going to see the inertia of joint 1 – link 1 and link 2.  You’re going to see the distance of the center of mass by the scale by the mass of 1 and 2.  Right?  Okay.  This is – yes?
+
+</p><p><b>Student:</b>Well, why is it that, like the term m L square looks like an inertia –
+
+</p><p><b>Instructor (Oussama Khatib)</b>:It is the inertia of the center of mass when you are looking at the linear motion and then you have the angular motion bringing all the rest of the contribution of the inertial properties.  You have both of them.  And the mass n 1, which represents the mass of the link at the center of mass, brings in a – for a [inaudible] joint; brings a contribution to the inertial forces by the square.  It has to be – I mean, to be a homogenous unit, you basically need distance square.  So you have m 1 L 2 plus all the rest of the contribution of the inertia of the link because it is a rigid body and we computed its inertia separately.  The next question is:  What about how this is varying?  As we move this m 2, as we extend the location of m 2, this is function of the distance.  You see that?  So it’s varying.
+
+</p><p>Okay.  We don’t have much time, but I think we can do the centrifugal coriolis forces.  So we need to compute the i j ks.  All right, so I said it is simple and I didn’t say why.  It is really simple because there are a lot of things that just disappear.  What about these m i j ks?  What things you would remember from what we said?  We said something about this, like, element.  M n n is independent of any variable.  M 2 2 is function of – m 2 2 is function of the configuration, so if you take the partial derivative of m 2 2, with respect to joint 1, you’re going to have zero, joint 2 zero.  It’s function of 3 4 and the rest.
+
+</p><p>So many of those elements, like if I take i j with respect to i k, larger than i, than it’s going to be zero.  And that leads to properties that all the b i i is are zero.  All the b i j is are zero for i greater than j and, in our robot, the only variable is just n 1 1.  The only element that is changing.  So with n 1 1, we have only to consider that it’s derivative with respect to 2.  That means that we have only m 1 1 2 that is non-zero.  And m 1 1 2 is simply – the element was m 2 d d 2 square, so it will be 2 m 2 d 2.  And when we write the matrices, that appears like this.  So it appears in the b matrix and it appears in the c matrix.  
+
+</p><p>So there are, indeed, centrifugal forces that will appear and the matrix v appears like this.  Could you tell me where the centrifugal forces are appearing?  Which joint is going to have, to see the effect of centrifugal forces?  Joint 2because you can see here, you have faith that that 2, multiplied by this and this goes to v 2.  You see that?  Which joint will have coriolis forces?  This joint?
+
+</p><p><b>Student:</b>[Inaudible]
+
+</p><p><b>Instructor (Oussama Khatib)</b>:Louder.  Joint?
+
+</p><p><b>Student:</b>[Inaudible]
+
+</p><p><b>Instructor (Oussama Khatib)</b>:Can you hear that?  This is a vector.  You multiply this by the top; it goes to v 1.  So v 1 has a centrifugal – joint 1 has a coriolis force and joint 2 has a centrifugal force.  And it’s very easy if you rotate this, you see that m 2 will start going away and that is joint 2.  Centrifugal.  And the first one is the product of velocity’s coriolis.  Okay, so the v vector is like this.  The gravity vector is already there because we already know j v 1 and j v 2, just you computed.  Be careful on your gravity vector.  It is pointing down along the minus y direction.  And this is your vector.  
+
+</p><p><b>Student:</b>[Inaudible]
+
+</p><p><b>Instructor (Oussama Khatib)</b>:So when we are in this configuration, the center of mass 1 and 2, at their distances, will produce a force projected with the cosine and on joint 2, we have only m 2 that is affecting the gravity.  And finally, here is your model.  Wow, on time.  Okay, now we can use it, next time.  See you on Monday.
+</p><p>
+[End of Audio]
+</p><p>
+Duration: 73 minutes
+</p><p>
+</html>

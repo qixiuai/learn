@@ -1,0 +1,326 @@
+<html>
+IntroductionToRobotics-Lecture16
+</p><p><b>Instructor (Oussama Khatib)</b>:Okay.  Well, we have a special today.  This robot is going to show you a video.  I'm not sure if you're familiar with those cassettes anymore.  Do they exist still?  So the [inaudible] here is going to start the VCR.  Starting, and there is a video inside.  
+
+</p><p>So this video is about a very important aspect of robotics, which is compliant motion.  You see, the sponge is pushing up, and you see no reflection on the sponge, right?  That means there is no force applied.  Here, we are coming to a surface that is unknown, and the robot is sliding over the surface.  So it's making contact at different points, even if we remove the whole object.  Now here is a wavy surface that is being followed just by saying press down and move to the right, cleaning a window without breaking it.  It's very important.  
+
+</p><p>All of this cannot be done without force control and compliant motion control.  So you put an error, and still you are doing the same task.  Dealing with uncertainties requires you to be able to control the compliance.  This is linear compliance.  We can also do rotational compliance.  So zero moment.  When you push to the left or to the right, you will have a zero moment. 
+
+</p><p>If we could see the video.  Here we are creating a strategy to do face-to-face assembly where the compact forces will drive the robot to move about a rotation center here.  That will result in a robust strategy to do face-to-face without any planning of the trajectory.  
+
+</p><p>So from any contact point, you rotate, minimizing these moments of contact.  This is another example of a peg in a hole where the forces of contact are driving the motion to rotate and to insert the peg into the hole.  These were developed in the late '80s.  Here's a very nice example.  We're following this [inaudible] without any specification.  Just the contact forces are driving this motion. 
+
+</p><p>So force control is very important, not only for compliant motion, but when you do cooperation between multiple robots, it is also the same requirements.  You need to be able to control internal forces, otherwise you will break the offering.  Here is an example of two pumas cooperating to manipulate a pipe.  I believe we have three pumas.  Actually, sorry, two pumas.  We are moving a large object. 
+
+</p><p>You can imagine, now, you are doing internal force control and resulting force control to create the compliance, to produce that assembly.  So you need to control internal forces, and there is a model called the Virtual Linkage Model that we developed to allow us to capture those variables that you have internally.  For the first time, we were able to produce four-arm manipulation.  You have three, and you have a driver. 
+
+</p><p>You can see resulting compliance motion, and also internal force control to maintain those contact points and to manipulate this object that we call augmented object.  All of these issues, we will cover in advanced robotics, later. 
+
+</p><p>So I'm going to stop here.  The tape is very long, but it gives you and idea about the issue of compliance.  Let's just take a case of just one degree of freedom.  You have an inner shaft, some displacement, and you have a force.  We come to this all the time by decoupling the system.  So if we think about the controller F-prime to be just proportional controller.  So you are controlling X, Y and Z.  You have a KP prime, KPY prime and KPZ prime. 
+
+</p><p>So what is the behavior?  You push here, and you're going to feel some stiffness, right?  This stiffness is going to come from your mass times AP prime.  It's the overall stiffness.  If I want to do compliance in the Z direction, I would like to push up the robot.  I want the robot to move with the force I'm pushing with.  What can we do? 
+
+</p><p>So if I have a very large KPZ, it's going to be very stiff, right?  If I reduce KP, what is going to happen?  If I push, it will restore itself.  I push, I reduce it, I reduce it.  It will be a stiffness that is lower and lower, and you will basically move in that direction, right? 
+
+</p><p>If you make it zero, what's going to happen?
+
+</p><p><b>Student:</b>[Inaudible].
+
+</p><p><b>Instructor (Oussama Khatib)</b>:Well, if it is zero, it is basically [inaudible].  That spring is cut.  So you move it, it's going to move.  From the control we developed for the position, because we have a control in X, Y and Z in task space of [inaudible] is stiff in this direction, is stiff in that direction.  In this direction, if you change KP and make it zero, now it's free.  
+
+</p><p>Just by making KP equal to zero, you are going to have those relations – so the first one will be stiff, in the Y direction stiff, and here, you will just feel the Z-dot.  So can we create compliance this way?  Just compliance, now it is free? 
+
+</p><p>Actually, what we want to do is not only to create a compliance, we want to control the contact force.  So if I'm controlling pushing the robot, I would like it to maintain zero force.  So when it feels there is any force, it moves away.  Which means we need feedback.  We need a force sensor.  This is really the requirement in order to interact with the environment.  
+
+</p><p>Most of the time, actually, you want to apply a specific force on the environment.  That requires control of forces.  Here we have only – we just remove the position control from one degree of freedom, one direction.  So this compliance along the Z direction is the first step.  We substitute this controller in this direction with a forced controller later, and then we are able to control forces in the Z direction, as we saw earlier.  Position is in the other direction. 
+
+</p><p>So this is what we call both motion control together with force control.  This KP prime has a very important role in determining the stiffness, but really, the cause of stiffness, you have multiplied KP prime by MHAT.  So this is your cause of stiffness. 
+
+</p><p>If you think about it in terms of the spring aspect, you can see the KX is your stiffness.  Now, what is the corresponding stiffness in joint space?  You can compute it because this KX is displacing delta X, and delta X is J delta theta.  So your K theta, the stiffness you have in joint space, is your KX with this transformation.  So you can even evaluate your corresponding stiffness in joint space.  
+
+</p><p>Now, really dealing with the problem of force control, you need to be able to sense the force.  The reason is, if you think about it, let's say I would like to control some F desired.  If we set just the control force to the desired force, we will see that the robot is not even moving.  The reason for that is the friction.  So if you think about the friction, as long as your force design is within the breakaway friction, you're not going to move.  Your force will not get the robot to move beyond that friction. 
+
+</p><p>Then you have, also, continuous column friction, and you have the viscous friction.  So it is really difficult to do accurate force control.  All the time, you are feeling those forces that are coming, so you cannot do it [inaudible].  So what you need to do, you need to measure your resulting force at the output.  So if you apply one [inaudible] in this case, the output will be zero.  
+
+</p><p>You really need to be able to measure the actually F and foreman error between your desired [inaudible] and your actually force.  Then you can make feedback control.  Then again, you will be able to do it.  So if you have a sensor, then your sensor is going to give you this sensed force, which is the displacement of the sensor.  
+
+</p><p>A sensor is essentially a stiffness that you're deforming.  It's very stiff.  The delta X is very time.  So your sensor will give you the information, and now you can see that what you want is to achieve F equals F desired, which means that you can select a control of that [inaudible] forward that desired force, and deals with the error and the feedback through a controller that allows you to control this mass that is moving, but internal forces. 
+
+</p><p>Now, we can then use this relation between X and F and provide this equation in terms of force control.  So we can take the second derivative of this in terms of forces.  Then we will have this stiffness appearing in the equation.  Then we close the loop.  Once we close the loop, will are going to have the responses we saw on the video.  That is, when we push, we will see not only the feet forward, but there will be an error coming from the sensor.  This error will produce [inaudible] to move the robot in a way to reduce this error. 
+
+</p><p>So if you think about how we can do this, basically you have the relation between forces and displacement.  You take the derivatives, and then you design a controller like this with a proportional term, derivative term, and then you are able to have a closed loop that minimizes this.  The response now is in forced space for the robot. 
+
+</p><p>I'm not expecting you to understand all these details, but essentially, force control is going to be a very, very important aspect of robot control.  We just dealt with the motion control.  The question is now we combine the two, how we get the robot to apply a force in some direction while moving.  If you are cleaning a surface, you need to be able to move, to control directions, and also to control the pressure.  So you have to combine these two. 
+
+</p><p>The result is a sort of unification of the task control in terms of motion control and force control merged together.  So there are directions of force control, and there are directions of motion control.  These depend on the relationship between the objects you are assembling.  
+
+</p><p>So if you have a sphere, and if you want to put the sphere on a contact, you lost a degree of freedom.  You cannot move in the Z direction.  You can still slide on the XY plane.  So how many degrees of freedom of motion do you have now?  Imagine the ender factor is holding the sphere on the surface.  How many degrees of freedom do you have?  Two?  
+
+</p><p>Five.  Yes, two in position, and then you still do rotations.  You still have those rotations.  So you lost one degree of freedom by this contact constraint.  How many degrees of freedom do we lose here?  Two.  We lost the Z axis, and we lost the rotation about the Y axis.  You cannot rotate about this axis.  
+
+</p><p>So you see, every time you have a different shape, you are going to lose different numbers of degrees of freedom.  Here you lose three.  So what does it mean?  It means that we really need to evaluate those space where we can move, but at the same time, did we really lose those degrees of freedom?  
+
+</p><p>If I'm pushing here or controlling this movement, I still can do it.  I can push with ten newtons, 20 newtons.  So the degree of freedom just went to the space of forced control.  In this contact, if you are talking about controlling that variable, the force, then you didn't lose the degree of freedom.  It just went into the constraint space, and you can control that force now. 
+
+</p><p>We can describe the directions and the relationship between the two and separate the spaces.  Here, it's very easy.  You can say in X and Y, there is no rotation about axes X and Y.  You cannot rotate this about X and Y.  You can rotate it about Z.  
+
+</p><p>In the Z direction, you cannot move, but you can move in X and Y.  So now the space is split into two parts.  To split the space, we go to a description of this space, and we split it through the omega matrixes that allow us to project the motion control in some subspace and the force control in another subspace.  
+
+</p><p>In this case, it's very simple what directions you can control forces.  The Z direction.  So essentially the motion control is in X and Y, and the Z direction is the compliment.  If we call omega bar is the subspace for force control. 
+
+</p><p>So the result is a unified framework that we studied so far, that was this loop.  If I have a motion, I can control it, and I can go to J transpose, and I can compensate for some difficult [inaudible] and do this loop.  Now what we are doing, we're projecting these controls in their spaces, and we're doing unified control of motion and forces. 
+
+</p><p>Because we are controlling everything in the task space, we have F motion, F forces.  We just add them together.  We have a total force that we transform into a torque through Jacovian transpose.  That is what is nice now.  You unify all the characteristics. 
+
+</p><p>So you can see some lambdas and some other things.  The lambdas is essentially the mass property because your mass matrix, MX.  This is the mass properties that you are using to scale your controller to the [inaudible] system.  This is then also in the force control loop. 
+
+</p><p>The result is really interesting because you can uncouple the two systems in their own subspaces.  Then you can control them properly.  So this is a little bit of the beginning of the introduction of advanced topics that we will see.  I'm going to continue with this discussion, but you really have to deal with this very important problem.  If you want your robot to interact with the world, you need absolutely to be able to control the contact forces.  Contact forces doesn't mean only linear forces, but it also means you control moments. 
+
+</p><p>With moment control, you are going to be able to achieve a lot of affects.  In any assembly, you're going to have some error in the relationship between the two.  How do you deal with this?  How do you deal with the fact that when you are pushing down, you're going to have a moment generated.  You can use it to drive – I'm not going to drive it too far.  It would spill the water, but you can use it to drive this rotation. 
+
+</p><p>The action force here with rotate if you select this point as a center, as your operational point.  If you push from here, it's rotated.  This will be fixed.  You can fix it by controlling this point.  Now you are rotating about the spot.  We use this a lot in doing assemblies between objects because we are able to cope with the errors and uncertainties that we have.  We know, to some extent, the relationships, but we don't know exactly where things are. 
+
+</p><p>So I'm going to continue with the discussion of advanced topics.  This is part of a talk I gave recently.  It starts with some really old robots.  I don't know if you've seen – have you seen this robot, Leonardo?  Okay.  Tell me if you have seen this one.  
+
+</p><p>Can you believe this?  You have a robot that can draw.  1773.  Unbelievable.  Actually, there were a whole family of robots that draw, that play music, that can write at that time.  How can you make robots like this?  How do you program this robot with the technology of the time?  
+
+</p><p>So basically, you're going to use the mechanical devices.  If you want to see the computer that was used, here is the computer.  So you have springs, and then you have to drive the motion.  You can see all these sets of design trajectories on which you are moving the different parts.  So the robot is going to write [Speaking foreign language].  
+
+</p><p>So robotics was around for a long time, right?  Really, the question was just waiting.  It was in our minds.  We wanted to build those machines, and the thing was that we didn't have the right technology.  The technology really came much later and brought the first robots that were almost completely industrial robots that were used in this structured plant to perform repeated tasks in the automobile industry and others. 
+
+</p><p>Now, today, robotics has moved, as we saw at the beginning of the class, that robots are now used or the application of robots is conceived in many domains.  Especially, we see a lot of robotics today in medical applications where robots are coming very close to the human, in fact, inside the body of the human. 
+
+</p><p>So this is bringing a lot of challenges.  As we bring robots closer and closer to the human, this is bringing the real challenge of robotics.  Robotics in the industrial setting requires really little from the robot.  Once we understood the requirement, precision, repeatability and the performance and speed and robustness, we can engineer the machine to do that. 
+
+</p><p>Here the problem is we need much more intelligence in the robot to deal with many things that are not known in advance.  You need to perceive the environment quickly, respond and react to everything that is happening, and you need to be also moving safely. 
+
+</p><p>So those challenges bring the perception and sensing issues that we need to deal with into an environment that is unstructured.  This is a big challenge and also a good thing for researchers.  Without this challenge, robotics would've become just automation.  But having the challenge of an unstructured environment is bringing a lot of interesting issues to the research in sensing and perception, in planning and control.  Why is planning and control hard here when you have those human-like robots?  What is the problem?
+
+</p><p><b>Student:</b>[Inaudible]. 
+
+</p><p><b>Instructor (Oussama Khatib)</b>:Well, in the planning, the world is changing all the time, and there's maybe something else you wanted to mention? 
+
+</p><p><b>Student:</b>[Inaudible] solutions? 
+
+</p><p><b>Instructor (Oussama Khatib)</b>:Well, the number of degrees of freedom.  You have a robot with not six or five anymore.  You're talking about many degrees of freedom, and you need to resolve and respond in real time.  You need, in those machines, to have – not just move to a position.  You need almost human-like skills.  So you are demanding much more. 
+
+</p><p>You need to deal with the human-robot interaction, which is going to involve both physical interaction, touching the human and working with the human, but also the communication, the interaction, the cognitive aspect of it.  You need to build those robots, and you need to make sure that they are safe.  You need to make sure that they are capable but safe.  
+
+</p><p>So a very important theme in this area is the interactivity of the robot and also the human-friendly design of the robot so that the robot can really be integrated and working with humans. 
+
+</p><p>So if we think about this problem and the challenges, you can see on the left – you can see a robot you don't want to be next to.  It is a problem.  On the right, you can see a robot – you might think, well, it's smaller.  It might be safe.  But actually, the danger in this robot is hidden inside.  It's hidden inside, and we talked about it in class.  You remember this.  You remember this inner shot of the motor.  This is going to be reflected. 
+
+</p><p>When you're going to have an impact force, you're going to really produce a large impact force because you are going to see the inertia of the rotor of the motor.  So there was a lot of development in the area of making robots lighter, safer, and one of the most beautiful ones, you can see it on the top.  This is the light arm from DLR, the NASA in Germany.  
+
+</p><p>They have been working – in fact, we had a lot of collaboration with them in designing torque sensors so that we close the loop at each of the joints.  They developed a very nice mechatronic technology that resulted in this very beautiful robot.  Now you can have compliance.  You can control the robot to be compliant at all the joints. 
+
+</p><p>There is still a problem, the fact that the open-loop characteristics doesn't have time – makes it that you don't have time to close the loop.  There are still open-loop characteristics that will be reflected during impact, which might make the robot dangerous. 
+
+</p><p>So perhaps one of the safest ways is to use elasticity with the actuator.  Then when you have an impact, the elasticity takes the inertia.  This is not going to give you the performance, and that is really the problem and the challenge.  So if we think about the problem of collision, we see that essentially you have a robot moving at some speed.  It has some stiffness.  The environment has some stiffness, and when you have a collision, you are going to have an impact force. 
+
+</p><p>This typical problem was studied in the automobile industry, and they came up with a criteria call the head-injury criteria.  The head-injury criteria measures the risk of injury, given the impact forces.  In fact, if you think about it, in this plane, where we are looking at the fact of inertias and the stiffness, we can see that a Puma robot is sitting here at almost 90 percent risk of serious injury. 
+
+</p><p>The only way you can make it safe is by covering it with almost 20 centimeters of compliant material.  So it will be really, really big.  
+
+</p><p>What is the problem?  I know we have a lot of mechanical engineers, so they are going to help me now to solve this problem.  How can we deal with this problem?  Yeah? 
+
+</p><p><b>Student:</b>[Inaudible].  Less reactive and more –
+
+</p><p><b>Instructor (Oussama Khatib)</b>:Actually, the sensor idea is really, really good, but I think there is no way you can guarantee – if you have a robot, you can never guarantee passive safety that is not dependent on a computer or dependent on a controller or a sensor.  Anything can break.  How can I guarantee that whatever happens, this robot is safe? 
+
+</p><p>So I need to really go further.  Not only to think about how I can improve the feedback or what we can do with the sensors, the skin and protection of the robot is good because that is most of the operation.  But I also want to make sure that the if I have an impact for some reason, something broke in the robot, the controller, the computer, something happened.  I need to guarantee that the impact force is below some acceptable amount. 
+
+</p><p>So in turns out that a large part of the design comes from the actuation.  You can see it every time – you are trying to manipulate an object with this ender factor.  How do you move this ender factor?  You need lengths.  Everything we were studying was the carrier of this ender factor, right?  To actuate your lengths, you need motors.  Because of the motors, your lengths become bigger and bigger because you put this motor here to carry this ender factor.  Then you need to carry both with the length with another motor here, and you propagate the weight. 
+
+</p><p>So every time you design a robot, you're hitting this problem.  How can I squeeze a lighter actuator here?  So you put higher gear ratio, but you reflect larger inertia.  But essentially the torque need here is very critical. 
+
+</p><p>So you come up with some specific, and you say, I need the 3.7 newton motor with continuous torque, a torque that you can sustain for a long time.  A motor has a peak torque that could be reduced in a short time.  If you keep applying it, you will burn your motor.  
+
+</p><p>So once you've designed your motor, and now you can lift the gravity of the link, ender factor and the load and all of that, what do you say?  My robot has to accelerate, has to give me those performances, and now I will pick my motor to have those characteristics.  So I will need strength to carry, and I need also the dynamic responses.  
+
+</p><p>Actually, this is what you need.  You need performance.  What you are doing here is you pick a motor, and then you say this motor has to be performance – as the acceleration I'm going to produce.  This is really not necessary.  If you think about the problem in the domain of control and the performance you need, the magnitude that you will need at high frequency is much reduced.  So in fact, your requirement is you need large torque at low frequency and smaller torque at lower frequency. 
+
+</p><p>You can design your robot differently.  We never think about it, but we can design the robot not with one motor but with multiple motors for each joint.  Like humans.  Humans have multiple muscles and different types of muscles actuating.  So you can place a small motor.  The structure will be light and very safe, and you put a big motor at the base.  You remove the weight. 
+
+</p><p>But if you do this, this motor will be reflected at the impact force.  I say this motor is only needed at low frequencies.  So now, I can isolate the motor when I have an impact force.  It will go through this elasticity. 
+
+</p><p>So this is the concept we development in DM2.  It's called Distributed Micro Mini Actuation that really is interesting in the sense that you build a robot that has the capacity of a large robot but the safety and performance of a smaller one. 
+
+</p><p>This concept, wince, went much further, and seeing the performance you can achieve, it's amazing.  You can take the Puma and build a robot like the Puma with ten times less effective inertia.  You reduce your inertia from 35 to 3.5.  That leads to a large reduction in the inertia properties that you see. 
+
+</p><p>I think you don't understand this.  Let me show you what I mean.  Where is my simulator?  Has anyone seen the Puma simulator somewhere?  Right here.  
+
+</p><p>Okay.  So if we look at the Puma, we can display the inertia property of the Puma.  You can see you have small inertia in this direction and large inertia in this direction.  In fact, if I move the Puma, you can see that this inertia is changing.  Here we have singularity.  You remember the singularity here. 
+
+</p><p>If we look at it in this direction, we cannot move when it comes t overhead singularity.  The inertia becomes very, very big.  The inertia goes back to a reasonable value in here.  So we can take this mass matrix and represent it as the inertial property and describe those properties on the robot. 
+
+</p><p>So let's go back.  You understand those inertial properties.  The green one is what you have now.  You reduce your effective inertia by ten times and immediately, you improve your control performance.  So this concept is quite complicated because it requires this elasticity.  It requires the big motor.  It requires transmissions to couple it. 
+
+</p><p>We came up with another idea, which is if we want an elastic actuator, why don’t we go directly for muscle-like actuators, like in this nice concept?  So we started building a robot like this, and the kids in this robot is that you use bones, muscles and air pressure.  So you are bringing the energy through the air.  Now you can lift the robot.  You can produce the large magnitude of torque needed.  Then you have a small motor on the joint. 
+
+</p><p>This motor will allow you to get the dynamics.  So combining the two, you get hybrid actuation that essentially leads to a safe robot design.  The problem with this is how can you manage all these tubes of air that are going to go through the joints and control?  Every joint will need two muscles. 
+
+</p><p>You realize you have a large amplifier, pressure regulators, and you cannot think, I'm going to take all these tubes.  You will have a lot of them, and your arm will be very heavy. 
+
+</p><p>So the solution to this problem is what?  Is we don't want the tubes, so we want to put this on the arm, big.  So what do you do?  Well, make is smaller.  Now we've identified the right problem.  Make it smaller.  We can have a solution to this problem.
+
+</p><p>Once a graduate student knows the problem, they solve it.  In fact, it was a piece of cake making it smaller.  No problem.  So making it smaller, now you can distribute it.  By distributing on the links, you essentially take one line of pressure running through the whole robot.  At each of the joints, you are distributing the pressure, regulated to the value you need at that joint.  
+
+</p><p>So here is the arm they built.  In fact, this arm was almost measured after my own arm.  So it is really human-like arm with the constraints of a human and not too big.  Here are the dimensions.  I'm not sure about the torque.  Here is the arm. 
+
+</p><p>You can hear the air pressure switching in control.  So now you can do first control with this.  You control the contact forces, and you produce motions with an arm that is lighter from the arm that we had before, 3.5.  Here, we go to 1.5 kilograms, maximum.  You can see on the red response, you have the macro robot, the muscle response is very slow.  You get almost 0.5 hertz in the closed loop whereas with the macro mini, you can go to 35 hertz.  Huge improvement. 
+
+</p><p>The other thing is by adding this tiny motor, you are improving the control, not only of the overall system but also by thinking about the macro differently and looking at what you are controlling, you can also do a lot of improvement.  What we did, we added sensors to measure the tension.  The actuation using muscles brings a lot of nonlinearities in the model.  If you use a sensor, you can close a loop, and you can improve your control.  
+
+</p><p>So just the macro with a sensor goes to seven hertz.  So this is really, really important always to use sensors where you can.  With the group of [inaudible], we are working on the next prototype that will come probably in a few months.  This prototype is bringing and integration of all these tubes directly inside the structure.  This is going to be a cool arm.  
+</p><p>
+</p><p>These are some of the built parts.  You can see the overall design.  
+
+</p><p>So everything is integrated inside, and outside we have skin to protect in the first impact and to produce feedback.  So you get tactile information about the contact information so you can control your robot better.  Okay?  So how many orders do we have today for this one? 
+
+</p><p>Please contact us.  Yes?
+
+</p><p><b>Student:</b>[Inaudible] sensors are in the joint or the extremity or both/ 
+
+</p><p><b>Instructor (Oussama Khatib)</b>:There are sensors inside the structure to measure tension on the muscles, but also we have sensors distributed on the skin outside.  That will measure contact with the environment.  So when you hit first, you reduce the impact force, and also, you measure where you are touching. 
+
+</p><p>Let's move to another aspect of this human-friendly goal and look at the planning and control and look at the human-robot interaction.  So let me start with something that we basically developed in the early-'90s.  I mentioned, and probably you saw this couple in our lab, Romeo and Juliet, the two platforms that we use to develop and explore the area of human-friendly robotics.  Here is the video. 
+
+</p><p>If we can have the projector please off? 
+
+[Music]
+
+</p><p><b>Instructor (Oussama Khatib)</b>:So the idea is really not to think about the problem as moving the platform, stopping, manipulating, moving again, stopping, manipulating.  It is about how you can combine mobility and manipulation in a way where you are controlling both.  So if you are holding an object, and you have to move because of an obstacle, you should be able to uncouple the two.  
+
+</p><p>We call this the task, and this is the posture.  We are able to control the whole robot to achieve a task and also to achieve the posture in an uncoupled way.  With this, you can do a lot of things.  You can clean the carpet.  
+
+[Music]
+
+</p><p><b>Instructor (Oussama Khatib)</b>:Open the fridge.  Thank you.  Make a contact.  Control the contact force.  This is my shirt.  I think it's the only shirt in the world that was ironed by the robot.  I should add it was ironed one time.  
+
+</p><p>This is one of the most complex tasks you can imagine.  You can imagine internal force is controlled, macromania actuation, cooperation between the two.  All of this involves a lot of models and things we will be discussing in advanced robotics.  
+
+</p><p>This was accomplished and demonstrated at the opening of the Gates building.  In fact, Bill Gates, when he came to the integration, he was quite amused with those robots, which you can, in fact, use to interact with a human.  So my students used to dance with those robots.  
+
+</p><p>Here is another example of how you can interact with them by guiding the motion.  So the human is giving the intelligent task of the guidance, and the robot is following.  This is basically – Alan is dancing. 
+
+</p><p>By '97, when we accomplished this, I don't know if you remember, I mentioned by '97/'98, there was the Honda robot that brought the first walking stable machine, and it was a remarkable achievement.  It dealt with the locomotion aspect, but it didn't really address the problem of manipulation. 
+
+</p><p>Since then, we had this challenge to bring together manipulation and mobility in the way that we did it for Romeo and Juliet, on a more complex robot that involves many degrees of freedom, a branching structure.  We're not talking about contact with one ender factor.  There are many different points you are controlling. 
+
+</p><p>You have multi-contact.  You have many constraints.  You have a lot of things taking place, and you need to deal with all of these simultaneously and in a coherent fashion.  You cannot pull in one direction without accounting for what is happening in other directions. 
+
+</p><p>So the idea now of dealing with this problem through [inaudible] is crazy because you have a lot of degrees of freedom.  You don't want to commit your final configuration before moving because there are constraints and joint limits and many things that happens.  So an approach that we discussed in class earlier about task-oriented control makes a lot of sense.  You pull toward the goal and the configuration emerges.  You do not decide it ahead of time. 
+
+</p><p>This approach results into a very simple way of controlling the robot direction in the task space.  So in the next two minutes, I'll show you how we do this here.  Realize that there are a lot of details. 
+
+</p><p>Let's go to the arm.  That's what we studied earlier.  You have a force.  You have a gradient of the force.  How do you apply it?  Torque equals? 
+
+</p><p><b>Student:</b>[Inaudible]. 
+
+</p><p><b>Instructor (Oussama Khatib)</b>:Transpose it.  Okay.  Very simple.  That should work.  We cannot just do it like this.  We need to account for the mass properties.  We need to establish the model between acceleration and forces, and by having a good estimate of this model, we can go and correct this.  Now we uncouple the system, and we align the directions to follow the initial properties. 
+
+</p><p>Now, the question is if we go to this problem, how do you deal with all these points?  How do you combine?  How do you control this while you are controlling that?  If you move one arm, everything else is going to move.  How do you uncouple the motion of the right arm from the left arm while balancing and doing all these things?
+
+</p><p><b>Student:</b>[Inaudible]. 
+
+</p><p><b>Instructor (Oussama Khatib)</b>:That is a good idea.  Gyroscopes will give you a good sensing by integrating.  You can find the orientation of the [inaudible].  You can use that information, but how can we deal with this problem of finding the dynamic equations of a system like this and controlling it? 
+
+</p><p>Yeah, we want to use energy, but first we need to get a model of the system for this task and that task and the head and the legs and so on.  So we need to extend this operational space control or model, not only to find these mass properties, but I want to find all the mass properties and the coupling between them. 
+</p><p>
+</p><p>It's not obvious, but it's very simple.  So when you run into a problem like this, just sit down, relax, and just move back.  Move back from the problem.  Don't go too close to the problem.  Move back.  What do you see?  You go to a higher-dimensional space.  If you go to a higher-dimensional space, everything appears like one point. 
+
+</p><p>So if we take this problem, X1, X2, X3, and put them in a higher-dimensional space, that higher-dimensional space, they will be a point, a task, involving X1, X2, X3 all of these.  We are back to the beginning. 
+
+</p><p>Now with this, you can find a Jacovian.  Once you have a description, you find a Jacovian.  You find your mass matrix, MX, [inaudible] is what I call it.  
+
+</p><p>On the diagonal, you have the mass properties at each of the points, and at the other diagonal, you have the coupling between them.  Now you're back to this.  Beautiful.  You have the same model in the higher-dimensional space. 
+
+</p><p>Now you can use this model to control the system.  It's very easy.  We use the energy.  That is, we use a force of task to control it with J transpose F.  But now, suppose I'm controlling the legs and the hands.  I have all this motion that is possible.  This is the nonspace motion.  This is what we will discuss with redundancy next quarter.  
+
+</p><p>In there, you have to guarantee that your control is not consistent.  Do not interfere with the first control.  To do that, you filter it with N, the null space of the Jacovian.  The result is that you guarantee that there will be zero axil rotation coming from the control of the posture.  That means when we move in the postural space, these points will be fixed.  That is very, very important. 
+
+</p><p>Once you have this uncoupling, then you can control the system in a very effective way.  So the control of the whole body is task field to control the task, posture field to control the posture and the two are uncoupled.  So you can generate motions without any trajectory.  
+
+</p><p>The question is how can we find these energies.  How can we find those criteria?  If we are working with horses, maybe we should look at horses, but if we are working with human-like robots, we should look at humans.  How do humans do it, and this really a good question. 
+
+</p><p>We already started to be inspire by the human, the way humans move with their hands, the way their move their body, and we need to see how all of this can be captured through simple mathematical models that we can use to reproduce the motion.  So the starting point would be motion capture.  Capture the motion, and then I'm not going to replay the motion directly because if I record the motion and replay it, then we cannot generalize.  What we are after is not a specific motion.  We are after understanding. 
+
+</p><p>So if you have a system you want to understand, what do you do?  You shake it enough to find all the behaviors and to – and then you identify what the model of that system is.  So you need a model of the system.  It is really interesting.  We were working with robots, and now we are working with a human model.  The human models are essentially articulated by these systems.  The mass matrix you computed is the same. 
+
+</p><p>You can use the same mass matrix.  The actuation is different.  So for the mass matrix, you can now take the rigid body part, the skeletal model, and now animate it.  This is what you see.  In fact, drop it in the gravity field.  Potential.  
+
+</p><p>The idea is how can we go from the human to the robot with less degrees of freedom?  We want to see the characteristics of the motion.  To see the characteristics of the motion, you need to see the actuation models.  You cannot do it without the actuation.  
+
+</p><p>So we model the muscles, and all of this was done with people who are working in biomechanics, the group of [inaudible], who provided us with all the data about muscles and skeletal system and the skeletal model.  Once you have all of this, you can start doing the study and analysis, and you start to look at it and try to find out what's going on. 
+
+</p><p>So to analyze this, where do we start?  We can say, let's start at something very simple.  I'm going to give the human a task, which is to hold some object.  The question is where the posture is going to be.  Imagine you are pushing – it was very cold in the morning.  Your car didn't start.  You're going to push your car.  How do you push the car?  Do you push it this way, or do you push it like this?  The answer is obvious.  Actually, the child, at birth, they didn't know that.  So little by little, you learn, and you discover something amazing about the human body, and then you start using it. 
+
+</p><p>What is amazing is in any mechanical structure like this, there is a mechanical advantage.  When you discover the mechanical advantage, you start using it.  So you do not just use the rigid body mechanical advantage.  You are also using the way you're actuated and your muscles.  The child, when he's moving first, will pull the muscles, and it hurts. 
+
+</p><p>You have this feedback, and little by little, you start to adjust to the motion and move your body correct.  So humans, little by little, are learning, discovering ways to minimize the effort produced by the muscle.  This is our speculation. 
+
+</p><p>We said there is muscular effort minimization, but it's not always like that.  There are also a lot of other constraints.  It's much easier to bring the spoon to the mouth than the – it's easier to bring the mouth to the spoon than the spoon to the mouth.  The reason is mom says, this is not polite.  You cannot do this.  You have to do it this way.  
+
+</p><p>So there are a lot of social constraints, there are a lot of physical constraints on the system that you need to integrate.  But essentially, you are minimizing the effort.  If you say, I'm minimizing the effort, it's very important because now you bring the physiology in the model, and you start analyzing the physiology. 
+
+</p><p>So a robot produces a force by applying a [inaudible].  All of you now know this, right?  A human produces that torque using another Jacovian, L transpose.  This is the muscle attachment Jacovian, and these are the muscles.  Now, if you think about it, you are really attuned to use this in a way to minimize your muscular [inaudible].  But every muscle has a different capacity, bigger muscles, smaller muscles, so you need to account for the capacity of the muscle. 
+
+</p><p>So here is our hypothesis.  We think humans are adjusting their posture to minimize muscular, so there must be an energy.  Okay?  Now pay attention.  We want to find this energy.  So the muscle is M.  Extension of the muscle, the tension, is M.  If I'm minimizing the muscle effort, the energy's going to be M-squared.  But there is the capacity, and what we speculated about is that this energy is weighted for different muscles with their capacity.  
+
+</p><p>So here is the inertia.  Are you already sitting?  Are you ready?  Want to see it?  
+
+</p><p>If you look inside of this, this is what you see.  This captures the following.  It captures your task, captures the mechanical advantage of the skeletal system.  It captures the muscle attachment and the capacity of your muscles.  A muscle is weak.  You compensate for it.  If a muscle is missing, you're compensating for it.  
+
+</p><p>So in fact, it turns out that our student went to the motion capture lab, and we did the analysis.  It's amazing.  I see you sitting comfortably.  Why don't you relax your back and move forward without touching anything with your back.  Let's try it. 
+
+</p><p>We're going to see if it works also with you.  So let's drink a cup of coffee.  Don't drink it completely.  Just go very close to drinking the coffee, and comfortably and like you're relaxed.  Look around.  Everyone is doing this not like this.  It is this angle. 
+
+</p><p>This angle corresponds to the minimum of this energy.  So it is not a coincidence.  In fact, if you do this analysis and you increase the weight, this angle goes up.  You can see it here, as you move and increase the weight from zero to 15 pounds, for instance, this is the speculated angle that you will find. 
+
+</p><p>You can check it, but it makes so much sense.  You are discovering how to use this machine.  You are able to use it for the specific task in its optimal way.  It's not only Jacovian.  That is, it's not only the skeletal model.  It's also the muscle attachment and the way the muscle capacity is distributed. 
+
+</p><p>So with this, now, we can go and simulate and create.  So we are doing – I'm not sure if you understand this, what I mean.  You remember I showed you this?  I think I showed you this, right?  We saw Stan Bar.  You saw this before, right?
+
+</p><p>Quickly.  We move to the goal, and you are able to track that motion, right?  You remember you can fold the joint limits.  So let's go back to this.  So this is what you're doing.  We are controlling one point, and the body is adjusting through our criteria in the null space.  Now you can move it to robot.  Not as a trajectory that you're copying, but as a criteria that you're applying to the robot. 
+
+</p><p>This is the environment that we developed that also contains neuromuscular models that can be used to analyze and look at the human.  This is a recent work on a Tai Chi analysis, and the master here from Beijing is performing a motion that we can record, and then we can analyze the motion.  You can start to see that all these models can produce amazing things so that essentially you can analyze skills of a human.  You can look at the behavior of a human and synthesize it. 
+
+</p><p>In fact, if you recall that motion, and if you play it back on the physical model of the robot, it will fall over because you need control.  You have errors, and unless you control it correctly, it's going to fall.  So what we are going to show here is half of the body is following the Tai Chi motion, and the other half is controlled.  In fact, you can see that you can achieve those desired half while controlling the robot with other behaviors. 
+
+</p><p>So all of these are part of the development that is now being implemented on humanoid robotics like Ashimo.  A key aspect of the implementation and task-oriented control is not only just motion and force control, but how do you deal with constraints?  How do you deal with the fact that if you have a joint limit, and you're moving, and hit a [inaudible], what is going to happen? 
+
+</p><p>So this structure of control that I talked about produces a very useful way to apply constraints.  Essentially, I mentioned about constraints in terms of attractive forces and repulsive forces.  If you have a constraint, it has to take the highest priority.  In the structure of task and posture control, we have priority.  This task will not interfere with this. 
+
+</p><p>So if we know our constraint, and we know the Jacovian of that strength, then we can know the null space of that constraint.  Then we can take this whole thing, put it in the null space of that constraint and then control the constraints. 
+
+</p><p>Now the robot is moving, and you can see two different postures because you have hip limits.  Here you are stuck.  You cannot reach because of joint limits.  Here the body is going to move away to avoid self-collision.  So the trajectory is going through the body, and the body will move away automatically by these repulsive forces.  
+
+</p><p>Obstacles?  So it is very, very important to be able to create this interactive behavior that allows you to avoid collisions.  At the same time, you need to think about the global path, not only about the local behavior.  
+
+</p><p>We have N degrees of freedom.  The problem is exponentially in the number of degrees of freedom.  You have to deal with a way of connecting the two.  To do that, we developed a concept we call elastic planning, which is, essentially, connect all the plans that allows you to deform it in real time.  By deforming this, we are able to change a feasible plan and adapt it to the real environment.  This is an amazing thing because you are able to change a trajectory that requires hours of planning. 
+
+</p><p>If you didn't use this, for example, you would have the plan the whole trajectory with new obstacles and constraints.  At the same time, you are reconstructing because when you are touching, tele-operating, interacting with surfaces, you need to reconstruct the surface to fit and control your robot.  That means you need to model contact correctly.  You need to deal with the contact models also in the control.  This is a very, very interesting result that comes directly from control. 
+
+</p><p>You remember when we talked about collision, essentially, we are interested in the collision with the multi-body system.  How can you resolve it?  Well, people usually remove the joints, resolve the whole multi-body collision, and then they put the joint, eliminate constraints.  But in there, we are going to be able to reduce the problem to this because we can use the mass matrix in this direction.  We can use the effective inertia directly. 
+
+</p><p>The collision doesn't care about what humanoid robot you have.  You just need to know what mass properties you have and the contact.  So with this, we have a very effective algorithm that allows us to simulate and resolve the collision in real time.  With the real-time resolution, you can go and use it in many different things.  I believe I showed you this in the beginning of the class, but now you understand what it means.  We are able to find the properties and impact forces, and we are also able to deal with this problem of contact and collision. 
+
+</p><p>The problem is very difficult because when you are looking at a humanoid robot, you just push it and it will tip over.  It is missing these six actuators.  It's not connected to the ground.  You spend your time balancing, and if you have any reaction force, it will tip it over.  So the question is how can we move this body while maintaining, dealing with those constraints?  How can you do it?  
+
+</p><p>Just say it.  Say, I need to treat these as constraints.  What are your constraints?  [Inaudible] normals, take the Jacovian.  Take the null space, and take this and put it in.  Now you know how to do it, okay?  Put it in the contact space.  Then you are able to bring the two together, and now this motion will be consistent with the constraints, and you can control the forces and the constraints. 
+
+</p><p>If you remember in the beginning of the class, I would talk about omega and omega bar.  This will become your omega bar, and this is your omega in the multi-contact space.  So that was a really very important result to allow us to implement behavior with multi-contact and motions.  Now distributing the effort between different surfaces that you are touching, moving, balancing, dealing with dynamic skills.  
+
+</p><p>Then you can start to build behavior over this that is now the robot is looking, watching.  If there is an obstacle, it will move down.  If there are constraints, you are able to deal with the constraints as it moves.  It is automatically generating the right motions to avoid hurting those constraints.  
+
+</p><p>As we are building, we are moving up and up in the structure.  So what we really have seen in the class is really the lower level in this system where we are looking at the execution of the motion controllers, the first controller.  But on top of this, you can build behavior that makes use of those primitives, and you go up to levels where you require more abstraction of the sensor information, your perception.  As you are building a solid foundation, you are going to be able to move higher and higher by integrating skills and learning from the human.  Hopefully we will be able to get Ashimo to graduate.  
+
+</p><p>All right.  Well, I guess I'm going to stop here.  Tonight, we will see the rest of the group.  Yesterday we had a very nice session.  We will talk about the final.  Those who I won't see tonight, I wish you good luck in the final.  For those I will see, we will talk about it more in the evening.  So 7:00.  Okay.  Stop here. 
+</p><p>
+[End of Audio]
+</p><p>
+Duration: 72 minutes 
+</p><p>
+
+</html>

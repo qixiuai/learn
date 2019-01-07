@@ -1,0 +1,331 @@
+<html>
+IntroductionToRobotics-Lecture08
+</p><p><b>Instructor (Oussama Khatib)</b>:Okay, let's get started.  So today's video segment is – it's about parallel parking.  I know a lot of you don't know how to do the parallel parking, so now you'll get into the car and you press the button, and the car will park itself.  Yes, please [inaudible].  Okay. 
+
+[Video presentation]
+
+Female on Video:</p><p>Automatic parallel parking and returning to traffic maneuvers.  France.  
+
+Male on Video:</p><p>At [inaudible] we have developed and tested automatic parallel parking and pulling out maneuvers on an experimental electric car.  The car can be driven manually or move autonomously with automatic steering and velocity control.  It is equipped with various sensors, including sonars, to monitor its surroundings.  
+
+</p><p>When he wishes to park the car, the driver starts the automatic parking mode and leaves the vehicle.  The planning and decisional architecture allows the sequence of autonomous motions to be controlled in real time in classic traffic situations within a parking area.  The car moves autonomously in the lane.  It's real-time motion sequence control ensures safe operation in a dynamic environment.
+
+</p><p>The car avoids collisions with other cars and obstacles.  It continues the motion when the lane is free.  When it detects a free parking space, the car stops at a starting position in front of the space.  The system computes appropriate steering and velocity controls for a nominal trajectory leading to the park location. 
+
+</p><p>A backward parallel parking maneuver into to the space is then performed.  Once the motion is carried out, the autonomous system decides whether a suitable park location has been attained.  If necessary, additional iterative motions are performed within the parking space.  When the lateral displacement of the car is sufficient, the car adjusts its location to midway between the front and rear vehicles to ensure a proper distance. 
+
+</p><p>For automatic pulling out, the required steering and velocity controls are planned and executed.  The car moves to an appropriate spot at the rear of the parking space.  Then, control commands are planned for the subsequent motion.  The car turns and moves forward to leave the parking space.  It stops in the traffic lane and is then ready for further manual driving.  
+
+</p><p>Our future work aims at integrating the automatic maneuvers we have developed into a novel urban transport system based on a fleet of dual-mode electric cars.  A preliminary manual mode version of this system with 50 electric cars is currently under evaluation near Paris.  The future version will include all the automatic maneuvers we are currently developing.  
+
+[End video presentation]
+
+</p><p><b>Instructor (Oussama Khatib)</b>:Okay.  So a lot of progress was made in the last years in navigation of the car, so now you just get to your place, where you want to go, and drop the car, and the car will go along and parks itself.  And when you are ready to leave, with your cell phone you just call the car and the car will come and pick you up.  What do you think about that?  Cool, eh?  Well, we'll see.  
+
+</p><p>There is two announcements.  The first one is regarding the midterm, which is on Wednesday, as you know – next Wednesday.  It will be in class.  And preparing for the midterm, we're going to have two review sessions, you have them on your schedule, Monday and Tuesday.  So it is the same review session.  We will go over the midterm of a past year.  And it's very, very important for you to attend. 
+
+</p><p>Now our group is very large, and that's why we are going to split into two groups, so there is a sheet of paper, you sign your name and pick which day you would like to come – Monday or Tuesday.
+
+</p><p>And I think it will be done just at the time when you are very hungry, so don't worry about it, we will have pizza for you.  And also, we will have some demonstrations of some robots in the lab.  So the review sessions will be upstairs in the robotics lab in the open area, and you just should be there at 7:00.  We will start with the demos and the pizza, and then we will move to the review.  Okay?
+
+</p><p>Now, probably some of you were wondering about what is included in the midterm, and what is included in the midterm is all the lectures up to today.  That is, we are going to cover everything up to the Jacobean that we will complete, hopefully, today.
+
+</p><p>Now over here, you have the Stanford Scheinman arm, we saw the Stanford Scheinman arm in the picture many times, and this is actually one of the early arms that was built in the early '70s.  So you can see here the first joint, the end of factor joint, about this axis.  Then there is another joint which is here, and that allow us to rotate up and down. 
+
+</p><p>And I'm not going to be able to actuate it because it needs to be connected to the controller, so we release the brakes.  There is a brake right now that is blocking it in the horizontal position, and I imagine you understand why.  Otherwise, it will slip if we – because we have the third joint, which is prismatic joint. 
+
+</p><p>So the prismatic joint is really an interesting feature about this arm, because you can now take this [inaudible] and reach.  Once you decided the direction, you can quickly reach in that direction and advance the arm.  Well, this has a limitation, that is you can move up to here, and you have another stop about here.  
+
+</p><p>I mentioned about the wrist, and the wrist is here, and it has three degrees of fit.  So if we look at this wrist, you can rotate it about this axis – you see this motion?  This is joint four.  And joint five, okay?  And joint six, which is this axis.  So something very interesting happens when joint five goes to zero, and this is what?
+
+</p><p><b>Student:</b>Singularity.
+
+</p><p><b>Instructor (Oussama Khatib)</b>:Singularity.  And it's really difficult to see exactly what that singularity is, so I'm going to try to illustrate it.  The idea is when you go to joint five equal zero, this is the zero of joint five, what happens is this axis of rotation number four and the axis of rotation number six – do you see them?  One like this and one like this?  These two axes become collinear, right?  So for this position and orientation, when these two axes are collinear, you are losing locally a degree of freedom. 
+
+</p><p>And this degree of freedom that you are losing is the rotation about – I don't know if you can tell me which axis.  I'm going to take a pencil and try to find this axis about which we cannot rotate now.  So here, here, here, here.  We can rotate above this, right?  We can still rotate above this.  What about this one?  You're locked.  
+
+</p><p>And if you move little bit out, you will be able to rotate, but you see there is a large rotation of joint five.  When we are at singularity, what happens also is the fact that you have a freedom here.  It's internal, right?  And at this angularity for all these configurations of combination of joint four and six, you still have the singularity.  Because joint five now is to zero.  So you cannot rotate above this axis.  Okay?  You see it?  
+
+</p><p>Well, you will have a chance at the end of the class to come closer and check it out, but let's go to – all right, we're there.  So the definition of the kinematic singularity is here, but locally, the [inaudible] loses the ability to rotate or to translate about a given axis or a given direction, and this direction is called a singular direction, and for that location, we have a singularity.  
+
+</p><p>So the study of the singularity really depends on those Z axes we saw here – Z4 and Z6 aligned.  And you remember in the Jacobean, the Z axis appears in the columns.  So what really happens is that the Jacobean, if we look at the Jacobean is going to be reduced at the singularity, that is there are a number of those columns that become dependent, and you have a singularity.
+
+</p><p>So how do you study the [inaudible] matrix, or do you know that the matrix is singular, you cannot invert it?  What do we use? 
+
+</p><p><b>Student:</b>[Inaudible.] 
+
+</p><p><b>Instructor (Oussama Khatib)</b>:The determinant.  If this matrix is square, you would take the determinant, and when the determinant is equal to zero, you have those values for the singularity.  The way we do it, we go and say let's compute the determinant as a function of the joint angles, and what we will obtain is a set of expressions multiplying each other, and those will be the determinant.  
+
+</p><p>And those expressions are a function of Q, so when we are looking for the singularity all that we need to do is take each of those expressions and set it to zero, and that will give us the singularity associated with that particular expression.
+
+</p><p>So one thing to notice is as we look at the Jacobean, the Jacobean expressions are more complicated in some frames than others.  So it is very important to [inaudible] to your Jacobean in a frame that is – that gives you the simplest form.  And knowing that the Jacobean expressed frame J would give you a determinant that is identical to the Jacobean in frame I, we can do this transformation and not worry about the rotation matrix.
+
+</p><p>So the determinant of the Jacobean is independent of the frame.  Do you know why?  Anyone can tell me why?  Yes?
+
+</p><p><b>Student:</b>Is it because the determinant is [inaudible] by another matrix?
+
+</p><p><b>Instructor (Oussama Khatib)</b>:Yeah, by the rotation matrix.  Because to go from a Jacobean in frame J to a Jacobean in frame I, all that we need is to premultiply by a rotation matrix like this, right?  So if you are in the six by six spatial case, linear velocity and angle of velocity, the Jacobean in frame A can be transformed into a Jacobean in frame B by [inaudible] supplying the Jacobean with a matrix that has two blocks of the same rotation matrix that transforms the descriptions from A to B, and that will give you the matrix in B. 
+
+</p><p>Now if you take the determinant of these, the determinant of the Jacobean in B is equal to the product of the determinant of the two matrices, and since these matrices are [inaudible] normal, their determinant is one, and that means we have this relation.  Okay?  
+
+</p><p>Okay, good.  So remember this, and remember that you can use it to simplify the expressions and immediately analyze your determinant.  
+
+</p><p>Now once we said we are going to set the determinant of the Jacobean to zero, we immediately singular configurations, because in the expression of the determinant, as I say, the determinant will come up in this form.  So it is product of expression S-1, S-2, S-3, et cetera.  And each of those expressions, when it vanishes, it makes the determinant equal to zero.  So if you have multiple singularities, they are here.  And you just set each of those expressions to zero and you get your singularity.  
+
+</p><p>Okay, let's take the simplest example possible, which is a 2 degree of freedom, and see if we have a singularity for this Jacobean associated with this mechanism.  Do you see a singularity here?  It is where? 
+
+</p><p><b>Student:</b>[Inaudible.] 
+
+</p><p><b>Instructor (Oussama Khatib)</b>:When theta two goes to zero or to pi or k-pi, you align the two points and you're going to have a singularity.  Let's see it in the mathematics.  So I'm going to take X and Y – X – L-1 cosine, theta one plus L-2 cosine [inaudible] you remember all of that, and now if we differentiate, we have this Jacobean, right?
+
+</p><p>So as I said, if we determine our expression for the determinant, it comes to be L-1, L-2 sign of two, and this vanishes when the sign of two is equal to zero, which corresponds to all the configuration when Q-2 is equal, and integer times pi.  
+
+</p><p>So as I said also, so you see the Jacobean here, you see its expression?  Well, it will become much simpler if we write it in frame one.  To take it to frame one, we premultiply this Jacobean by the rotation matrix 021.  We are doing the rotation in the planes, so it is a two by two matrix, don't be confused, all right?
+
+</p><p>So we are just doing it in the plane.  And our singularity, this is the singularity when we move the last link to be aligned with the first one, well, in that configuration, when the sign vanishes, this is the Jacobean.  Yes?
+
+</p><p><b>Student:</b>[Inaudible] rotation, would you say cosine one, two versus [inaudible] one two versus sign two [inaudible]?
+
+</p><p><b>Instructor (Oussama Khatib)</b>:So here we say cosine theta one plus theta two, and we denote it C-1, 2, or S-1, 2 would be the sign for the sum.  Okay?  Just to simplify, to have a more [inaudible] presentation.  So this is what is happening.  So what do you see here?  You see directly how these two columns are dependent, and the length of the matrix is equal to?
+
+</p><p><b>Student:</b>One.
+
+</p><p><b>Instructor (Oussama Khatib)</b>:One.  So if we think about the displacement delta X and delta Y, associated with this configuration – so if we make a small displacement delta theta one, delta theta two, what would be the displacement delta X and delta Y?  Well, we know delta X is equal to Jacobean delta theta, so you multiple, and this is what you will [inaudible] – delta X is going to be zero, the first row is zero. 
+
+</p><p>And the second row are multiplying with the second row, delta theta one with the first element, and delta theta two with the second element.  You see this?  Do you understand this?  Okay, what does it mean for any delta theta one or delta theta two?  Delta X is going to be equal to zero.  And the reason for that is the fact that when we are in this configuration, and when we make a small displacement delta theta one, so if we rotate about this axis, this point will move on the tangent of this circle, right?
+
+</p><p>If you rotate about this axis with a delta theta two, you rotate about this – you go on this tangent.  That is whether we move delta theta one or delta theta two, both of them are contributing to the displacement with a small displacement along this tangent.  So there is no displacement that will take place along this direction, and that's why delta X is equal to zero.  Do you see that?  Yes?
+
+</p><p><b>Student:</b>How did you get [inaudible]?
+
+</p><p><b>Instructor (Oussama Khatib)</b>:How do we get this Jacobean here?
+
+</p><p><b>Student:</b>In the last line.
+
+</p><p><b>Instructor (Oussama Khatib)</b>:Differentiate.  I thought we're done – how do we obtain the Jacobean from X and Y?  This is going to be just the linear Jacobean, JV, so we differentiate delta X.  The first column will be what?  [Inaudible]  X with respect to cosine to theta one.  So it will be minus, okay?  Do you understand this, everyone?  
+
+</p><p>Okay.  So when we rotated with this matrix, I'm multiplying and I get this Jacobean at zero and we are here, and we're saying that theta one displacement, theta two will be always in this direction, that is will be [inaudible] to this direction, so there is no displacement delta X.  And I'm looking here in frame one.  In frame one, so this is Y and this is – this is Y and this is X.  
+
+</p><p>Okay, so let me show you this on a bigger robot.  What is the name of this robot?
+
+</p><p><b>Student:</b>PUMA. 
+
+</p><p><b>Instructor (Oussama Khatib)</b>:PUMA, very good.  So right now PUMA is floating, so if I apply a force to it it's going to rotate.  It's floating.  So I'm pulling like this, I'm pulling like this.  If we pull here, what is this configuration?  If you try to move the PUMA in this direction, you apply a force, it's not moving.  If you try to move in this direction, it moves because there is a small angle.  
+
+</p><p>But if this angle is straight, then you apply a force and there is no motion, and this is the singularity, when you extend the arm, you cannot move along this direction.  So if you apply any force in this direction, immediately you have a motion.  If you apply whatever force you apply here, there is no displacement along this direction.  Okay?  You understand the singularity?  Good.  So let's close this window.
+
+</p><p>All right.  So now you know the singularity – that configuration that we are calling singular configuration.  But really the problem is not the singularity itself, it is the region around the singularity.  Because when you come close to that singularity, you start to have a matrix that is ill conditioned.  And if you try to make a displacement along this direction, so you were in this configuration, and if you are very close to it you can move, but it's very heavy.  It's going to take a lot of force to pull it and make this goes up, the elbow, it goes up.  
+
+</p><p>So what I'm going to do, I'm going to take a small displacement delta Q – yes?
+
+</p><p><b>Student:</b>The last line, why is the Jacobean different from – why is it L – yeah, why is it L-2 – why is the top right L-2, S-2 instead of L-2, S-1?
+
+</p><p><b>Instructor (Oussama Khatib)</b>:Can anyone answer this question?
+
+</p><p><b>Student:</b>It's in frame one instead of frame zero?
+
+</p><p><b>Instructor (Oussama Khatib)</b>:So this matrix is expressed in frame one.  
+
+</p><p><b>Student:</b>No, as in that one is frame zero, right?
+
+</p><p><b>Instructor (Oussama Khatib)</b>:No, the multiplication by zero to one, actually this matrix is multiplied by this [inaudible] in frame zero, so this is J-0.  This one here.  I think you are confused because of this.  This is in frame zero, and this matrix in frame one.  That is our program running, that's why everything becomes slow.  Okay, so this is in frame zero.  
+
+</p><p>Okay, so in frame zero, because this is the rotation from one to zero, and this is the Jacobean in frame one, and when you make sign of two equal to zero, you get zero, zero, L-2, and L-1 plus L-2.  Okay?  
+
+</p><p>All right, so let's go to the next slide.  So rather than computing the Jacobean exactly, I'm going to make a small approximation of the Jacobean and I'm going to compute delta Q that corresponds to a delta X where we are in that singular configuration.  So if theta two is equal to zero – I mean very close to zero, theta is epsilon, you can write this inverse of the Jacobean – so what do you do if theta two is very small, to approximate your signs and cosines?  Sign of theta two and theta is very small, is it almost equal to?  To zero.  And the cosine?  One.  
+
+</p><p>So if we do that and compute the inverse in frame one, this is the matrix you will obtain.  And from this matrix you can find the displacement to make a small displacement delta X, you can computer the displacement required for delta Q.  So that means if we went to make a displacement delta X-1, small displacement delta X-1, and small displacement delta Y-1, this would be the expression for delta Q-1.  And this would be the expression for delta Q-2, okay?
+
+</p><p>So this is not exact, this is an approximation where we are working around the configuration theta two equal to zero.  But it is very useful to look at it, because as theta two gets smaller and smaller, you are dividing by zero.  You can see that.  So to achieve any delta X, you are going to have a large displacement delta Q-1, or delta Q-2.  Do you see that?  In fact, if we look at it graphically – so here is the configuration very close.  
+
+</p><p>Graphically, if we look at displacement of theta two that comes closer and closer to zero, the displacement delta Q-1 increases.  And the same thing if we come from the other side of zero, we have – so we have this continuity that makes it that we have large value of delta Q-1 that will be needed, or large values of delta Q-2 that will be needed.  And when you get to the singularity, there is no amount of value – you need infinite value.  Okay?  
+
+</p><p>So this means that we have really to deal with the singularity not only at zero but also around the region where the singularity is taking place.  
+
+</p><p>Now in your homework, in our discussions we always place the problem in the spatial case.  But often, the robots you are dealing with become [inaudible] and you have this large matrix, and you are going to study the Jacobean of a matrix that is actually now squared.  This is the case for if we take X, Y and we take the J omega 001, 001, we end up with a large description with all these rows of zero.
+
+</p><p>So we talk about the reduced matrix that you can analyze in the case corresponding to a linear motion to 2 degrees of freedom, or a planar motion.  So if you have the case of two degrees of freedom, your analysis is done on this matrix, on the two by two matrix, on the JV part.  And you don't have a Z part, so it is just a two by two matrix, okay?
+
+</p><p>In the case – if you have – so this is what you will be finding, and it would be coming from this two by two matrix.  If you have a 3 degrees of freedom, if you have a 3 degrees of freedom, then you are going to have a matrix like this – X, Y, and the Z, and then you have the J omega 001.  So the reduced matrix will be, in the plane would be X, Y, and the last row.  Basically you are dropping those three rows, so this is your matrix.  And you'll study this determinant, and you will be able to find the singularities associated with this 3 degree of freedom manipulator.  So – yes?
+
+</p><p><b>Student:</b>[Inaudible.]  
+
+</p><p><b>Instructor (Oussama Khatib)</b>:Because in the case of a planar robot that has three degrees of freedom, the matrix that you're going to analyze is going to be X, Y, and the rotation about the Z axis.  So you can do it actually with this matrix, but to analyze the determinate of this matrix you do not know how to do it, how do you take the displacement of this matrix?  
+
+</p><p>So to analyze the singular configuration, you can do it from here by forming the matrix J transpose J, and reducing the matrix to a three by three matrix, which corresponds directly to eliminating the three rows.  So the matrix on the top captures the characteristics of rank of this matrix.  Yes?
+
+</p><p><b>Student:</b>But wouldn’t it be the same determinant? 
+
+</p><p><b>Instructor (Oussama Khatib)</b>:Yeah, it could be example – well, basically if the matrix is not square, you have to go to a singular value of the composition, and the singular value, you basically look at the singular value by forming the square of the matrix.  So the matrix that [inaudible] be formed will be the square of that matrix.  But because we have zero rows, we can just reduce it to those three independent – so we know exactly that we have X, Y, and the rotation.  Okay?  This is just a simple trick to help you do the analysis without going to singular value [inaudible].  All right?  Okay.
+
+</p><p>So here is the Stanford Scheinman arm, and we just analyzed – I mean we just saw the singularity of the Scheinman arm by looking at joint five when it goes to zero, and in fact if we do this competition we multiply the matrices, we do the differentiation – you remember, we did this last time and we obtained this matrix.
+
+</p><p>So let's see what happens when theta five goes to zero in this matrix.  So could you tell me what is happening?  [Inaudible] in is to see if there is immediately a dependency between columns, whether a [inaudible] configuration columns becomes dependent.  So this is column one, two, three, four, five, and the last column, six.  
+
+</p><p>Four and six becomes collinear.  Okay.  Let me write them for you – that's what happened.  So the column four and the column six are identical, which means that now you lost the rank.  The rank of this matrix is five, so you have a singularity.  So basically, the Jacobean captures the fact that you see in the physical robot, the fact that when these two columns, these two axes are aligned, essentially what is happening is you are getting two columns in the Jacobean that become dependent.  Okay?  Everyone sees that?  Good.
+
+</p><p>All right, so now we're going to answer some concerns about this last frame.  You remember many times I repeated and said, well, the robot and the factor might be operating here, if I'm grasping, or if I have a tool I'm concerned with this point here at the end of the tool or in the middle of the tool, depending on the task.  
+
+</p><p>So what we are going to do, we're going to use the intersection of the three axes as the point origin of all the frames, and we developed the Jacobean for that.  And the Jacobean we saw here, this Jacobean [inaudible] in this configuration at this point.  Now I say it will be very easy to go from here to here, there is a [inaudible] transformation.  And this is built for computing X, so this X is [inaudible].  And this X here is the X [inaudible].  
+
+</p><p>So when we go from here to here, there is a constant vector.  So XE is equal to XW plus that vector.  So now we're going to see how we transform the description of the Jacobean from a Jacobean associated with this point to a Jacobean associated with that point.  Yes?
+
+</p><p><b>Student:</b>I think your mic fell off.
+
+</p><p><b>Instructor (Oussama Khatib)</b>:I’m sorry?
+
+</p><p><b>Student:</b>I think your microphone fell off.
+
+</p><p><b>Instructor (Oussama Khatib)</b>:You're right, I can see it.  Thanks.  Okay.  So essentially we have two frames – one frame associated with the frame we selected for the last link; in this case it was this frame or the wrist point, and the second frame is this additional frame we are attaching to the [inaudible].  So now think about it – you have a vector connecting the origins.  This is the vector P and E, connecting the last link frame to this location of the [inaudible].
+
+</p><p>Now the velocities – linear velocities and angular velocities at that point are transformed to linear velocities and angular velocities at the end point.  And the question is what is the difference between the two?  So in term of – if we go back to the robot and if we think about – we have some velocity, linear velocity here, moving this point, and this at the same time is rotating with omega. 
+
+</p><p>So the question is what is the omega here and what is the V here?  Could someone tell me what would be the linear velocity of this one, given the linear velocities that we know at this point, and the angular velocities of that one.  So given we know VN and omega N, what is VE and omega E? 
+
+</p><p><b>Student:</b>They're the same.
+
+</p><p><b>Instructor (Oussama Khatib)</b>:Okay.  So omega E is equal to omega N?  Everyone agrees?  Or – that's correct.  And VE is equal to VN?  Okay, who disagrees with that statement?  How many disagree?  I disagree too.  All right.  So some of you still think it is the same velocity – VE equal to VN.  You remember the apple?  There is an additional velocity coming from the fact that this – there is an angular velocity here that is going to affect this angular velocity.  
+
+</p><p>Even if there was zero velocity at this point, VE – I mean VN – there will be some linear velocity due to the rotation.  So the relationship between the two is like this:  VE is equal to VN, plus omega N cross P and E.  All right?  And the other relation is fine – this is correct.  
+
+</p><p>So I wonder why I switch and put minus?  Anyone knows?  Yes. 
+
+</p><p><b>Student:</b>They mean the same thing if you cross something [inaudible] in the opposite direction [inaudible].
+
+</p><p><b>Instructor (Oussama Khatib)</b>:This is correct.  This is correct, but I mean so I just replace that relation and put it in this form.  Why I'm after this form?  So basically, VE omega N is now linear in VN and omega N.  We put it in the other side, and the reason is I would like to connect the two.  And do you see how can we connect the two?  What is the relationship between the vector VN omega N as a vector, and VE and omega E as a vector?  What is the – 
+
+</p><p><b>Student:</b>[Inaudible.] 
+
+</p><p><b>Instructor (Oussama Khatib)</b>:There is some matrix, and this matrix involves what?  [Inaudible] matrices because this is identical, and P and E cross.  What does P and E cross?  How do we make P and E cross as a matrix? 
+
+</p><p><b>Student:</b>[Inaudible.] 
+
+</p><p><b>Instructor (Oussama Khatib)</b>:Exactly, so that we use the cross product operator.  So actually, this writing allow us to find this matrix immediately connect VN and omega N to VE omega E.  What is on the diagonal?
+
+</p><p><b>Student:</b>[Inaudible.] 
+
+</p><p><b>Instructor (Oussama Khatib)</b>:Because V is equal to VN minus P and E, so it is the first diagonal block is identity, and the second omega E is going to be identity times omega N, so there will be zero identity.  And what is on this upper block on the right?  It is minus the cross product operator.  So basically we have the identity on the diagonal, we have zero, and we have minus P and E [inaudible] okay?  All right.
+
+</p><p>So now we have a linear relation between the two, and it involves just the vector connecting the wrist to that point, and we are taking the cross product operator of that vector.  Now when we do this computation, you have to be very careful to make sure that, you know, your P and E vector is described in frame N most of the time.  It's just like a straight line along the Z axis.  It is just a small length along that Z axis.  So it will be 007.  
+
+</p><p>But if your VN omega N is described in frame zero, you cannot do this multiplication.  So you need your operator to be described in frame zero.  So we have to pay attention to this to make sure that this computation is carried correctly so that we obtain a Jacobean in the same frame.  The Jacobean in frame N is now related to the Jacobean –  I mean the Jacobean [inaudible] is related to the Jacobean N by this matrix, and we have to make sure that the Jacobean here is expressed in the same frame to produce the same frame Jacobean at the [inaudible].  Yes?
+
+</p><p><b>Student:</b>[Inaudible] to the [inaudible]?  
+
+</p><p><b>Instructor (Oussama Khatib)</b>:Well, this is capturing both JV and J omega.  There is a rotation.  Now the question is, I'm talking this is general expression of the relationship.  When we have a Jacobean in frame zero, we have to make sure that this operator is in frame zero. 
+
+</p><p><b>Student:</b>[Inaudible] omega N is the rotation in the last joint, right?
+
+</p><p><b>Instructor (Oussama Khatib)</b>:If omega N is the total – VN and omega N are the end – are the linear velocities and angular velocities produced by all the joints expressed at the end of factor frame – not end of factor frame, at the last link frame – frame N.  And we are now computing the velocities at the next frame, the end of factor frame.  And that's why we can substitute VN and omega N with JNQ, but N.  And this would be the Jacobean EQ.E, and this is true for any Q, so this is the relationship.
+
+</p><p>So what you see here is that the Jacobean at the wrist point, in this case is transformed to the Jacobean at the end of factor very simply by taking the cross product operator associated with the averages.  Very simple.  Okay.
+
+</p><p>So this is the relationship if we are in frame zero.  I said this operator should be in frame zero.  Now you're going to make the mistake so I'm going to tell you not to do it, explain why, and then you have the relation correctly for this operator in frame zero.  
+
+</p><p>So suppose you have your operator in frame N.  How do you transform it to frame zero?  So I take the vector 007 in frame N, and I take that operator, and then I want to transform it to frame zero, so you?
+
+</p><p><b>Student:</b>[Inaudible.] 
+
+</p><p><b>Instructor (Oussama Khatib)</b>:So what [inaudible] do you premultiply it or do you take the operator and premultiply by the rotation matrix to frame zero?  How many agrees with him?  No one?  No one.  At least.  You're alone.  So how would you do it, then?  You don't agree with him, so how do you do it?  Well, you're not really alone, but no one is really convinced yet, so we have to find – so how we do that?  The problem is his statement is wrong.  You cannot just take an operator and transform it this way by just a rotation matrix.  
+
+</p><p>In fact, this is a similarity transform.  You have to premultiply and postmultiply, and the reason is think about it from the beginning.  Let's go back to this blue equation and think about it.  So we are saying that let's go back to the vector representation, so P – what we are transforming is the vector P in frame N, multiplied by the vector omega in frame N, and transforming them.  This is correct.  This is vector relationship.
+
+</p><p>So now what we are going to do, we are going to take this vector and now I'm going to express this matrix in the frame and that leads to this relation.  And the transformation is – so if you did your operation in frame N, you transform it using the similarity transform, because you are multiplying, you're assuming you are multiplying by the omega in the appropriate frame, which is frame N, so you have to go and postmultiply it by N-0.  
+
+</p><p>Now the best way to do it, perhaps, is just to go to P – P in frame N, transform it to frame zero, and then just do the operation – I mean the cross product operation in frame zero, and then you will have it directly.  So if you start with PN, transform it to frame zero, then you can get directly the operation.  Otherwise, if you have the operator in frame N, you need to do this.  Okay?  Don't do that mistake.  
+
+</p><p>All right, so here are the two important relations we learned.  The first one is a Jacobean in frame I is transformed to a Jacobean in frame J, and the relationship involves only premultiplication by a rotation matrix.  
+
+</p><p>In the case of a Jacobean in frame N that we would like in frame zero, we have to do this diagonal transformation from frame N to zero, but for the operator, you have to put the similarity transform.  Okay?  Good.
+
+</p><p>Well, there is here an example of a Jacobean computed at the wrist point, a Jacobean computed at the end factor point, and we are computing this vector W from A to zero, and I'm going to skip it because we really don't have time to do it.  But once you – I think you have it in your handouts, just go through it and you'll see that you can compute JE from this J omega simply by computing this operation associated with the vector-connecting W to E.  And what we did is we computed P in frame zero, and found the operator in frame zero directly, okay?
+
+</p><p>So please take a look at this in the – so I'm going to move, because we are going now to discuss something important about the Jacobean, and this is the fact – we already started to introduce it little bit, but the fact that the Jacobean is very useful not only to analyze velocities but also to control the robot.  
+
+</p><p>Most [inaudible] robot actually are controlled just with the Jacobean, because this Jacobean is always connecting your desired position and orientation of the end of factor, you have some delta X here, and if you know how to control the joint motion, all that you need is to say okay, at this configuration I would like to make a small displacement delta X.  What would be the small displacement delta Q?  
+
+</p><p>And that can be obtained from the Jacobean, because the Jacobean is giving you this relation, and if you are outside of the singularities, what can you do?  Can you compute delta theta that corresponds to your delta X?  Well, this is the relation that can be used directly to compute displacement delta theta to follow what you would like to achieve with delta X. 
+
+</p><p>And you start from theta, you know the theta.  You know your X.  You can compute it from the forward kinematics.  You want to go to X [inaudible] then you can compute a delta X by taking X [inaudible] minus X.  Hopefully this is small so you can use the Jacobean.  And then you can compute the corresponding delta theta to this delta X using this relation, right?  And then you know theta, so you control the robot to move from theta to theta plus.  Okay?  You see this algorithm?  Very simple.
+
+</p><p>You measure where you are, you know your theta, you know your X, and you want to make a small displacement delta X, all that you need to do is to compute the delta theta from your Jacobean.  So basically, you have a sort of controller that is using the Jacobean to compute this error between your desired position and measure position computed from the four kinematics as a function of [inaudible] and that will give you a delta queue that will distribute to each of the joint and ask the joints to track.  Okay?
+
+</p><p>So this is the [inaudible] motion rate control proposed by Dan Whitney back in the '70s, this simple algorithm, if you don't really care about dynamics, if you don't care about [inaudible] control, contacts the robot with the environment, this is fine.  That will – and if you are outside of singularities, this will take you through.
+
+</p><p>But obviously, it's not going to work very well because you're going to have problems with accelerations, if you're tracking a motion, you are basically doing this and you will have a lot of errors.  But still, if you have just a small displacement and slow motions, this is going to work.  Okay.
+
+</p><p>The last point in our discussion deals with static forces, and again, the Jacobean is going to give us the answer.  And that's why now with this Jacobean, we saw that we are able to understand the velocities produce at the end of factor, giving the joint velocities, that we are going also to see that the Jacobean is part of this relationship between forces exerted by the end of factor, and torques produced at the joints.  The same matrix. 
+
+</p><p>So how can we start with this?  Okay, let's go upstairs.  So now we're in the robotics lab, James was the TA, I took that photo when he was TA, but it was a couple of years ago.  So how do you open this door?  Come on.  
+
+</p><p><b>Student:</b>[Inaudible.] 
+
+</p><p><b>Instructor (Oussama Khatib)</b>:So you take your hand and you start after turning the knob, you push little bit and it's going to rotate.  You see how it's going to work.  So let's analyze it.  So you're pushing here, right, at some location, and you have the axis of rotation, right?  So there will be a linear velocity.  We're pushing with some velocity, so at that point there is some linear velocity.  Corresponding to that velocity, there is some angular velocity above the axis.  You see that?  All right.
+
+</p><p>Now we can also think about the forces I'm pushing with.  So the linear velocity is related to angular velocity by this relation – we saw this.  The forces, if I apply a force here, there will be a torque.  Actually, I could have this door actuated with a motor, producing a torque, and that corresponds to a force here, and there is a complete relationship between the two.  And do you know what is the relationship between the two, torque and force?  The cross product, but in this way:  the torque is equal to P cross F.  So the torque now is on the other side, and the F is on this side, okay?  So V and F, you see V and F, they are crossing in the two equations.  
+
+</p><p>Actually, the first equation represent sort of a Jacobean relating velocities V and omega, or theta dot, and the second relation is representing sort of transpose of that Jacobean.  And we're going to see that.  So let's go and analyze this.  
+
+</p><p>So we have operator, we have linear velocity, and this is the relationship [inaudible].  Here we can write it in this form, we can say V is related to omega by minus P [inaudible].  Right?  Okay.  Torque.  So if we want to produce our force there, you can apply a torque, and that would be equal to P cross F, which can be now represented by P [inaudible] F.  
+
+</p><p>Okay.  Let's take that and put it really similar to this.  So it's minus P [inaudible] so it is identical to that.  You see this transpose I'm writing?  Because the operator is asymmetric, you get minus the operator equal the transpose.  Okay, so I'm just writing minus P [inaudible] T.  So basically, this is the Jacobean and this is the transpose of the Jacobean.
+
+</p><p>And if we want really to check it out, just put a frame and compute this operator.  It will be minus PY – PX, these are the coordinate of this vector – PX, PY.  And if you put it there, it is this.  So basically, there is a duality between – this is for 1 degree of freedom.  A door is 1 degree of freedom.  So there is a duality between velocities and forces.  We can compute the torque corresponding to the forces acting at the point by looking at this matrix minus PY, PX, or we can compute the velocities through this.
+
+</p><p>So this is the Jacobean, and this is the Jacobean transposed, and this the relationship between forces involves the same metrics in transpose.
+
+</p><p>Okay, so remember these two relations, they are fundamental relations in the kinematics of robots, but they are going to play a very important role as we go to dynamics and control.  Velocity and forces.  Okay?  
+
+</p><p>Well, there are many different ways of actually establishing this relation.  So you remember when we wanted to establish the relationship between velocities at the joints and velocities at the end of factor?  We said we can do propagation of velocities and compute the propagation from in fact the base up to the end of factor, and find the relationship and extract the Jacobean.  
+
+</p><p>Well, you can do the same here.  You can say my robot is in contact with the environment, and it is applying to the environment a force F and a torque or moment N.  And you can start from the end and go down and propagate velocity – I mean propagate forces and find the relationship between forces at the end of factor and torques applied to the joint.  
+
+</p><p>And this propagation is going to lead to the Jacobean transpose after elimination of all the internal forces, because when you are pushing with the robot, the structure of the robot is taking part of the forces and the other part is going to the joints.  And the joints are going to support it with motor [inaudible].  So if we do this elimination, we have to be careful that we project at each step those forces on the axis of the joints to make sure that we are looking at the active part of the force.
+
+</p><p>So we're going to just briefly look at this, and then I will show you another way of doing the analysis using the [inaudible] principle.  So how do we do this?  So if you have a problem with the application of forces and you are reaching a static equilibrium and you are saying I'm going to try to establish the relationship between those forces and those torques, it is static equilibrium because you're applying these torques and these are pushing the environment and the environment is pushing with equal and opposing forces and moments.
+
+</p><p>So how do we do it?  Well, we just break it down.  We break it down into pieces, and we take each of the rigid bodies and we say each of the rigid body is going to have to be at static equilibrium.  So we start from the top and we say first of all, this is the forces applied to the environment, which means the last link is receiving the reaction forces of the environment – minus F and minus N – and it's on the other side of the link at the joint it's receiving some forces, F-3 and N-3 on link three.  And you do the same for the other ones, okay?   
+
+</p><p>Then what do you say?  Well, if each of these is at static equilibrium, how do you express that?  What are the conditions?  
+
+</p><p><b>Student:</b>[Inaudible.] 
+
+</p><p><b>Instructor (Oussama Khatib)</b>:Some of the forces are equal to zero, and?  Some of the moment computed with respect to any point on the rigid body are equal to zero.  That's it.  And you have static equilibrium.  So this is the last link.  And now if we take one of them and express what you just said – so static equilibrium, when some of the forces equal to zero and some of the moment with respect to [inaudible] point equal to zero, then you can find a relationship and those relationship are going to be in this form:  forces plus equal to zero, moments plus these moments plus the moment associated with the force FI plus one is equal to zero if I'm computing at that point, and that is the origin of frame I. 
+
+</p><p>And from this you have recursive relations, so you can compute back propagation, FI as a function of I plus one, and NI as a function of this.  You back propagate and you extract the Jacobean, but before that what you need to do is to project on the axis and make sure that you are getting the forces as you propagate.  So at the joint, you are – if the joint is prismatic, you are going to project the forces.
+
+</p><p>Because if I'm doing something here, this will – the only thing that will come is a force that will make it translate, so that would be a force.  For a joint, [inaudible] joint, the forces are supported by something that counts as the moment.  So you project in there the moment, and the torque will be – so this is projected by that product with a ZI axis, and you get this algorithm, and now you propagate from the forces you're applying back to the ground, and from there you can find your Jacobean transpose. 
+
+</p><p>Well, again, in this case the Jacobean is inverted inside your numerical calculations that is you are propagating from the end to find your Jacobean.  So the Jacobean can be computed by velocity propagation.  You can compute the Jacobean transpose by back propagation of forces.  Or we saw – and this is the simplest way – is to compute explicitly the Jacobean by looking at the structure.  And once you obtained the Jacobean that way, the explicit Jacobean, you can in fact immediately go and state what is the Jacobean associated with the forces.  
+
+</p><p>We can the redo the analysis completely in a different way.  This analysis was relying on taking the mechanism and breaking it into pieces, and eliminating the internal forces to find the Jacobean.  Well, we know something about the mechanism and about the forces, about active forces, about internal forces, that would allow us to make statement, more general statement, that will not require us to go and do this [inaudible] elimination.  
+
+</p><p>And this is the virtual work principle.  Are you familiar – who's familiar with the virtual [inaudible] principle?  One, two, three, four, five, seven – okay, seven.  All right.  So it's very simple and it's very important, in fact, in dynamics later.  The idea is if you take a mechanism, you can just drop all the internal forces and just worry about active forces.  
+
+</p><p>Because internal forces are worthless – they are not going to move anything.  They are supported by the structure.  So I'm going to avoid them and I'm going to make a [inaudible] statement about static equilibrium, which is – so we're going to think about the work.  You know work – work is force times displacement, right?  So we can think about the work done in small displacement, and if there are displacement, there are forces acting along with displacement.
+
+</p><p>And what we're going to say is that at static equilibrium – so this is the statement – can you read it?  Okay.  What does it mean?  That is if we take all these active forces that are acting along the axis of displacement, so all external forces are active.  If you push on the robot, it's going to move.  If you apply a torque at the joints, it's going to move.  Internal forces are not going to produce any motion.  They are taken by the structure.
+
+</p><p>So now we need to deal with two things:  the forces in that vector F, F and N, the forces applied by the environment, and the torques.  And what I'm going to say – I'm going to write this relation.  I'm going to say the virtual work done by all these forces has to be equal to zero if I'm in static equilibrium.  Otherwise, there will be a motion. 
+
+</p><p>So what is the work done by the torques?  Well, the work done by the torques is torque transpose delta Q.  The [inaudible] product between delta Q and the torques.  And what is the work done by the external forces?  The [inaudible] product between?  Between F and?  What is the vector name?  Delta – what?  Delta X.  Because F is acting along X direction – X, Y, and Z. 
+
+</p><p>Okay, that's it.  So the whole thing now is captured by this equation.  We're saying that if we are really at static equilibrium, these torques are supporting the forces.  Okay, just expect the relationship from here.  How do you do it?  Well, you have delta X, you'll have delta Q.  Do you know any relationship between delta X and delta Q?  Jacobean, very good.  
+
+</p><p>So let's use the Jacobean and that gives you this relation for any delta Q.  Which by transpose gives you your answer.  All right?  So basically, this whole thing comes to be very simple if you just look at principle that [inaudible] problem and you can go and look at the internal forces, then you compute them, then you eliminate them, and then you find the relationship between the active force torques and the external forces [inaudible], or you just state it. 
+
+</p><p>So we have this duality, and you have here an example showing you how you can compute the torques to support one Newton.  It's very simple.  You take the Jacobean transpose and do the multiplication, and the answer is going  – well, we compute it for L-1 equal one, L-2 equal one, theta one equal zero and theta two equals 60 degrees.  And you need this amount of torque to support that one Newton force.  
+
+</p><p>Now, if I'm going to apply one ton – I mean 1,000 Newton, so let's see.  We do the same thing – we put 1k of forces along the Z axis – I mean the Y axis in this case here, along this direction.  And I'm going to compute it at this configuration:  L-1, L-2, theta one equal 90 degrees, theta two is equal to zero.  Do you know – can you imagine this configuration?  This is this configuration.  Oh, you cannot see it.  
+
+</p><p>It is the configuration when the whole arm becomes vertical.  Why it [inaudible].  Anyway, when joint one and joint two are aligned.  And the answer is zero.  What happened?  You're putting the arm here and you're pushing down.  You can take any force, because of the singularity.
+
+</p><p>So at singularity, we cannot move, but we can sustain a lot of forces, or produce a lot of forces with a small amount of torque.  When you come closer to a singularity, to produce a large force, you just make small torque and you have huge amount of forces.  And when you are at the singularity, you can sustain.  And that's why when you are lifting something heavy you go like this, you don't lift it like this way.  You just go like this – you use your singularity [inaudible]. 
+
+</p><p>All right, so the homework is due now on Friday.  I hope everyone get the message.  And the homework that is distributed today will be due the week after the midterm.  I will see you on Monday. 
+</p><p>
+[End of Audio]
+</p><p>
+Duration:  75 minutes 
+</p><p>
+</html>

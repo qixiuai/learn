@@ -1,0 +1,397 @@
+<html>
+IntroductionToRobotics-Lecture03
+</p><p><b>Instructor (Oussama Khatib)</b>:Okay, let’s get started.  So today’s movie segment is about a special actuator.  Probably you saw this on the first lecture, but we will see some more details.  So this is a flexible actuator that comes from Toshiba, and this was developed in the early ’90s.  It was presented at 1991 video proceedings.</p><p>
+
+[Video]:</p><p>This new actuator is made of fiber re-enforced rubber and is driven pneumatically or hydraulically.  It has 3 degrees of freedom; pitch, [inaudible], and stretch, which are adequate for robot mechanisms such as fingers, arms or legs.
+
+</p><p>The actuator has three internal chambers, and the pressure in each can be controlled independently though flexible tubes.  The rubber is circularly re-enforced with fiber to reduce deformation in the radial direction.
+
+</p><p>The actuator can be flexed in every direction by controlling the pressure in each chamber.  [Inaudible] developed actuators ranging in size from 1 millimeter to 20 millimeters in diameter.  This is the formula meter actuator.  The design is easily miniaturized because of its simple structure.
+
+</p><p>This is a modified version.  The rubber is reinforced spirally with fiber so that rotational movement is possible.  We can apply these flexible micro-actuators to miniature robot manipulators.  By connecting them serially, we get an arm with many degrees of freedom and snake like movements.
+
+</p><p>This is a prototype consisting of two actuators and a mini gripper.  It has 7 degrees of freedom including the gripper.  It can accomplish delicate tasks, which could be handled only with great difficulty by conventional robots.
+
+</p><p>Constructing miniature robot manipulators is easy because the actuators also act as the robot structure.  On the other had, combining the actuators in parallel results in a multi-fingered robot hand.  They form a dexterous hand with a delicate touch.  This prototype consists of four actuators, each 12 millimeters in diameter, and it has 12 degrees of freedom.
+
+</p><p>It’s able to handle fragile and complicated work with ease, because the actuator’s deformed to suit the shape of the work piece itself.  The bolt is easily tightened with only rough settings of the position and orientation of the hand because the actuators have such good compliance.
+
+</p><p>Miniature robots with a soft touch and no conventional links can be created using these actuators.  People see the use of flexible micro-actuators – 
+
+</p><p><b>Instructor (Oussama Khatib)</b>:So, what do you think?  What would be the advantages of using pneumatic in this way?  Yes?
+
+</p><p><b>Student:</b>Probably safer for a lot more objects.
+
+</p><p><b>Instructor (Oussama Khatib)</b>:Safer, you said?  So safety is a very, very important aspect of the design of a robot, especially if the robot is going to interact with humans, and you really don’t want this robot to just go crazy and hit and make a large impact.  So soft actuation using pneumatic is very good because it basically – it’s compliant, right.
+
+</p><p>Now another implication of the fact that you are using pneumatic is the structure of the robot is going to be lighter, because if you think about operating these fingers with the motors or [inaudible] I think about an arm with motors.  You need to carry the motors, you need to put gears, you need a lot of structure to handle it, so definitely this is lighter, safer, more flexible, compliant, all of that.
+
+</p><p>Any disadvantage you can see?  Yes?
+
+</p><p><b>Student:</b>Harder to control?
+
+</p><p><b>Instructor (Oussama Khatib)</b>:Yeah.  Basically – well, I mean, it depends what you want to achieve, but you cannot expect to achieve the tasks.  What kind of tasks you cannot control with this type of actuation?
+
+</p><p><b>Student:</b>[Inaudible] motion?
+
+</p><p><b>Instructor (Oussama Khatib)</b>:[Inaudible] motion or fast dynamics if you want to change directions because?  What is the problem with that [inaudible]?
+
+</p><p><b>Student:</b>[Inaudible]
+
+</p><p><b>Instructor (Oussama Khatib)</b>:So yeah, I mean basically the response of this is going to be slow because you are using air pressure and you cannot push the air pressure to a point where you can really get fast dynamics.  Well later on in the quarter we will see a concept that combines this idea of using pneumatic, which is light to carry, and would result into a nice light structure, combine it with other type of actuation to bring hybrid actuation in a way that combines both the advantages of the light structure and the fast dynamics that we need to achieve all the different tasks that would require the robot to respond quickly.  Yes?
+
+</p><p><b>Student:</b>Is there any good way to [inaudible] that, like, you don’t actually know where you’re [inaudible]?
+
+</p><p><b>Instructor (Oussama Khatib)</b>:Well that [inaudible], you would see the robot was like turning.  Okay, anyone would like to answer this question?  I’m sure you have an idea, but, this is really not fundamental to the robot design.  It is more on the fact that we have no external feedback or no touch, or we are not using the information about the touch to realize that we already left that contact.
+
+</p><p>But this is actually something that you can add on top of the design to – like would – What kind of sensory you would use?
+
+</p><p><b>Student:</b>Pressure sensor?
+
+</p><p><b>Instructor (Oussama Khatib)</b>:Touch sensor, you mean like you want to know if you are touching or not?
+
+</p><p><b>Student:</b>Pressure would be [inaudible] to know exactly like how far you are, but with something like that, [inaudible].  Like [inaudible] put something that exactly tells you the position of the end.
+
+</p><p><b>Instructor (Oussama Khatib)</b>:So we can put a sensor at the end that is localized at the tip of the finger and then we can feel whether the sensor is on or off.  That is just touch, but if you want more information about the pressure, you need a sensor, [inaudible] sensor that would measure.
+
+</p><p>But then the problem – I mean, now we come into a much harder problem, which is the fact if you’re holding something – let’s imagine with your two fingers you’re holding something.  And there is always slip, so you need to measure the slip so that you can apply larger pressure.
+
+</p><p>And to do that you need the sort of dynamic [inaudible].  So there has been a lot of work actually in the group of Mark Cokoskey.  A lot of research on [inaudible], dynamic [inaudible] and also the idea of using pressure is a very good idea because in fact, by measuring the pressure and the control pressure there is a difference between what you are expecting and what you see.  
+
+</p><p>You will be able to deduce some information about contact.  There was a comment there?
+
+</p><p><b>Student:</b>[Inaudible] sensors on the surface and use those to find the position?
+
+</p><p><b>Instructor (Oussama Khatib)</b>:Um hm.  Now if you instrument the environment, obviously you will be able to get a lot of information about the environment, but that is costly.  So you want more to put the sensors on the robot.  But there is another type of sensor that will give you more information about the environment that – especially about whether you are in com – I mean, close or not, like to localize and see where things are.
+
+</p><p>To see where things are, what do we call?
+
+</p><p><b>Student:</b>[Inaudible]
+
+Instruction:</p><p>Vision.  Put couple of cameras and you would see where you are with respect to the world.  And so you have a mechanism, you have the controllers, but really you need to close the loop.  But to close the loop you need perception, and perception could use sensors in the environment, sensor external that are monitoring the environment or instrumentation on the robot itself.
+
+</p><p>Anyway, this cute design actually was pursued for a couple of years.  They built even a big robot that is walking with those legs, and I’m not sure if we will see it.  Then this project just – I mean, they didn’t go any further.
+
+</p><p>It is like many of the designs that make use of air pressure, only you end up with really limitations, a lot of limitations on the use of – on the ability of the robot to form tasks.  And in fact there is a lot of work today in this area that is with artificial muscles to create faster muscles that use air pressure.
+
+</p><p>And there are many different solutions that will push this little further, but still you have limitations, and as I said, we will discuss little bit more about those issues of design, especially in the context of safety because safety really, really is becoming a very important aspect in robot design because we have been working with robot – with [inaudible] robots.
+
+</p><p>So [inaudible] robots are working alone or working with parts and objects you don’t really worry too much if there is an accident just between – well, the robot and that environment.  But if you are going to work with humans, you really have to make sure that there is no danger to the human, and that is really a challenging problem, so we will come back to this later.
+
+</p><p>Any other comment about this?  Okay.  All right, so let’s go back to the lecture.  So last time we saw this tool we call homogeneous transform, and the homogeneous transform really has several interpretations, or can fulfill several functions.
+
+</p><p>And the first one of them is the fact that transformation like this allows us to describe the frame, so frame B is described with the respect of frame A given this transformation.  So if I know the homogeneous transformation between B and A, that is this four by four T-Metrics that describes A – B in – with a relation to A.
+
+</p><p>Then I have description of this frame B, and this description contains the rotation of the axis of frame B with respect to A, and the location of the origin of frame B with respect to frame A.  Now we saw also that there is another role this homogeneous transformation can play.
+
+</p><p>And this second role – third role, whatever, do you have an idea what can we use this transformation for?  What can we – what can this transformation help us do?
+
+</p><p><b>Student:</b>Operations?
+
+</p><p><b>Instructor (Oussama Khatib)</b>:Operations, that is – we can [inaudible] the transformation as an operator that is acting on a vector and changing this vector, rotating the vector or rotating and translating that vector.  So this is a second interpretation of the transformation as an operator.  Or?  One more?
+
+</p><p>So if you have a vector in space, describe with respect to some frame, B, and you want its description in a different frame, A, can you use this transformation?  So this is the mapping, what we call mapping.  That is, we take the description of vector P in a frame – well, B, and we map it to a description in frame A.
+
+</p><p>So the vector B, this green vector over there is now the red vector that is this one, describing this point in frame A.
+
+</p><p>And you can see here we have two different vectors.  If there was no translation, then basically it will be the same vector with two different set of components.  And as you said, we have also the description of homogeneous transformation as an operator.
+
+</p><p>That is we take a vector P1 and change it to a vector P2.  So the vector P1 is now P2 after this translation.  So these different roles of the homogeneous transformation use the same mathematics, but the application, the interpretation is going to be different and we have to pay attention to the way we apply the definition.
+
+</p><p>So the next question that we have to address is how we now use.  So if you remember, when I talked about homogeneous transformation, I said by building this metrics, four by four metrics in a higher dimensional space, we are able to have a homogeneous relation between vectors.
+
+</p><p>So this property is going to help us propagate and go from one frame to another and have descriptions that are related by the individual transformations between frames.  So here is an example; you have this camera monitoring the environment and here in fact you have a robot, a mobile manipulator, this is Romeo, that is – did I introduce Romeo and Juliet to you?  No?  Not yet? 
+
+</p><p>Okay, well maybe you will have a chance later.  So Romeo is essentially a mobile platform, a holonomic mobile platform with an arm, and it allows you to move in the environment and manipulate the environment.  But because of the platform, this is done everywhere in the world, not like when you have just one arm fixed on a table where you bring material to be processed.  
+
+</p><p>Here you are able to explore the human environment.  And, in fact, the robot is moving and its location is always difficult.  So the question is how can we, for instance, locate this robot?  So you need to find, actually, the transformation between the base frame of the robot with respect to the camera. 
+
+</p><p>This is little bit difficult unless you are able to find elements and different things.  So suppose the camera is monitoring the endofactor.  So you have the endofactor here and you can see it.  So if you have this relation that is in a given frame, you are able to see and identify the end of factor, which is, let’s say this frame.  Then through the other path that is going from here to the base through those transformations to the endofactor, you have another path.
+
+</p><p>You know this and – you know this then you can compute this.  And we need to be able to propagate and resolve this transform equation.  Now this comes everywhere, yeah, well, Romeo is capable [inaudible].  I will show you maybe later if we have a chance, little time in the lecture.
+
+</p><p>So again, where you are [inaudible], where is the base and you have this loop in the environment if you are observing the environment, and you need to be able to go through the transformations.  From the base to the endofactor, you have always the forward kinematics through all the transformations between links.
+
+</p><p>But obviously with the ground you have slippage and you cannot determine exactly the relationship between a fixed camera and the location of the base.
+
+</p><p>So first of all, how we combine transformations; let’s consider two frames, and consider that now we’re going to introduce a third frame, C, so we have a transformation from C to B, we have a transformation from B to A, and obviously I’m interested in the transformation from C to A, the total transformation.
+
+</p><p>I would like to combine these two transformations.  So if we have a vector, vector described in C, that is, we have a point P, describe in frame C.  The question is what is the description of this vector in frame A?
+
+</p><p>Well the result is obvious; I mean probably you already get it.  We are going to multiply these two transformations.  And to prove it, let’s first compute what is the transformation to frame B.  P and B is simply going to be obtained by the homogeneous transformation from C to B, right?  
+
+</p><p>Now if we write the same thing for this point in B, we can go to A through the homogeneous transformation, B to A.  Now is we substitute this with the expression that uses C, we will obtain this relation; that is, the vector in C is transformed into the description in frame A using this form, which mean that essentially we are going from description in C to A.  That is, from C to A.  And that means essentially, the transformation corresponding to these two frames, successive frames, is going to be the product of the matrices, the homogeneous transformation, C, B and B to A.
+
+</p><p>And you can see this has a nice form.  You just eliminate the B and you’re going from C to A with this notation.  So, that is really the advantage of com – I mean, homogeneous transformation is that you have a matrix and then when you have multiple frames, or what you need to do is to multiply these matrices.
+
+</p><p>So now if we multiply C to B, B to A, this is what we will obtain.  We will see here that the structure of this transformation is going to maintain the structure with respect to the rotations.  So we have the same properties of rotation.  It is C to A through C/B and B to A.
+
+</p><p>And this vector, which is the origin, the vector locating the origin of C with respect to A, well it is essentially computed by locating the origin of C with respect to B, rotating it to the right frame, and then adding the offset due to the origin of B with respect to A.
+
+</p><p>So – I mean, the logic is very simple.  It’s vector computation, but again, when you do the multiplication, it is automatically taken into account and you get those results.  So now that we have this relation that would allow us to combine two rotations, we can go and do the transform equation.
+
+</p><p>The transform equation is this equation that is going to let us extract some information, given that we know some already information about relationship between frames.  That is, the robot base is fixed at a given instant, the endofactor position could be computed with respect to this space.
+
+</p><p>Now if we know where the endofactor, and if we are able to have that total relation, then we can compute where the base is.  And in this relation, there is some very intuitive property about this fact, that if you start from A and go all around, walk all around, and come back to A, you should obtain a transformation, a homogeneous transformation that is equal to?
+
+</p><p><b>Student:</b>[Inaudible]
+
+</p><p><b>Instructor (Oussama Khatib)</b>:Identity.  So we have an identity transformation when we walk from A and go all around and come back to A.  And using this we can say essentially, from A to D, D to C, C to B, B to A, if we multiply them – be careful with the order, you are going to eliminate all of these and you get A to A which is identity.
+
+</p><p>So now, I don’t know, what is missing?  Let’s say we are missing D to C, and then you multiply by the inverse of this from one side and the inverses of the others and eliminate and compute the transformation that you need.  That is, here we have four transformations, one of them is unknown, and then you can extract it and find it.
+
+</p><p>In the case of computing A to B, simply you are going to find that you go from A to B by A to D, D to C, and C to B, okay?  So just – and don’t be confused, I mean, sometimes the transformations are not written in the right direction so you will use the inverse, but you have – always you have to walk in the same direction and then you can say identity, A to D, and then you can compute any element that is unknown.
+
+</p><p>Okay.  Well, we’re done with transformations, any questions about transformations?  Good.  Well I think you have homework about that, so hopefully you will find out if you don’t have questions.  All right, well now we are then at the last point in special descriptions, and this is the representations.
+
+</p><p>So what do we mean by representations?  The question that we’re concerned with is this question; we have this endofactor, and the endofactor is really the purpose of the whole manipulation problem.  That is, we are concerned with how to position this endofactor in space, and how to move it to some location.
+
+</p><p>So we need to say, well our endofactor is at some location, X, Y and Z, and it has some orientation.  Now it’s not enough to say, well I have a homogen – because this description we know.  We know the position and orientation; it is imbedded in the homogeneous transformation.  We know the relationship from the endofactor to the base frame through T, and you’re going to find that relation.
+
+</p><p>When we finish the forward kinematics, when we complete the forward kinematics, you’re going to be able to say my endofactor transformation with respect to the base is given by T.  And this T will come from the description of the manipulator, so the link length, the angels of tilting, and characteristics of the links, and also it will be function of what?
+
+</p><p>What other parameters will be involved in T?  So here is the manipulator, it’s moving at this configuration, how can I compute this position and orientation?  I’m going to use this length, and the angles, and also I’m going to use – come on?  I’m tired here.
+
+</p><p><b>Student:</b>The joints.
+
+</p><p><b>Instructor (Oussama Khatib)</b>:The joints.
+
+</p><p><b>Student:</b>[Inaudible]
+
+</p><p><b>Instructor (Oussama Khatib)</b>:The joints.
+
+</p><p><b>Student:</b>[Inaudible]
+
+</p><p><b>Student:</b>Angles.
+
+</p><p><b>Instructor (Oussama Khatib)</b>:The joint angles.  I need the joint angles.  So what is variable, what is changing as I’m moving?
+
+</p><p><b>Student:</b>[Inaudible]
+
+</p><p><b>Instructor (Oussama Khatib)</b>:So T is going to be function [inaudible] that are constant, depending on this manipulator, and the joint angles.  So T will vary with joint angles, right?  So the configuration of the robot will affect where this endofactor is going to be.
+
+</p><p>So we will be able to find the T as a function of the joint angles, and it will be a matrix four by four, and this matrix will contain for each configuration, the description of the homogeneous transformation.
+
+</p><p>Okay?  So at a given configuration we measure the [inaudible], we read the [inaudible] and then we can compute T and say, my homogenous transformation for the endofactor is this.  Now the question is where is the position of the endofactor and what orientation the endofactor has.
+
+</p><p>The question is important because I’m not only concerned about positioning the endofactor; I’m going later to move it following a trajectory.  I need to think about the velocity.  So I need some description of coordinate that would give me – like coordinate X, then I can compute [inaudible], eventually acceleration.
+
+</p><p>So I need a set of coordinates, okay?  So what we need to do then is to extract from T the position description and the orientation description.  And say I have a description something like, I don’t know, I have to position and I have the orientation.  I have a set of parameters, X, XP for the position and XR for the orientation, because I cannot take T and – take the derivative of T and just say, well I’m going to build a trajectory directly with T.  Do you understand?  All right. 
+
+</p><p>So where can we find XP?  What is the infor – where is the information about XP, in T?
+
+</p><p><b>Student:</b>[Inaudible]
+
+</p><p><b>Instructor (Oussama Khatib)</b>:The first three element of the last column, that’s what you said?  Correct, because this is going to give you basically this vector.  This vector is in the transformation on the last column of T, so you can compute this [inaudible].
+
+</p><p>And that would be a description, X, Y and Z of the endofactor position.  Where is the orientation?  At least where I can find information about the orientation in T?
+
+</p><p><b>Student:</b>[Inaudible]
+
+</p><p><b>Instructor (Oussama Khatib)</b>:Yeah, so it will be the first three columns corresponding to this R matrix, the rotation matrix in T.  Okay.  Now, how should I represent X, because you said X, Y and Z, but there are other possible representations, so for the position I could say I take that position and it is represented by X, Y and Z.
+
+</p><p>So this is the [inaudible] representation, but I can select these angles [inaudible] and the projection of that on the plane X/Y, and come up with a cylindrical representation.  Or, I take that other angle and come up with a spherical representation.  So there are several ways of representing that position, and most of the time we will use [inaudible] coordinates.
+
+</p><p>But in cases like if you have a dexterous manipulation with a tool and you went to move in this direction, it might be more advantages to use cylindrical coordinates because your task is aligned directly with that vector, and you can just extend the vector and move and the angles are face, so you control them and just you move along that vector.
+
+</p><p>So other representations are also very useful in different tasks for different tasks.  Okay, well still in here we’re talking about X, Y and Z, rotate Z, R theta phi, always three parameters, three independent parameters.  So not much of fun, simple.  The fun starts when we think about rotations, and that is where most of the difficulties with the kinematics robot systems lie.
+
+</p><p>In fact, we’re going to start some aspect of those problems, but those problems will carry on all the time as we start to consider instantaneous rotations, instantaneous accelerations, and their relations to representations.  The space of rotation is really different from the space of liner motion.
+
+</p><p>That is the space where we describe opposition.  And we’re going to, little by little, see this problem.  So the first complete representation that contains all the information about rotation is our rotation matrix. 
+
+</p><p>So in this rotation matrix everything is there about the orientation.  I have an object held in the endofactor.  Basically, there is a frame, X, Y and Z that is going to rotate with this object.  And if I take X, Y and Z frame and take its component with respect [inaudible] frame that would be my total rotation.
+
+</p><p>So from T the homogeneous transformation, I can extract this rotation matrix, and in which I see that R1, this is a vector, this is – these are the component, R1, R2, R3, are these three vectors.  So R1 is what?  In this frame if I take the X axis, R1 represents what?  What is the definition of the – basic definition of the rotation matrix?
+
+</p><p>We say that the first column is the component of X on the base frame.  So R1 is really the component of X.  R2 is the component of Y, and R3 component of Z.  Okay.  Now, I can build other presentation with this.  I can just say my XR, this X that is going to represent the rotations and the orientation of the endofactor is simply the concatenation of R1, R2, R3. 
+
+</p><p>I take the three vectors and put them one on top of the other, R1, R2, R3.  It’s a long vector, but this vector actually contains everything you need about the orientation.  Now obviously we’re over doing it, so do we need nine parameters to represent orientation?
+
+</p><p>Obviously there is – how many degrees of freedom we need?  How many parameters?  The minimal number of parameters would be?  Three.  I mean we have three degrees of freedom in orientation.  But here we have nine, so how come?  How come we have nine?
+
+</p><p><b>Student:</b>Well each one of those vectors is an [inaudible] so the third on it is already predetermined.
+
+</p><p><b>Instructor (Oussama Khatib)</b>:Okay.
+
+</p><p><b>Student:</b>[Inaudible]
+
+</p><p><b>Instructor (Oussama Khatib)</b>:So we have sort of three relations of normalization associated with R1, R2, R3, so this is three constraints, good.  We need more.  Nine minus three is still six.  I need three more.  Yes?
+
+Students:</p><p>Each of those vectors is also perpendicular.
+
+</p><p><b>Instructor (Oussama Khatib)</b>:Okay, so R1/ R2, one constraints, R2/ R3, one constraints and R3/R1, three, six, good.  Let’s check.  Yeah, you’re right.  So six, and you have nine, basically you have yet actually three degrees [inaudible].  
+
+</p><p>Now this is a redundant representation.  Redundant in the sense that the parameters we are using are not independent.  And that creates a problem.  That is, you cannot say – what is the problem with that?  I don’t know if you realize the problem.
+
+</p><p>Think about motion.  I am going to take this and rotate it like this.  I mean I’m just going to put some water in the cup, so you have a motion.  So you have some initial XR, you have some final XR, and you want to go from one to the next.  How can you create a trajectory?
+
+</p><p>You see the problem?  Okay?
+
+</p><p><b>Student:</b>[Inaudible] multiple solutions [inaudible]
+
+</p><p><b>Instructor (Oussama Khatib)</b>:Well let’s think about another simpler problem, which is I’m going to move from A to B.  A is defined by XA – XYZA, and here, XYZB.  How can I move from this to this one?  So I – X is equal ten and XA is 10 and XB is equal 22.  
+
+</p><p><b>Student:</b>Slope and try [inaudible]
+
+</p><p><b>Instructor (Oussama Khatib)</b>:I can interpolate and every point is valid, okay?  Now let’s interpolate XR1 – I mean the first configuration and the final configuration.  If you do the interpolation you will violate those constraints, if you just do linear interpolation between the two.  
+
+</p><p>You cannot take that – they are not independent so you have to monitor what is happening.  So it is – it’s very difficult to just work with this directly as XY and Z.  What is happening with the rotations is that you are moving over a sphere, [inaudible] in that space, where as XYZ are moving in the [inaudible].
+
+</p><p>And you have to deal with these constraints.  Okay, so what other representations we have?  Oh, come on, [inaudible].  So if we don’t use the vectors associated with the frames, what can we say about the orientation?  There are these angles, right?  What angles?
+
+</p><p><b>Student:</b>What other angles?
+
+</p><p><b>Instructor (Oussama Khatib)</b>:[Inaudible] exactly.  [Inaudible] angles are very, very useful.  Now there are many different ways, in fact, of talking about an angle of representation.  The three angle representations – I mean, you can count maybe 24 of them.  We distinguish between [inaudible] angles, the fixed angles that we use in aviation, and each of them has like sort of 12 different representation.
+
+</p><p>And those representations come from the way we obtain these angles.  So you have a frame, and you’re going to try to find the frame B and the relationship between the two using three angles, so what do you do?  You don’t have many options.  You can go to this axis and rotate about this axis first.  And then once you rotate above this axis with some angle, then you can go and rotate about this one.  
+
+</p><p>And then after, you can come back to the same axis and do the rotation, or you go to a third axis.  And so you have – and maybe you can start from the Y axis first.  And so that’s why you have a lot of different ways of doing it.  All right.
+
+</p><p>But you end up always with three angles, but you need to know which axis you’re rotating about.  And whether after the first rotation you rotated about the first axis, there is no problem; you get some [inaudible] configuration.  But next you can rotate about the new axis that resulting from the first rotation.
+
+</p><p>So this is like relative rotation with respect to the frame created after the first rotation, or you can maintain [inaudible] rotations, three rotations about fix axis.  So we distinguish between fix rotations, fix angle rotations, and that’d give us 12, and relative rotations give us another 12.
+
+</p><p>[Inaudible] angles are the relative ones, and the fixed ones are the -- what we call fix angle rotations.  Okay, so let’s start from the beginning.  I’m going to go to this configuration by first putting the two frames together, okay?
+
+</p><p>All right, let’s rotate – I’m going to rotate about the X axis with a sum angle.  This is the first rotation.  The new frame that results – so the idea is I’m going to rotate from a identical and then I’m going to get a first frame, and then I will do another rotation and a third rotation to reach the final B, the B which is in here.
+
+</p><p>Okay, so if the next rotation is done about the relative next axis, Y, so from that B prime I’m going to do another rotation about B prime, then this is sort of other angle representation.  And I have 12 set, depending on the selection of axis.  If we do this next rotation on the blue axis, the fix one, here I will obtain an intermediate one, but when I continue, this will give me the fixed angle rotations, and you have 12 set.
+
+</p><p>Now we will see that in fact every representation her has an equivalent representation here.  So in total we do not have 24 different representations, we have only 12 that could be represented – obtained from relative axis or fix angle axis.  Okay?
+
+</p><p>So in total you have only 12.  All right?  Let’s take an example; I’m going to take the rotation ZYX, which means we will start with our rotation above the Z axis then Y then X.  And I’m talking about [inaudible] angles, which means relative rotations.
+
+</p><p>So here is the first rotation, you’re rotating about the Z axis, and the XB prime and YB prime are in the same plane as XA and YA.  And you have an angle alpha between those axes.  So the next rotation will take place about what?
+
+</p><p><b>Student:</b>[Inaudible]
+
+</p><p><b>Instructor (Oussama Khatib)</b>:About Y, so – and this is the new Y, the new Y that resulted from the first rotation, and we will call it beta angle, and not this rotation is in the plane XB prime and ZB prime, right?  And the final rotation will be about X, and it will be an angle gamma, and it will be in the plane YB double prime ZB double prime.  And that will take us to B.
+
+</p><p>Now I need to compute this transformation, and I need to compute what is the rotation from B prime to frame A, the transformation from frame B double prime to B prime and the final transformation from B to B double prime.  And if I have those transformations, if I multiply them out, I will find the total transformation.
+
+</p><p>Good.  So, that is what we want.  We want to compute this, this, this, [inaudible] you get B to A.  Well, maybe before.  So what was the last transformation, was X, rotation about the X with an angle of gamma, so I’m going to write rotation about X with an angle of gamma.
+
+</p><p>Rotation – the one before was rotation about Y with the angle beta, and rotation about Z with an angle alpha.  You have your transformations.  So, you take these – so this is what – this is 100 [inaudible] the angle gamma minus [inaudible] and you have your transformation, you computed and you find your rotation.  So you get this transformation as a function of alpha, beta and gamma.
+
+</p><p>And now for a given orientation you know the position in rotation space, you say its alpha, beta, gamma.  Now if we do it with fixed angles, essentially we are going to do our rotation about X, about Y, about Z, but those angles are done on – I mean, these rotations are done by the fixed axis.  
+
+</p><p>In fact, this is what we call the role [inaudible] and these are used in aviations because you’re doing small angle rotations in general and they are very intuitive to perceive what rotation you have made.  
+
+</p><p>And the computation of these comes to be very simple, because if you think about the rotation X with the angle gamma, that first rotation, it – if you have a vector V, this vector is transformed by the rotation about X with this angle.  You have an operator changing the vector V to the vector RX gamma V.  
+
+</p><p>And with the next transformation you take the result and transform it with rotation about Y and the last one is going to apply – the last transformation, and when you put all these transformations, you see that the total transformation is given by the product of X gamma, RY beta and RZ alpha.
+
+</p><p>So these operators that we saw before are very useful, and in fact when we look at those transformations, essentially we are going to obtain the transformation directly from rotations about directly that axis.
+
+</p><p>So those operators are very simple because they are done about the X, Y and Z, and every one of them is like the operator about Z is a rotation here, 001 about the Z axis with cosign, minus sign, cosign.  To operator about Y is rotation about the Y axis with this angle, and this is the rotation above X.
+
+</p><p>So if we do this multiplication you will obtain a matrix that is only function of alpha, beta, gamma.  These – I’m not showing the terms because they are little big, but basically I’m just showing just those element. 
+
+</p><p>And you can now do the product and find that matrix.  And now your rotation matrix is expressed as a function of alpha, beta, gamma.  Now let’s go back to the beginning.  How do we compute the endofactor position and orientation?  How do we measure it?
+
+</p><p>We said we measure the encoders, we use a forward kinematics to compute the homogeneous transformation, and we know the rotation matrix numerically.  Now what we are saying is this matrix is equally [inaudible] to this matrix computed with those three rotations.
+
+</p><p>So how can I find those rotations?  That is alpha.  What is beta, what is gamma?  This is really the problem; the problem is I need to be able to compute these values.  And to compute these values I need to find the inverse that is given the value of the matrix, I need to compute those values.
+
+</p><p>Oh, this is another example here.  So here we have Z, Y, X, the matrix looks like this.  If you have ZYZ, you get this other matrix.  So this element that are very simple.  So you know this element cosign beta, you have the numerical value and you then [inaudible] cosign beta and you can invert beta and find what is beta for that specific configuration.
+
+</p><p>Okay.  So if we take ZYZ representation, what is the angle here?  A lot of angles.  I’m sorry, ZYX.  So what is alpha, beta and gamma?  Don’t check your notes.  I have to remove these.  Can you think of others from here?  Can you see it?  What is the – which one is [inaudible]?
+
+</p><p><b>Student:</b>[Inaudible]
+
+</p><p><b>Instructor (Oussama Khatib)</b>:I mean, I’m sure most of you saw the answer already, but can you see it really?  So this is our rotation; we went to the red frame from the blue initially with [inaudible] about which axis?
+
+</p><p><b>Student:</b>[Inaudible]
+
+</p><p><b>Instructor (Oussama Khatib)</b>:The X axis of an angle of?
+
+</p><p><b>Student:</b>[Inaudible]
+
+</p><p><b>Instructor (Oussama Khatib)</b>:Plus 90 degrees.  Yeah.  Good, you see it?  Everyone, no confusion?  Good.  Okay, as I said, if we take fix angles and we take other angles, I just – I’m writing them together now.  The fix angles, this is the relation we obtained.  The other angles, this is the relation, and now if you look at the two you can see that the rotation about [inaudible] rotation and fix rotations are identical.
+
+</p><p>That is, the XYZ with rotation, gamma, beta, alpha is equal to the Z prime, Y prime, X prime with alpha, beta, gamma.  So for each rotation you have a corresponding rotation in the 12 sets of fixed an [inaudible] angles.
+
+</p><p><b>Student:</b>So gamma, alpha and beta are the same for those, or are they different?
+
+</p><p><b>Instructor (Oussama Khatib)</b>:No, the same.  In the same equation they have to be the same.  All right, so now we come to the difficult problem, the problem I mentioned earlier which is that how you obtain these alpha, beta, gamma.
+
+</p><p>How you obtain your representation from your measurement.  So you are given the rotation matrix numerically from your forward kinematics.  So you know R from B to A, and the question is what is alpha, beta, gamma?
+
+</p><p>Well essentially I need to identify each element from B to A so I know R11, R12, R13.  I need to identify them to the rotation matrix.  So now you have the full matrix, and you have five minutes.  So how do we do that?  I can help you if you need some help.
+
+</p><p>All right, obviously the – these terms are a little bit too complicated, this one and this one, so let’s see I have alpha beta here, alpha beta here, and beta here, so I could use these, right?  So how can we compute beta?  If we square this and square this because sign square and sign square are to one, and I will get cosign beta square, right?
+
+</p><p>So I can get cosign beta from the square root of this element and this element, right?  Now we’re going to use a function that we call the inverse of the tangent two, that takes two argument; it takes the sign and cosign to compute the tangent.  And that gives you all the angles within their area.
+
+</p><p>So where can we find the sign of beta?  Well we have the sign of beta here, in this element, element 31.  It is minus so it has to be minus.  So if I take this function and I place this here and here, I can obtain beta.
+
+</p><p>Now given that obtain beta, how can you compute alpha.  Well you go back to those element, 11 and 21 and you know beta, so you can compute cosign and sign.  The problem that you’re going to have is this problem, which is that if your cosign beta becomes equal to zero – if cosign beta becomes equal to zero you’re going to have a problem.  
+
+</p><p>And this problem is that you cannot divide anymore by zero, so you have some undetermination and this leads to a singularity.  We call it singularity of the representation.  We will see later kinematic singularities.  Real singularities, the robot is moving and when it reaches this configuration it cannot move immediately in this direction, it’s locked in this direction like this.
+
+</p><p>This is a kinematic singularity, and we will see this when we take the derivative of the forward kinematics.  But in here, this representation is fictitious; it’s only you who selected this representation that you selected a mathematical model that fails at some configurations.
+
+</p><p>So in this case when cosign beta becomes zero, you can only determine the sum of alpha and gamma or alpha minus gamma.  And the reason is when beta is zero, essentially the Z axis are aligned, and you have a rotation in the same plane.  You do a rotation of alpha then zero and gamma.
+
+</p><p>So you are not able to distinguish between the alpha and the gamma.  I think I have an example.  So this is what happened; if cosign beta is zero, would the sign of beta positive or negative?  The rotation is down in the same plane, and all what you have is the alpha minus gamma at that location, or the alpha plus gamma if the beta is negative.  So what does it mean, and why is this a problem?
+
+</p><p>I mean, obviously, you see it mathematically, but why this is a problem?  Okay.  So you are going to use your parameters, alpha and beta and you’re trying to identify alpha and beta as you move, because you are measuring and you reach this configuration – you have an undetermination, and at that moment you are not able to compute the velocity associated with alpha.
+
+</p><p>As we will see that the gecovian, when we take the derivatives we – we have a singularity in that location, and you are not able to track your motion.  So you cannot really determine the properties of the motion at that point.
+
+</p><p>And this is a problem if you want to move and produce smooth motion.  Usually if you are doing a very tiny motion you might be able to select alpha and beta so that they will [inaudible] to zero, within that small motion.  But if you are performing large motions in space you are going to run into the singularities.
+
+</p><p>Now we can change representation, we can use another one, but every single representation that uses three parameters is going to run into a singularity.  All three parameter representation will have a singularity somewhere, and that is the problem.
+
+</p><p>So three angle representation has – are efficient because they are minimal, but they have a problem with the representation in term of the singularity of the representation. 
+
+</p><p>Direction cosigns are perfect in term of the representation, no singularities whatsoever, however, you have redundancy and you have to handle all these constraints as you plan your motion.  There is another derivative representation that we can talk about little bit before talking about the best solution, and this is a representation that you cannot think about, just by going back to the problem of moving from one frame to another frame.
+
+</p><p>So you have frame A, you have frame B, and you can show that there is always a vector K about which you can rotate with an angle theta to go from A to that specific B.  So there is a rotation about a vector that will take you there.  So we can now think about a representation that uses K and theta.
+
+</p><p>And this is the equivalent angle axis representation.  So how can you build a presentation?  You can say, I’ll take theta [inaudible], I take the vector the K, I need to identify K obviously, but I can find KX and KY and KZ and then scale it with theta in radiance and that will give me three numbers representing my position.
+
+</p><p>And now I can – but it’s nice, you can interpolate and you can move and you can go between configurations.  Now the rotation matrix associated with this is like this, it involves both the K and the angle theta through cosign signs and also one minus cosign for this new variable.
+
+</p><p>And you are given this – measuring this, and you need to identify the element, KX, KY, KZ, which you can do through those two equations.  So you can compute your K by taking the difference and dividing by the sign of theta.  And this coming from identifying with the metrics.
+
+</p><p>So, do you see any problem?  Well you have a singularity; you can divide by zero when sign is zero.  So you have again the same problem.  So, I said nine is too much, three doesn’t – is not going to work.  Whatever we do with three is not going to work, so what should we do?
+
+</p><p>Four, good.  Let’s try four.  Well this is what actually the [inaudible] parameters do, they now – think the same concept.  I take the vector, I know I cannot rotate with that vector, but instead of taking the angle and skidding it, I’m going to track correctly everything.  We will talk about this in advanced robotics more – in more details about it.
+
+</p><p>But just like to give you the intuition, essentially we are going to take four parameters, the following parameters, I’m going to take W, this unit vector, it’s unit vector, and I’m going to scale it by half – the sign of half of the angle theta.  And then I’m going to add another parameter which is just the cosign of half that angle.
+
+</p><p>So [inaudible] are just omega w, the vector w, scaled by sign of half of the angle.  And the last parameter, [inaudible] 4 is just cosign half of the angle.  Now when you – there are a lot of freezes, a lot of interpretations for this, but what you can see here is a lot of interesting properties that comes with that way of selecting the representation.
+
+</p><p>W is a unit vector, sign square and cosign square have very nice properties.  So now epsilon is a unit vector in four dimensional space.  That is you have this normality condition, if you add the square of epsilon you get one, and that has nice properties that – in the operators and it carries to the derivatives and everything.
+
+</p><p>So, let me just tell you that again, with this representation is solve – this representation solved the problem, but there are really many details related to the way we select the representation, the way we track and compute the epsilons, and when any of the parameters we are using to do the computation goes to zero, something happens, so you have to be very careful about it.
+
+</p><p>And if we analyze and try to identify, you can see the relationship between the representation matrix and your measurement and you can find that if you add the square of the diagonal, it gives you three minus four, the squantity and the squantity between parentheses is what?  Is one minus the missing parameter square.
+
+</p><p>So you can then compute this parameter and then you can compute everything else very simply.  But again, you are dividing by this parameter.  What happens if this parameter goes to zero?  So if this parameter goes to zero, actually some other parameters will not go to zero.  And because the property I mentioned, that this is a unit vector of the hyper sphere in four dimensional space.
+
+</p><p>We have a property that shows that for all rotations, at any time, there is always one of the parameter that is equal or – equal means all of them are equal to one half to build one, otherwise it’s not possible.  Or otherwise there is always one parameter that is large enough, and then you can do the same computation using that parameter that is large enough.
+
+</p><p>So the [inaudible] that we use is always to think about what is the largest parameter and resolve with respect to that larger parameter.  So as you rotate, you are checking the larger parameter and you are resolving – if it is epsilon one you do – you use this formula, if it is epsilon two you use this formula, etc., etc., so you can always resolve it depending on which parameter is large.
+
+</p><p>But here you eliminate the singularity, no more singularities.  So – well we don’t have time for the quiz –
+
+</p><p><b>Student:</b>[Inaudible]
+
+</p><p><b>Instructor (Oussama Khatib)</b>:What are the other parameter for this example?  It’s a rotation about the X axis with an angle 60 sign 30.  So it will be X axis is 100 sign 30 is – do you remember?
+
+</p><p><b>Student:</b>[Inaudible]
+
+</p><p><b>Instructor (Oussama Khatib)</b>:One half, so like this, and the cosign of 30, that’s your parameters.  And what is the corresponding direction cosign representation?  The first column is going to be?
+
+</p><p><b>Student:</b>[Inaudible]
+
+</p><p><b>Instructor (Oussama Khatib)</b>:100, and then you get the sign and the cosign of the angle.  All right, wow, we’re done; I can’t believe it, on time.  Okay, so have a nice break and I will see you next Wednesday.
+ </p><p>
+ [End of Audio]
+</p><p>
+Duration:  72 minutes
+</p><p>
+</html>

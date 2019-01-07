@@ -1,0 +1,292 @@
+<html>
+IntroductionToRobotics-Lecture11
+</p><p><b>Instructor (Oussama Khatib)</b>:All right.  Let’s get started.  So the video segment today is quite interesting.  It was presented at the 2000 International Conference on Robotic and Automation, and I’m sure you’re going to like it.
+
+[Video]</p><p>A robotic reconnaissance and surveillance team, U.S.A.
+
+</p><p>A heterogeneous multi-robot system for surveillance and exploration tasks.  At the first tier of this team is the Scout.  Scout’s are small, mobile sensor platforms used in a cooperating group.  
+
+</p><p>At the second tier is the Ranger.  Rangers are larger robots used to transport, deploy, and coordinate the Scouts.  Scouts are wholly original robots with cylindrical bodies 40 millimeters in diameter and 110 millimeters in length.  The Scout carries a sensor payload used to relay environmental information to other robots.  The most common Scout payload is a small video camera, but other payloads, such as microphones, are also used.  Video data is broadcast to other systems via an analog RF transmitter.  Scouts communicate with other robots using an RF data link.
+
+</p><p>One specialized Scout has a camera mounted in a custom-pan tilt unit allowing the robot to view its surroundings independently of the orientation of its body.  The Scout has two modes of locomotion to allow it to navigate different kinds of terrain and obstacles.  
+
+</p><p>The first mode uses its wheels, allowing it to drive over smooth surfaces.  Here, the Scout demonstrates its ability to climb a 20-degree slope.  The second mode of locomotion is the hop.  The hop is accomplished by winching the Scout’s spring foot up around its body and then releasing it suddenly.  Here, the Scout jumps over an obstacle.  
+
+</p><p>Scouts are deployed by Rangers.  The Ranger is a modified commercial all-terrain robot.  The Ranger uses a launcher to deploy Scouts into the area in which they will operate.  
+
+</p><p>A Ranger can carry and shoot up to 10 Scouts from its launcher.  Ranger’s supervise the Scouts while working with other Ranger’s; Ranger’s report to a human group leader.  The Scout’s are designed to withstand the impact of landing, and of being shot into and through obstacles, such as these simulated windows.
+
+</p><p>The Scout’s small size, it’s deployability through launching, and its multiple locomotion modes and sensor payloads, give it the ability to explore difficult-to-reach areas and report useful data.
+
+</p><p>Combining the Scouts with Rangers, which provide the ability to travel longer distances and to have greater computational resources, forms a useful reconnaissance and surveillance team.  
+
+</p><p><b>Instructor (Oussama Khatib)</b>:Okay.  What do you think?  I guess we need a robot to do the – I mean to [inaudible] these devices, and so one more robot is still needed.  
+
+Okay.  So after completing the forward kinematics, after finishing the Jacobian, we are ready now for dynamics; are you ready?  All right.  So while dynamics, and then we will do the control and that’s it, you have the basics.  Kinematics, dynamics and control.  
+
+Well, here is an example of robots that involves a lot of dynamics.  Just imagine, like, moving the hand little bit, you can see all these coupling forces coming on the other hands, on the body.  As you start moving, you have all these articulated body dynamics that are going to appear.  And the dynamics of this system is quite complicated.  In fact, if we go to this problem, we find that we need really to understand the dynamics of just one rigid body, and then combines these different dynamics together to understand the articulated multi-body system.  
+
+So to do that, that is to find the dynamics of an articulated multi-body system; there are several formulations.  In fact, there are many, many formulations.  We will examine two of them.  One is the Newton-Euler formulation.  Have you heard about Newton?  Yes.  So what does it say to you, Newton-Euler, what does it tell you?  So Newton Law is?  You were saying?
+
+</p><p><b>Student:</b>[Inaudible]
+
+</p><p><b>Instructor (Oussama Khatib)</b>:So mass acceleration equal to the force applied from a rigid body, right?  So that is if you apply a force to a particle, it will accelerate along the same direction with an acceleration that is equal to the force divided by the mass.  
+
+</p><p>Okay.  So what about Euler?  What does Euler do with dynamics here?  You know, Euler angle, you know Euler parameters.  Huh.  So Euler was looking at angles, why?  Angles measure what?  Rotational motion.  So linear motion – because force, acceleration of a mass, a particle, it’s just going to be a linear dynamics.  And Euler is dealing with the other side of dynamics, rotational motion.  
+
+Now, if you have a particle, then it’s really not rotational motion to talk about.  So we go to the rigid body and we find that we need to address the problem of angular rotation, angular motion, and that is the formulation – the combination of Newton and Euler equations extended to the problem of multi-body.  
+
+</p><p>So we will examine articulated multi-body dynamics, and we will find, similarly to the way, if you remember we found the Jacobian, by analyzing the static forces, propagation.  You remember we break all the joints, remove the joints, and look at the stability of issue of the rigid-bodies.  We are going to do the same thing with dynamics.
+
+Then we will examine another formulation – a formulation that captures the whole dynamics, linear and angular, in one equation, that is the Lagrange equation.  And this formulation is relying on the energy that is the kinetic energy of the system.  You know what is a kinetic energy?  Most of you.  What is the kinetic energy associated with a particle moving at a velocity v?
+
+</p><p>Let’s see.  One-half mv squared.  Very good.  And also, the potential energy.  And that will lead us to a very interesting form that will give us the dynamic of articulated-body system in an explicit form.  You remember how we did the explicit form for the Jacobian.  We can find the Jacobian as a sum of contribution of the different velocities of the different lengths.  
+
+Well, we’re going to do the same.  We’re going to find the dynamics of the whole articulated-body system as a sum of the contribution to the mass properties, inertias, and masses.  We establish something called the mass matrix associated with the dynamics.  And we will see that from finding the energy – just finding the kinetic energy of the system of – or at least each of those lengths, adding them all together to find the total energy, we will be able to obtain the dynamic equation.
+
+</p><p>So this form is really important and we will examine this form, probably on Wednesday.  But let me just to start, to give you an idea about what is happening when we look at the dynamics.  This is a robot from France; it’s called the MA Manipulator 23.  It is a cable-driven robot, so all the motors are in the back and the cables are driving this traction.  
+
+</p><p>So if we go and analyze the inertia view from just one axis, let’s say, the first axis of rotation.  So you have big inertia, smaller inertia, right?  By putting the masses away from the axis, you are increasing the inertia perceived about this axis.  So this inertia then depends on all the mass distribution, the lengths, the load, et cetera, that is associated with the manipulator.
+
+</p><p>If we go here, we have also changes in the inertia perceived, that it’s independent of the previous lengths.  So there is a structure to the way the inertia is affected by the motion of the structure and the configuration is going to change the value of that inertia that you are perceiving.  
+
+</p><p>If you want, I can show you the equations.  I don’t know if you can see them, but here we go.  So the first inertia perceived from this joint is, like, half the page.  It’s sine, cosine, and all of these things, and depending on – but, obviously, I mean, we can obtain these equations, it’s not a problem.  The problem is to understand what the structure of this equation is and how we can find those properties and how we can understand them.  What – when we analyze later – when we later analyze the explicit form, you will see that essentially we’re going to be able to – to gain like with the Jacobian – are going to be able to see the dynamics of a manipulator just by looking at the structure of the robot.
+
+</p><p>All right.  Here is another robot, this is – this was analyzing my thesis.  This was a robot that can carry 80 kilograms of its weight; heavy robot.  It’s a robot that has 6 degrees of freedom, and we are performing just some [inaudible] motion on the different joints.  On joint, I believe, joints five or joint four, we have, basically no motion – just letting the joint to be controlled to its zero position.  
+
+So what do we see?  We see that on the top, the lower joints on the robot, during this [inaudible] motion of the other joints, there is little effect, I mean, you can see some errors, but the errors are sort of filtered somehow.  On the lower joints, four and five, you see large errors.  And that is reflecting the fact that if you have a heavy joint, there are disturbances, the inertia, the – this big inertia of the – of the robot is going to play the role of a filter.  It’s going to somehow reject the disturbances, and we will see little effect on those joints because they are quite heavy and the inertia is just taking.  I mean, think about a truck moving fast and you hit it with, I don’t know, a fly?  It’s not going to – to be affected.  
+
+But for the fly, it is really terrible.  So – so this is the fly and that up there is the truck.  So if you want, here is the equation.  We’re going to establish this equation.  The equation is a vector, so gamma is the – the torques applied to the robot.  Sometimes we call it tho or gamma.  What is g?  What would it be?  Some force affected dependent on the configuration.
+
+</p><p><b>Student:</b>[Inaudible]
+
+</p><p><b>Instructor (Oussama Khatib)</b>:The gravity, yeah.  G, like gravity.  Very good.  And it’s dependent on the configuration.  For instance, if we take this joint, and if we put a weight, you’re – you’re going to feel a torque, right?  If I take this joint to here, what is the torque due to the gravity?
+
+</p><p><b>Student:</b>[Inaudible]
+
+</p><p><b>Instructor (Oussama Khatib)</b>:[Inaudible]  Very good.  So you get it.  That is, so if we go up, basically the gravity is going to act on the structure and not on the truck.
+
+</p><p>Q double [inaudible] is the acceleration and m is mass acceleration, so m is?  Okay.  Q double [inaudible] is the vector of accelerations and m – hmm?  Very good.  
+
+</p><p><b>Student:</b>[Inaudible]
+
+</p><p><b>Instructor (Oussama Khatib)</b>:Very good.  It’s a matrix.  So matrix plus multiplied by a vector will give you a vector.  So mq double [inaudible] is going to be the inertial forces generated at zero velocity by the motion by the acceleration of the joints.  So it’s playing the role of a mass, so if I had one degree of freedom, you will understand it.  Mass acceleration.  M is a mass.  
+
+</p><p>But because this is a multi-body system, it’s going to be a mass matrix.  And the mass matrix – if we had a robot that is prismatic, so three prismatic joints, essentially along the diagonal you will see the element you’re presenting, the masses, the total masses reflected here, here, and at the last joint.  And it will be diagonal matrix.  
+
+</p><p>But for articulated body with revolute joints, you’re going to have off-diagonal terms that represent the coupling.  That is the motion of one joint will accelerate the other joints.  
+
+What about v?  This is a vector.  That is function of q and q duct.  So – oh, I forget my – I had something to, well, maybe they took the [inaudible].  So what would be this thing that will depend on the velocities?  So – use the microphone.  If I – do this.
+
+</p><p>I’m wondering why it’s standing like this.  If I stop moving it will fall, [inaudible].  So there is a force pulling here, it’s called – what? 
+
+</p><p><b>Student:</b>[Inaudible]
+
+</p><p><b>Instructor (Oussama Khatib)</b>:Centrifugal force, yes.  Now, if you have multiple – multiple-body that are moving in addition to centrifugal, you will have Coriolis forces.  That is the product of velocities that will be involved will cause both centrifugal and Coriolis forces.  So q as I said is your [inaudible] coordinates.  M is called the mass matrix or the kinetic energy matrix because this mass matrix is associated with the kinetic energy of the system.  
+
+</p><p>If you’re not just a particle m, what is the kinetic energy?  For a mass m, a particle of mass m, what is the kinetic energy associated with this mass when it’s moving at a velocity v?  Hmm?
+
+</p><p><b>Student:</b>[Inaudible]
+
+</p><p><b>Instructor (Oussama Khatib)</b>:One-half – one-half mv squared.  Yeah, that’s correct.  Good.  Well, it turned out, it is the same for a mass matrix multi-body; it’s going to be one-half – how do you do mv squared for a mass associated with articulated bodies and the mass is a matrix?
+
+</p><p><b>Student:</b>[Inaudible]
+
+</p><p><b>Instructor (Oussama Khatib)</b>:So you get a v transpose and m and v, which makes it quadratic form.  And basically your kinetic energy is just one-half q duct transpose mq duct.  These are the centrifugal Coriolis forces, and we will see actually that these forces disappear if the velocity was zero.  Or if the mass matrix was constant, that is the v term solely depends on the velocity – product of velocity, and on the fact that all the element involved are derivative – partial derivative, coming from partial derivative of the mass matrix.  So if you have a mass matrix that is constant, then the derivative are zero, and v will be zero.  Yes?
+
+</p><p><b>Student:</b>[Inaudible]
+
+</p><p><b>Instructor (Oussama Khatib)</b>:No, no.  Mass matrix or kinetic energy matrix.  And the gravity forces and gamma is the derived forces.  So gamma one will be acting along or about axis one.  So you have q one, gamma one, q two, gamma two, right?  So gamma could be a force if the joint is prismatic. 
+
+</p><p>Now, again, in doing all the formulations, it’s very simple.  We saw this figure before.  If you have a rigid body, you can study that the stability of the – you can state the static equilibrium of the rigid body under the forces applied.  And you say the sum of the forces should be zero if the rigid body was at static equilibrium.  And the moment computed about any point going to be equal to zero, as well.  
+
+</p><p>Now, if this rigid body is moving, so here the rigid body is at static equilibrium; we do that analysis.  But if the rigid body was moving, then the rigid body, the masses, and the inertias are going to generate an additional force.  We saw this force here; the first force, mq double [inaudible] plus v, actually these are inertial forces.  They are created by the fact that this is a rigid body with mass.  So if we can compute the forces and the moment associated with this rigid body – yes?
+
+</p><p><b>Student:</b>Where do we have our [inaudible]?
+
+</p><p><b>Instructor (Oussama Khatib)</b>:Well, they will come – they will come little later.  We can create the – those spring and dumping into control to stabilize and control the robot, or the robot might have some dumping at issue of the joint because of friction.  But we will come to that later.
+
+</p><p>So if we – if we consider those forces, then we can restate the static equilibrium by saying, as it is moving, we should have a static equilibrium that will equal – will be equal not to zero, but rather to f and to n, to those movement and forces applied.
+
+</p><p>So then we can come up with a relationship.  So first of all, for the Newton equation, you – we saw the equation earlier.  The Newton equation is describing the linear motion.  The Euler equation is describing the angular motion.  So mass acceleration equal force; moment equal inertia time acceleration – angular acceleration – plus this term that creates the centrifugal Coriolis forces.  And by stating that equilibrium and then doing the projection on each axis, you’ll remember in the static analysis we projected on the axis to  see the forces acting on that axis.  So this essentially eliminate inertial forces – internal forces acting on the structure.  Then we will be able to find their equations.  To do that we will project [inaudible] in the static case and find those component that is the torques applied at issue of the joint axis.  So this is basically the Newton-Euler formulation.  
+
+</p><p>Now, the Lagrange formulation doesn’t go into the specific motion of each of the joints, doesn’t require any elimination; it works out the problem differently from energy analysis point of view.  So essentially what we’re going to do there, we take the whole articulated-body system and we take the kinetic energy of each of the legs.  So the kinetic energy of [inaudible] is, let’s say it’s ki – the total kinetic energy of the system is the sum of all the k [inaudible].  And we have also the potential energy.  
+
+</p><p>Now, once we decided about our system of [inaudible] coordinates, in this case it will be q’s, q one to q n.  We can write the kinetic energy in this form.  Earlier, we said the kinetic energy of an articulated-body system would be just this q duct transpose and q duct.  And this means that k – this k over k is half the velocity vector of transpose multiplied by the matrix, plus multiplied by the vector.  That gives you a scalar.  
+
+Now, if you take the scalar and combine it with the potential energy, you will be able to immediately find those equations.  Now, once you find those equations, actually you realize, “I know the equations actually directly from m.”  By computing the kinetic energy, you identify m, which will go here.  So you know m q double [inaudible].  From the potential energy, you knew – you know the gravity.  What is left is v, and we will see that.  Once we know m we can find v.
+
+</p><p>So the whole equation of the dynamics can be obtained simply by taking the potential energy, taking its gradient and that gives you g, the gravity vector.  And by taking m and computing m, how can we compute m?  Well, we can say the kinetic energy should be – if – if we have a system [inaudible] coordinate, it’s a quadratic form [inaudible] velocity.  So from the top we can say the kinetic energy could be computed for each rigid body, and by doing the identity between the first expression and this expression, we can identify m.  We will see that on Wednesday.
+
+</p><p>So this is a slide we saw before that is the idea of breaking the structure and analyzing each of them, and then eliminating the internal forces.  Well, this is exactly what we’re going to do again, now, but by adding the inertial forces.  So in addition, here, we are at static equilibrium; the rigid body is not moving.  If it is moving, there will be these forces and then we can say the forces fi are equal to fi plus fi plus one, from this relation.  The sum of the forces should be equal to the linear acceleration, and the sum of movements should be equal to the angular inertial forces.  And this is the algorithm, basically, that we will find – this algorithm will allow you to compute the dynamics.  
+
+</p><p>So the Newton-Euler algorithm does the following: it propagates  velocities, we know we did that for the Jacobian.  You propagated velocities.  You – as you propagate velocities, you compute your accelerations and from the accelerations, you can compute the inertial forces as you’re propagating.  And then it has a backpropagation, that is the projection on the axis by taking these forces and starting from the end and going back, you propagated your forces and when you reach the ground, basically, then you have all of your tools.  
+
+</p><p>So we’re going to start with the basics and the reason for that, I want you to understand a very important equation related to the rigid body, and this is the Euler equation.  We need to understand what is the inertial for a rigid body.  If we were working just with a single particle of mass m, the problem would be very simple.  We don’t need Euler equation.  We are working with rigid body; when they move, this rigid body has a mass distribution.  And we need to capture the mass distribution at some point, and that result into this inertial tensor that we are going to use to discard the rotational motion of a rigid body.  
+
+</p><p>Now, this might be scary, but it’s going to be really, really simple if you just pay attention.  We will start from a particle.  We take a rigid body and look at it as a collection of particles, and then we will look at the linear velocities of each of those particles and they move, and we group them together and we will find the inertial associated with the rigid body.  Okay?  Sounds good.  All right.  Let’s try.
+
+</p><p>So as I said, for a particle m, if we apply a force there will be an acceleration that is equal to f divided by this mass.  So the mass is resisting to accelerate.  So if the mass was infinite, no motion, right?  The lighter, the faster with the smaller forces.  So this is the law I think everyone is familiar with.  There is a velocity, actually, with this acceleration that is not aligned with the acceleration depending on how the trajectory is going.  And we can think about this same equation in the following way.  So I’m going to group the mass and the acceleration using the derivative of the velocity.  So you can write the same equation in this form – the partial derivative of mv is equal to the force.  What is mv, by the way?  I’m sorry?
+
+</p><p><b>Student:</b>Momentum.
+
+</p><p><b>Instructor (Oussama Khatib)</b>:Exactly.  It is the momentum associated with this linear motion.  It’s the linear momentum – mv is the linear momentum of the particle.  So this linear momentum is playing a really interesting role, you can see what is this role here?  If we think about this linear momentum, the rate of change of the linear momentum is equal to?  The applied force.  Nice.  So the rate of change of the linear momentum is equal to the force.  We’re going to show that actually Euler equation or what it does, it says the angular momentum, if we know the angular momentum; if we take the rate of change of the angular momentum is equal to the moment applied.  
+
+</p><p>And with this symmetry, basically, then we will be able to compute this tensor, or this inertial matrix, associated with a rigid body.  Okay.  So the rate of change of the linear momentum is equal to the applied force.  And we call the linear momentum phi, okay?  Can you remember that?  Phi is equal to mv.  
+
+</p><p>See, dynamics is not that complicated.  All right.  Let’s talk about the angular momentum.  How can I make an angular momentum with a particle?  So we have an – so we have this particle rotating and we have an inertial frame, and I’m going to compute the angular momentum.  Well, basically, I need to – to cross [inaudible] this with a vector, right?  To compute the movement of the force and then I can have the movement of the inertials.  
+
+And so if we take the moment of this force on the right with respect to the origin, o, then we can take m – mv that is like a force, right?  It’s an inertial force, mv dot.  You agree?
+</p><p>So we’re going to take the moment of this equation with respect to o, so we need the vector that connect o to the particle, to the position of the particle.  Right?  Okay.  Let’s take the moment, you remember the moment is p cross f, on the right, or p cross mv dot.  Okay.  This is a very important step.  If you understand this step, everything that we will talk about later will become just adding all of them together.
+</p><p></p><p>
+</p><p>So I had a linear motion, I’m just looking at it from angular motion point of view and I’m just taking the moment of this equation with respect to a fixed point.  All right.  P cross f is a moment.  We call it n.  What is this?  That’s right; it’s too complicated.  All right.  
+
+</p><p>Okay.  So you said earlier, mv is the linear momentum.  I’m going to take p cross mv.  And if I take p cross mv, and I need to get the rate of change of that quantity, this is sort of the angular momentum and I’m computing it ahead of time just to show you what it’s going to be.  So if we do the computation it will be p cross mv dot, v cross mv, and v cross mv is equal to zero, so that gives you – because when you cross product a vector with itself, it gives you zero.  So that gives you the rate of this quantity equal to the moment.  And that is the angular momentum.
+
+</p><p>So the linear momentum is mv and the angular momentum is the vector locating m cross mv.  Okay?  We’ll put it down, so now you have to remember mv, linear momentum; p cross mv, angular momentum.  Correct?  
+
+</p><p>Okay.  Well, once we get a rigid body, all that we need is to do the sum.  So this p will become pi’s, mi’s, and vi’s, and we are going to add all these particles – a lot of them, many of them.  So instead of doing this with just a sum, we will do an integral.  And because we have objects in three-dimensional space, we will triple integral in dxy and z.  And basically you get your inertia for the rigid body.
+
+</p><p>So let’s call it first, this quantity p cross mv, we call it phi.  It’s the angular momentum.  So I’m going to now think about this equation in the context of a rigid body.  The angular momentum of a particle we know, we want to find the angular momentum of all the particles.  And we assume that this rigid body is moving at some velocity and acceleration related to the instantaneous angular velocity and acceleration we know.  Okay?  So we need to locate each of the particles.  So we have pi and the linear momentum is – I’m sorry, the linear velocity, vi of that particle, is going to be – we study that in the angular rotations, it will be omega cross pi, right?  
+
+</p><p>So what is the angular momentum?  The total angular momentum of this rigid body is going to be the sum of all the pi’s locating this mi mass’ moving at vi, velocity.  So now we’re going to take vi and bring them down here and we will have pi cross mi, omega cross pi, so we will have a more complicated expression.  So we have omega cross pi.  So this would be the total angular momentum of the rigid body.  Right?  Do you agree?  If I can count them all, all the particles.  It’s difficult to count, but that’s what’s nice about the mathematical models that you can use.  You can assume, or, let’s assume that I can count them all.
+
+</p><p>Now, in this equation, do you see anything that is constant, that is not changing, that is independent of the rigid body?  Louder.  Louder.
+
+</p><p><b>Student:</b>[Inaudible]
+
+</p><p><b>Instructor (Oussama Khatib)</b>:Omega.  All these particles are moving at – rotating about that axis with omega.  So omega is independent, so what are we looking for?  If omega is independent [inaudible] I’m going to go to an integral, I need to get this omega out of the sum, right?  We don’t need it in the sum.  So how do you do that?
+
+</p><p><b>Student:</b>[Inaudible]
+
+</p><p><b>Instructor (Oussama Khatib)</b>:I’m sorry?
+
+</p><p><b>Student:</b>[Inaudible] triple [inaudible]?
+
+</p><p><b>Instructor (Oussama Khatib)</b>:So, yeah.  I mean, you basically – the omega is on the left side, you can, if you put minus, you can bring it to the other side.  Omega cross p or minus p cross omega, right?  You remember this?
+
+</p><p>And the other thing is the fact that mi representing that mass for that particle.  If we assume that we have a homogenous object, then we can represent it – represent the mass by this more volume multiplied by the density, right?  So using this and using this – well, I didn’t do it yet, so we’ll go from that sum to this integral with the same equation before tripping this.  But this is what we need to get this out of this equation.  It is independent of the equation.  
+</p><p>So the phi is your total angular momentum.  So let’s write this in this following way.  I’m going to write it minus p cross d and omega out and that means – and also substitute with the cross product operator.  So p cross is p hat, and that leads to this form.  In here what you see is minus p hat, multiplied by p hat, [inaudible] all of this is variable depending on the particle; omega is constant.  
+
+</p><p>So phi is equal to this integral times omega.  And this integral is essentially your inertia, the inertia of the rigid body.  What we call the inertia tensor.  So we can write it simply like this: phi is equal i omega.  
+
+</p><p>So maybe I went too fast.  You see this relation?  Where i is this integral.  So for linear motion, phi is equal mv for one particle, and we have Newton equation, which stays the rate of change of phi is equal to f.  Okay?  It’s another writing of ma equal to f.  No one remembers this one, the phi prime equal f, one.  People are afraid of momentum.  
+
+</p><p>Okay.  Now with the angular momentum we’re going to see the same thing.  The rate of change of the angular momentum is equal to the applied moments.  So phi is equal i omega and Euler equation is simply the rate of change of phi is equal to the applied moments.  Couldn’t be any simpler, right?  Then you will be missing something.
+
+</p><p>Now phi prime is not as simple as the linear motion.  When you take the derivative of phi, you get i omega that acts – this is like mass acceleration, but also because of omega, we have i omega in another product of velocities, and that produces centrifugal and Coriolis forces.   
+
+So we have the two equations for a rigid body.  So a rigid body has a linear motion; if I throw this like straight at you, it will – it’s going to [inaudible] there will be some air resistance and you will feel some rotational motion.  But this combination of linear motion and angular motion is captured by this for one rigid body.  Well, I have to deal with multi-rigid bodies attached by these joints and when you put a joint, you are putting a constraint.  You’re throwing the thing is going to be pulled and pushed and that means we need to eliminate the internal forces in order to find the actual motion.  
+
+So a very important thing that we establish with this relation is this i, and now we need to really, I mean, this is the thing that I need you to remember.  You need to be able to compute i for each of the rigid body of your robot.  So this is something that is absolutely needed.  And in order to do that, you need to see little bit more into the structure of the inertial matrix or the inertial tensor.  
+
+So we say the inertial tensor i is basically this integral over the volume of all the vectors locating all the points on the rigid body, and scaled by the density of masses on the rigid body.  So if we take this quantity, p hat p hat, so this is the cross product operator, pretend that you can write it in this form.  So p hat is what?  You remember p hat, the cross product operator, it’s a three by three matrix.  So if you multiply a three by three matrix by itself, you’re going to get another matrix, right?  
+
+Now, this matrix could be written as p transposed p.  P transpose p is what?
+
+</p><p><b>Student:</b></p><p>[Inaudible]
+
+</p><p><b>Instructor (Oussama Khatib)</b>:A scalar.  So you are scaling – p transposed p is the square of the vector p.  So you are scaling the identity matrix.  So on the diagonal of the identity matrix you have the square of – the component of the vector p minus p, p transposed, which is a three by three matrix.  So using this relation, we can rewrite the inertia tensor in this form.  
+
+So let’s take this computation.  So p transposed p is x squared plus y square plus z squared.  And p transpose p time the identity gives you this quantity.  All right?  Nothing complicated.  The other one gives you this.  If I have x, y, and z, I’m going to multiply p, p transpose, that will give me this matrix.  And the result will be this matrix.  So minus p hat p hat in that integral, is this.  Okay?
+
+Essentially, this is locating the position x, y and z with this vector.  And now when we do the multiplication it appears like this.  All right.  So we’re almost there.  We need to control – compute the integral of this and put the density and that – then we will have the inertia tensor. 
+
+So the inertia tensor is – you see this equation here?  Now I’m going to put it in that integral and I will find i.  Ixx, Iyy  and Izz, and Ixy, and Ixy, et cetera.  
+Anything remarkable about this matrix you can tell me?  Properties wise?
+
+</p><p><b>Student:</b></p><p>[Inaudible]
+
+</p><p><b>Instructor (Oussama Khatib)</b>:</p><p>Symmetric.  
+
+</p><p><b>Student:</b></p><p>[Inaudible]
+
+</p><p><b>Instructor (Oussama Khatib)</b>:</p><p>What else?
+
+</p><p><b>Student:</b></p><p>[Inaudible]
+
+</p><p><b>Instructor (Oussama Khatib)</b>:Positive definite?  That’s if you’re at zero.  If you’re at zero, you’re in a black hole.  Okay.  So this ixx, yy, .zz’s and the [inaudible] just we – I’m using the previous matrix to recompute this element, and this is your inertia tensor.  Cool?  You understand now the inertia tensor?  Oh, what it is, this three by three matrix is going to each of the points, finding the distance, and then you’re walking and integrating all of these from each of the component to find what is the waiting, the inertial properties about the axis xx – about the x-axis, y-axis, z-axis, and what are the coupling between different axes. 
+
+</p><p>So the xx, yy, zz are called the moment of inertia.  And the other one are called the product of inertias.  All right.  Here is an example.  If we take a – if we take a rigid body that is nice, symmetric, like cylinder or [inaudible] or cube, basically, the property of symmetry when you do the integration, you’re integrating between one side to the other and that leads to some nice properties because if you do this computation at the center of mass, you are going to be able to find the inertias and you will find, most of the time, zero product of inertias.  
+
+And then if you need to do this computation at a different point, or what you need to do is now to look at your vector, so if you start from this vector, this point, you will be able to reach all these different points.  Then if you start from a different point, to reach this point you can go like this and plus this.  This one you already used to find the inertias about the center of mass, or what you need is to have this vector.  That because you’re going to add the same vector for all the points, it turned out that you have a very nice property, which is the property of parallel axis theorem that tells you the inertia about any point a, is the inertia about the center of mass plus the mass of the object multiplied by this quantity.  That is the quantity that let us compute pc, this vector, in addition because all the masses are basically can be measured like, concentrated at this point.  
+
+So this property is very nice because you can do simple computation at the center of mass, and then just do your transformation to move to a different point.
+
+</p><p>So there is an example of a cube where we do the computation at the center of mass, you have this example, and the answer is, you get Ixx at the center of mass, Iyy at the center of mass, and Izz at the center of mass, all equal to ma squared divided by six, for this cube.  
+
+Now, if you want to do this computation at one of the edges, like at this point, or what you need to do is to add this quantity that represents the distance from that point to the center of mass, and scaled by the center of mass and you obtain this quantity.  
+
+</p><p>So this is a very useful theorem if you are doing this computation.  And what you notice, also, is that then you will have product of inertias.  So the – at the center of mass, you have no product of inertia, you have a diagonal matrix.  When you compute the inertias at a different point of the center of mass, you are going to have product of inertias.  
+
+</p><p>All right.  so now we have the inertia of a rigid body, then we can apply the equations of Newton-Euler, and we do this propagation and we will compute all the inertial forces as we propagate.  And then we’ll project back to compute the forces and we find the dynamic equations.  
+
+</p><p>So as we saw, these are the two equations, the translational motion and the rotational motion.  And what you need to do also is to compute accelerations; you remember here, we’re saying you need to compute velocity, find the accelerations, and then you can find the inertial forces.  So we can go over this and now, I’m not asking you to really follow the details of this computation, but essentially, you’re going to start from the velocities.  The recursive relation of velocities as we propagate, or maybe i plus one equal omega i plus the joint velocity of that revolute joint, and you have this relation.  Now, if you take the derivative of this relation, you will find this derivative involving the acceleration of your revolute joint, you will also need to compute the linear accelerations.  You start with the velocities, you take the derivatives, and you get your recursive relations, okay?
+
+</p><p>So we are forward-propagating to go to the last joint, and you have a lot of derivatives depending on the type, if d is revolute, prismatic or not.  And we’re not done because we have to find the velocities and acceleration at the center of mass, not only at the joint angles.  So you need to do a small addition, the linear velocity at the center of mass, you need to multiply by this vector, omega I plus one.  And that gives you the velocities, acceleration at the center of mass, and now you’re ready.
+
+</p><p>So at the center of mass, you can write the forces – the linear and angular forces.  So this is the inertial forces acting at the center of mass, and these are the linear forces acting at the center of mass, and this is the inertial tensor computed at the center of mass.  Now, you take this moving, accelerating rigid body and you say that all the forces applied to this rigid body should be equal to the inertial forces and the acceleration of related to the movement through the Euler equation.  And you write these two equations, and now you do the recursive relations with these expressions and you’ll get your recursive relations so now you see it is fi as a function of i plus one, so you’re backpropagating.  
+
+</p><p>And as you backpropagate, you have to make sure, in order to find the torque, to project on the axis.  So we did this, we do this, and now we have the recursive relation and then you project at each of the axis, your end, you compute from here, or f computed from here – and you have those relations, oh, my God.  I’m lost.  
+
+So you can see it’s – I mean, it’s really difficult.  It is – but it is wonderful algorithm, in fact, to compute precisely your force as a function of the velocities, acceleration, inertias, and masses and everything.  But you have no idea about what’s going on, right?  It’s very difficult to see.  You need to – okay – so – this is [inaudible] iterations from zero to five, and [inaudible] iteration with – don’t forget this to eliminate your – okay?
+
+</p><p>Yeah.  Well, I mean, it can – [inaudible] it can go to 25, but it works.  Yeah, what about the gravity?  We didn’t talk about the gravity here.  We forgot the gravity.  Oops.  So what do we do for the gravity?  How do we account for the gravity in this algorithm?  So, okay, you remember, I say the algorithm, you’ll start from the base, you assume the base at zero velocity, zero acceleration, and you move out and you come back.  Now, if you want to account for the gravity, what should we do?
+
+</p><p><b>Student:</b>[Inaudible] accelerates at g.
+
+</p><p><b>Instructor (Oussama Khatib)</b>:Yeah.  Just [inaudible].  Very good.  So if you say I have a linear acceleration of equal to 1g from the beginning, you will be including the gravity.  Good.  [Inaudible] for a second.  Now, all right.  So good, we will skip this and to skip it, I will go to here.  And we go to the Lagrange equations.  
+
+</p><p>All right.  So what we saw, the thing you have to remember and not forget, is how to compute your inertia.  We – you need still to compute the inertia because when we go and compute the kinetic energy, that is needed in Lagrange formulation.  You are going to compute the linear motion, kinetic energy, which is one-half mv square, and what about the angular motion?  The kinetic energy associated with angular motion?
+
+</p><p>Omega –
+
+</p><p><b>Student:</b>[Inaudible]
+
+</p><p><b>Instructor (Oussama Khatib)</b>:So it is one-half omega transpose i, omega.  So we need this i anyway, you cannot escape.  So you have to know how to compute i, correct.?
+
+</p><p>Okay.  Lagrange equations, actually, I mean, we can skip that if you want.  
+
+[Video]</p><p>An innovative –
+
+</p><p><b>Instructor (Oussama Khatib)</b>:No, no, no.  What I meant is we really don’t have to know all the details of the equations.  But I really want you to understand Lagrange equations because they are going to be very useful for you when we get to control.  And when we are going to control the robot, the robot has its own dynamics.  And also we are going to apply to it external forces to control it.  So these external forces are going to affect the dynamic of the robot in some way.
+
+</p><p>And we need to understand the Lagrange equation, not only to compute the dynamics.  All that we need for the dynamics is the kinetic energy, and we know the answer from Lagrange equation or from Newton-Euler – from any formulation of the dynamic equations, we will have the same structure, mass q double duct plus v plus g equals torque.  And to compute the mass, all that we need is to compute the kinetic energies.  But we really need to understand what this – what is this structure of Lagrange equation, how under applied forces mechanical system is going to move.  
+
+</p><p>So this has a very important rule, not only for the computing the dynamics, but really to understanding the control.  Okay?  How many of you have seen this equation before?  Okay.  Six.  All right.  So let’s imagine this equation in the scalar case, so this equation would be just simply an equation where the torque is the torque applied to one revolute joint.  So this is a scalar equation.  What is l, those of you who have seen it before?
+
+</p><p><b>Student:</b>[Inaudible]
+
+</p><p><b>Instructor (Oussama Khatib)</b>:So it is the Lagrangian and it is simply the kinetic energy minus the potential energy.  And what is this q?  So when we – when we look at – okay, maybe I think I have – I have k minus u, so l is k minus u.  I don’t know if I will put it in the – so most of the time when we are talking about natural gravity, the u is only function of where, what height you are at.  So it’s function of q.  So we can rewrite this equation in this form, right?  I’m separating the kinetic energy from the potential energy because the potential energy is independent of the time, and so – so you can write it in this way.  
+
+And essentially, what you have in here, you have mq double duct, and plus v if you have multi-body, and here you have g, the gravity.  So here, you just have the gravity vector.  So in fact if we move the gravity vector to the other side, let’s not worry about the gravity here in space or – the gravity vector is just the gradient of your potential energy.  So essentially, it’s saying that you’re inertial forces are equal to the torque’s minus the acting gravity.  And if we think about it, this part of the inertial force, this is what it’s going to give you.  When – once we do the derivation that that left part will give you mass acceleration plus centrifugal Coriolis forces equal to these torques minus the gravity.  
+
+So let’s look at this little bit.  As I said, the kinetic energy, if we have generalized velocities, if we say q is our generalized coordinates, q dot is our generalized velocities, we can write the kinetic energy as a quadratic form on the joints velocities.  So k is q dot transpose n q dot.  And if we take the derivative, so I’m going out to take this k from there, and differentiate with respect to q dot, okay?  So partial derivative of k with respect to q dot, of this quantity, and this is q dot transpose m q dot.  So what do you think the answer is?
+
+No, let’s do it in the scalar case.  So you are taking, let’s say I’m taking mv square – one-half mv square and I’m taking the partial derivative with respect to v; what would be the answer?
+
+</p><p><b>Student:</b></p><p>[Inaudible]
+
+</p><p><b>Instructor (Oussama Khatib)</b>:Mv.  Well, in the vector case, it will be mv as well.  It will be mq dot.  So nice.  This is really nice.  So now, take the second derivative of this, I mean, this derivative with respect to time.  So if you take the derivative of mq dot with respect to time, you get mq double dot, plus m dot q dot.  You see why m dot?  Because m is function of q.  Right?  Function of q, so you get m dot q dot.  Oh.  So let’s write this.  We computed this, right?  And it is – this first part is m q double dot plus m dot q dot.  What about the other part?  
+
+</p><p>You see k over there?  Need to find the partial derivative of this k with respect to the q’s.  So in the kinetic energy, what is dependent on the q’s?  Can you point that to me?  Okay.  The kinetic energy is one-half q dot transpose, m of q, q dot.  So what is dependent on q’s?
+
+</p><p><b>Student:</b>M.
+
+</p><p><b>Instructor (Oussama Khatib)</b>:M.  All right.  So I’m going to write it as a vector because this is – what does this mean?  It’s partial derivative with respect to q, one partial derivative with respect to q, two partial derivative with respect to q n, so it’s like this.  So I’m just writing exactly that quantity partial derivative with respect to q, one, two, q and –okay?  You agree?  So everyone who have never seen Lagrange equation before agrees also?  Is this clear?  So this means mass acceleration, m q, m dot q dot, so if q dot was zero, this disappears, right?  
+
+</p><p>If m was constant, not configuration dependent, this would be zero and this would be zero.  Right?  Okay.  This messy thing is your centrifugal Coriolos forces, it’s product of inertias – if you think any element of this, it’s a product – I’m sorry, product of velocities.  You have always q dot, q dot, that is multiplied.  
+
+</p><p>So this is what we call v, v is this vector minus half of this vector; and this is v.  Okay.  So this equation, the partial derivative of the kinetic energy leads to this equation.  As I said, because we see the answer, you need to compute m, right?  But m is there in the kinetic energy.  And these things are function of m.  So we really have just to compute m from the kinetic energy and we know the answer.  
+
+</p><p>By the way, do you know why this, we already saw this example – what is the answer?  Is, I’m mixed up.  Okay.  so this – I mean, I way to think about is it to form  vector of v which is m square root of m q dot, and then your equation will be v transpose v for the kinetic energy, and then you can show that, et cetera.  All right.  If you want to see why it is equal to m q dot.  
+
+</p><p>All right.  So the equation of motion using Lagrange equations, are in this form, mass acceleration plus these two vectors, leads to this v vector that is function of q and q dot.  And if q dot is equal to zero, v will be equal to zero.  So this is the structure of our dynamic equation and what we know is inside the kinetic energy, there is this m.  If I can’t compute the kinetic energy some other ways, then I will find m.  And what we’re going to do, we’re going to go to each of the rigid bodies and compute that kinetic energy for k1, k2, k3, to km, add them all together, and identify that expression to this expression and we can extract m.  
+
+</p><p>And once we have m, using this relation between v and m dot q dot and the vector, we will be able to compute v.  So this is what we will be doing on Wednesday.  
+</p><p>
+[End of Audio]</p><p>
+
+Duration: 74 minutes</p><p>
+
+</html>
