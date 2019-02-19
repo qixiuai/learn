@@ -1,5 +1,15 @@
-cmake_minimum_required (VERSION 2.6)
+cmake_minimum_required(VERSION 3.13)
+
 project (Example)
+
+add_subdirectory(MathFunctions)
+include_directories("$(PROJECT_SOURCE_DIR)/MathFunctions")
+
 add_executable(Example example.cc)
-add_library(Libexample SHARED STATIC example.cc)
+target_link_libraries(Example MathFunctions)
+
+
+
+
+
 
