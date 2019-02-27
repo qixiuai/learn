@@ -5,3 +5,12 @@ def get_iter():
             yield (i,j)
 
 print(list(get_iter()))
+
+
+import random
+
+a = [1,2,5,3,4]
+
+print(random.shuffle(a))
+
+print(a)

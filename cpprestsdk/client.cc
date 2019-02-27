@@ -9,8 +9,6 @@
 #include <cpprest/containerstream.h>
 #include <cpprest/producerconsumerstream.h>
 
-
-
 using namespace utility;
 using namespace web;
 using namespace web::http;
