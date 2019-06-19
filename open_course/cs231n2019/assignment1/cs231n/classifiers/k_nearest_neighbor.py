@@ -77,7 +77,10 @@ class KNearestNeighbor(object):
                 #####################################################################
                 # *****START OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
 
-                pass
+                vec_test = X[i]
+                vec_train = self.X_train[j]
+                diff_vec = vec_test - vec_train
+                dists[i,j] = np.sqrt(np.dot(diff_vec, diff_vec))
 
                 # *****END OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
         return dists
@@ -101,8 +104,10 @@ class KNearestNeighbor(object):
             #######################################################################
             # *****START OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
 
-            pass
-
+            vec_test = X[i]
+            diff_mat = self.X_train - vec_test.T #pay attention to broadcast rules
+            dists[i,:] = np.sqrt(np.sum(diff_mat * diff_mat, axis=1))
+            
             # *****END OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
         return dists
 
@@ -131,7 +136,12 @@ class KNearestNeighbor(object):
         #########################################################################
         # *****START OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
 
-        pass
+        train_2 = self.X_train * self.X_train
+        train_sum2 = np.sum(train_2, axis=1).reshape(1, -1)
+        test_2 = X * X
+        test_sum2 = np.sum(test_2, axis=1).reshape(-1, 1)
+        test_train = np.matmul(X, self.X_train.T)
+        dists = np.sqrt(train_sum2 + test_sum2 - 2*test_train)
 
         # *****END OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
         return dists
@@ -164,7 +174,7 @@ class KNearestNeighbor(object):
             #########################################################################
             # *****START OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
 
-            pass
+            closest_y = self.y_train[np.argsort(dists[i])[:k]]
 
             # *****END OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
             #########################################################################
@@ -175,9 +185,12 @@ class KNearestNeighbor(object):
             # label.                                                                #
             #########################################################################
             # *****START OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
-
-            pass
-
+            label_counter = {}
+            for y in closest_y:
+                label_counter[y] = label_counter.get(y, 0) + 1
+            label_counter_pairs = list(zip(label_counter.values(), label_counter.keys()))
+            label_counter_pairs.sort()
+            y_pred[i] = label_counter_pairs[-1][1]
             # *****END OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
 
         return y_pred
