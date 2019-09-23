@@ -1,0 +1,15 @@
+Winter 18-19
+------------
+* A little shaky - make sure to more clearly explain flag combinations for a < b (or remove?)
+* didn't have time to complete stack section, or discussion of %rip
+* spend less time recapping?
+
+Spring 18-19
+------------
+* Still tough to bridge the gap between setting individual condition codes and having e.g. conditional jump "less than".  THe jump to combining condition codes to check state is tough.
+* chunk of time spent on static vs. dynamic instruction counts.  shorten?  esp. since we show a version of loops that isn't used
+* didn't get to do one larger reverse engineering problem
+* just had enough time to get through
+* example of set and cmov?
+* example of for loops?
+* example of if/else?

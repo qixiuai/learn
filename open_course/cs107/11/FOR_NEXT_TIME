@@ -1,0 +1,13 @@
+Winter 18-19
+-------------
+* didn't have time to get to move instruction byte sizes or beyond
+* clarify slide with table that one side is stack and the other side is registers
+* clarify that the addressing mode appears as either source or destination in mov
+* give example mov instruction instead of just focusing on addressing mode
+* potentially have people write single assembly instructions for C statements using mov?
+
+Spring 18-19
+------------
+* Went much better!  Breaking up explanation of mov worked to get people understanding examples better
+* still didn't have time to get to mov byte sizes
+* should update register names to only use 64-bit registers (some people asked about 32 bit ones and what they are)

@@ -1,0 +1,11 @@
+Winter 18-19
+------------
+* maybe just say always use memmove?
+* just got to start stack example - lots of overhead for generics example?
+* function pointers aren't just for comparison functions
+* emphasize more that generic function are in different files, not able to know what function to use to compare, etc.
+
+Spring 18-19
+------------
+* maybe add more interactivity - a lot of talking at students
+* didn't get through entire stack example of modifying to make generic.  Students got stuck on why each node is heap allocated and also points to heap allocated space for the element itself

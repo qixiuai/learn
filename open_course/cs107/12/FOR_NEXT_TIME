@@ -1,0 +1,15 @@
+Winter 18-19
+------------
+* Recorded video - can rewatch on YouTube
+* a little dense - maybe save more for next lecture, or bump some of it to previous lecture? (e.g. mov and data size)
+* change ending reverse engineering to remove/modify ambiguous if/else
+* in ending reverse engineer example, deciding which is if vs which is else is tricky
+
+Spring 18-19
+-----------
+* Shortenend, ended at CompilerExplorer example and did not start condition codes (probably a good pace)
+* remember that movl auto-zeroing means no movlq
+* is there an unsigned zero-extend for division?
+* liked having students with reference sheets handy during lecture
+* pull up division reference during live-walkthrough
+* add lea examples using different destinations to show that destinations work the same way as mov

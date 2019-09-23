@@ -1,0 +1,11 @@
+Winter 18-19
+------------
+* spend longer on caller/callee registers and examples - people confused in lab
+* not enough time for thorough recursion example at end
+
+Spring 18-19
+------------
+* Cut review at start
+* need to spend more time with caller-callee; make interactive example each for caller and callee registers to show the problem (only 1 copy of registers!), and then the solution (guidelines for register use)
+* didn't have time to get to recursion example
+* consider cutting the dissection of the jmp instruction, cool to see interaction with %rip, but maybe not super-essential

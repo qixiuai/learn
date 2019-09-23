@@ -1,0 +1,13 @@
+Winter 18-19
+------------
+* Liked introduction to 2s complement by reverse engineering, but maybe need to explicitly say that if no room for digits, the digit just falls off.  That's the key to how 2s complement works.
+* comparisons between different types was rushed.  Could spend more time on that, confusing topic.  Had to review the next time.
+
+Spring 18-19
+------------
+* Did a better job of clarifying numbers can be different sizes, not just 4 bits
+* Still slower, ended with Ghandi example, have to save comparisons and casting for next time
+* PollEV worked well
+* some confusion about 32 vs. 64 bit and how you can have 8 byte integers in 32 bit system.
+* maybe clarify that you can get positive equivalent of -8 by using invert/add 1, but that value may not actually be representable as a positive number
+* need to fit in comparisons and casting here somehow so more time next lecture can be devoted to bit ops

@@ -1,0 +1,11 @@
+Winter 18-19
+------------
+* perfect timing - ended 1-2 minutes early with break and questions
+* could add a little more on optimization - techniques, mindset, examples, live optimizations?
+* hammer home more difference between when to use headers vs. when to use linked list (e.g. why not linked list for coalescing?)
+
+Spring 18-19
+------------
+* short video - just on optimization
+* more interactivity with optimization - e.g. use C. Gregg's "let's optimize this" exercise?
+* more on caching?

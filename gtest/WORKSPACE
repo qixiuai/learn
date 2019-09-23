@@ -1,0 +1,19 @@
+load("@bazel_tools//tools/build_defs/repo:git.bzl", "git_repository")
+
+git_repository(
+    name = "gteast",
+    remote = "https://github.com/google/googletest.git",
+    branch = "master",
+)
+
+#git_repository(
+#    name = "com_google_absl",
+#    remote = "https://github.com/abseil/abseil-cpp.git",
+#    branch = "master",
+#)
+
+local_repository(
+    name = "com_google_absl",
+#    path = "C:\\Users\\guo\\Desktop\\compile_windows\\abseil-cpp",
+    path = "/home/guo/Github/abseil-cpp",
+)

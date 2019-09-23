@@ -1,0 +1,13 @@
+Winter 18-19
+------------
+* videotaped holiday lecture, but would probably have been too long in person
+* dense pointer stuff, maybe rethink this and next lecture since they cover similar material.  What do they need to know before this HW?
+
+Spring 18-19
+-----------
+* Don't talk about char str[] = "Hello".  Only introduce char * = "hello" for string literals.
+* didn't have time to get to double pointers at all
+* lots of questions about pointer stuff.  Maybe find a more gradual way to get into the pointers and memory topics.  E.g.
+       - students wondering about memory addresses and confusion with the _bits_ that differ between addressess vs. the addresses as numbers
+       - students haven't probably seen dereference or address-of operators before
+* try to put more string-usage stuff in the previous lecture.  For instance, string arrays and memory errors.

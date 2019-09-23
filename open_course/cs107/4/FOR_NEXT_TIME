@@ -1,0 +1,9 @@
+Winter 18-19
+------------
+* students associated char * with string constants and char[] with non-constant.  Need to better differentiate.
+
+Spring 18-19
+------------
+* Liked the approach of avoiding char *s = "literal" until Monday when talking more about memory, but downside is it's hard to strip out uses of that (e.g. passing a string literal to strlen).  But definitely avoids initial confusion until students know more about memory.
+* timing ok, with 5 min break
+* lots of questions about "what ifs", maybe punt more for later discussions

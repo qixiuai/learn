@@ -1,0 +1,12 @@
+Winter 18-19
+------------
+* Timing worked well, maybe with shorter break in the middle
+* slow down walk through of losing precision.  Maybe discuss more pressing example, such as salami slicing currency withdrawal, etc.?
+* make sure to save a few minutes at the end to summarize takeaways
+* liked how the implicit 1 discussion went, people seemed to understand that
+* maybe solidify via example why fixed point is bad.  E.g. you would need a 200-bit width to store both 1000...0.1 and 0.00....01.
+
+Spring 18-19
+------------
+* Timing worked well, ran a tiny bit over with break
+* walk of losing precision is still dense, hard to understand the different steps to convert to float.  A smaller example might be nice.

@@ -1,0 +1,19 @@
+Winter 18-19
+------------
+* Perfect timing
+* example of what argc/argv do fits well with assign0
+* great to introduce C and show tooling/command line
+* give demo of assign0?
+
+*gdb backtrace for crashes (note somewhere on website)
+*talk about booleans (or lack thereof) and how numbers can be treated as booleans (0/nonzero)
+
+
+Spring 18-19
+------------
+* Added booleans, but went a little long.
+* make sure to mention scrolling in Emacs.  Maybe deemphasize gcc in favor of make?
+* give demo of assign0?
+* mention lecture timing at the start?
+* fix typos...
+* man pages have both C and Unix references

@@ -1,0 +1,16 @@
+Winter 18-19
+------------
+* Didn't have time for realloc example with pig latin.  Would be nice to demo realloc.
+* Spent too long on initial "misc. useful topics".  Maybe fold into earlier lectures?
+* create_string example _could_ in theory use stack allocation and get away with it, because the caller knows the length.  Try to come up with better example (e.g. pig latin, but simpler to trace) where the caller cannot know what the size is in advance.
+* show more examples of trying to free individual parts of heap memory (e.g. index i in a heap array), array of structs on heap, etc.?
+* didn't have time to include slide on when to use stack vs. heap, and that stack is preferred.  Had to bump to start of next lecture.
+
+
+Spring 18-19
+------------
+Notes from above, plus...
+* able to squeeze in stack vs. heap slides this time
+* initial misc. usefull topics take about 15 minutes.  Would be nice to fold into earlier lectures
+* couldn't demo realloc in time
+* pig latin is very string-heavy, seems to focus more on strings than memory

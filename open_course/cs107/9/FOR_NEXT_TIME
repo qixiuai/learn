@@ -1,0 +1,18 @@
+Winter 18-19
+------------
+* people seemed confused by the function pointer initial explanation.  E.g. why can't bubblesort just call the function itself?  Why does it have to be a void * parameter that is a char **?  Etc.
+* didn't have time to get to cleanup function example, need to recap and tie up next time
+* spend too much time on review and stack implementation, but lots of good questions
+* iffy explanation for why stack pop cannot return heap memory address (can it? would that be ok design?)
+* maybe not enough emphasis on idea of functions as a parameter in general.  Discussion very quickly got to comparison functions in particular.  Maybe switch order to do bubblesort - stack free - then general world of callbacks in C library functions.
+* talk about functions as variables
+* function pointers can be NULL
+
+Spring 18-19
+------------
+* better job of clarifying why bubblesort can't call the function itself - it's generic, library, etc.
+* got through everything!
+* lots of good questions on the stack example, still took a fair amount of time - better explained generic stack design and justification
+* did better job emphasizing function pointers in general rather than just comparison functions
+* could do even better job separating the two though - e.g. functions could be anything, bubblesort just needs X
+* last print array example could be more beefy in its justification, e.g. show printing out a struct, or fancy printing, rather than just callbacks with one line prints (e.g. "why not just use printf?" or "why do we need a generic print array function?")
